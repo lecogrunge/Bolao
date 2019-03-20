@@ -61,6 +61,15 @@ namespace Bolao.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno:.
+        /// </summary>
+        public static string ErrorGeneric400 {
+            get {
+                return ResourceManager.GetString("ErrorGeneric400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail {0} inválido..
         /// </summary>
         public static string InvalidEmail {

@@ -1,8 +1,10 @@
 ﻿using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
+using Bolao.Domain.Domains.Validator;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.ObjectValue;
+using Bolao.Domain.ObjectValue.Validation;
 using FluentValidation.Results;
 
 namespace Bolao.Domain.Services
@@ -18,21 +20,44 @@ namespace Bolao.Domain.Services
             this._emailService = emailService;
         }
 
-        public CreateUserResponse CreateUser(CreateUserRequest request)
+		public AuthUserResponse AuthUser(AuthUserRequest request)
+		{
+			AuthUserResponse response = new AuthUserResponse();
+
+			// E-mail validation
+			Email email = new Email(request.Email);
+			EmailValidator emailValidator = new EmailValidator();
+			ValidationResult emailResult = emailValidator.Validate(email);
+			if (!emailResult.IsValid)
+				response.AddError(emailResult);
+
+			if (!response.IsValid())
+				return response;
+
+			// Verificar usuário existe
+			User user = _userRepository.AuthUser(email.EmailAddress, request.Password.Trim());
+			response.IdUser = user.IdUser;
+
+			return response;
+		}
+
+		public CreateUserResponse CreateUser(CreateUserRequest request)
         {
             CreateUserResponse response = new CreateUserResponse();
 
             // E-mail validation
             Email email = new Email(request.Email);
-            ValidationResult emailValidation = email.Validate(email);
-            if (!emailValidation.IsValid)
-                response.AddError(emailValidation);
+			EmailValidator emailValidator = new EmailValidator();
+            ValidationResult emailResult = emailValidator.Validate(email);
+            if (!emailResult.IsValid)
+                response.AddError(emailResult);
 
             // User validation
             User user = new User(request.FisrtName, request.LastName, email, request.Password);
-            ValidationResult userValidation = user.Validate(user);
-            if (!userValidation.IsValid)
-                response.AddError(userValidation);
+			UserValidator userValidator = new UserValidator();
+            ValidationResult userResult = userValidator.Validate(user);
+            if (!userResult.IsValid)
+                response.AddError(userResult);
 
             if(!response.IsValid())
                 return response;

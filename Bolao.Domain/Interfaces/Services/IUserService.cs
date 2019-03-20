@@ -7,6 +7,7 @@ namespace Bolao.Domain.Interfaces.Services
     {
         //IEnumerable<ListarJogadorResponse> ListarJogador();
         CreateUserResponse CreateUser(CreateUserRequest request);
+		AuthUserResponse AuthUser(AuthUserRequest request);
         //AlterarJogadorResponse AlterarJogador(AlterarJogadorRequest request);
         //AutenticarJogadorResponse AutenticarJogador(AutenticarJogadorRequest request);
         //ResponseBase ExcluirJogador(Guid id);

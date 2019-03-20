@@ -5,5 +5,6 @@ namespace Bolao.Domain.Interfaces.Repositories
 {
     public interface IUserRepository : IRepositoryBase<User>
     {
-    }
+		User AuthUser(string email, string password);
+	}
 }

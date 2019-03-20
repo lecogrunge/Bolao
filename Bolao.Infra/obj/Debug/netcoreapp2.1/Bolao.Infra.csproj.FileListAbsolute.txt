@@ -10,3 +10,15 @@ C:\Projetos\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.csproj.CopyCom
 C:\Projetos\Bolao\Bolao.Infra\bin\Debug\netcoreapp2.1\Bolao.Infra.pdb
 C:\Projetos\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.dll
 C:\Projetos\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.pdb
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\bin\Debug\netcoreapp2.1\Bolao.Infra.deps.json
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\bin\Debug\netcoreapp2.1\Bolao.Infra.dll
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\bin\Debug\netcoreapp2.1\Bolao.Infra.pdb
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\bin\Debug\netcoreapp2.1\Bolao.Domain.dll
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\bin\Debug\netcoreapp2.1\Bolao.Domain.pdb
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.csprojAssemblyReference.cache
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.csproj.CoreCompileInputs.cache
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.AssemblyInfoInputs.cache
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.AssemblyInfo.cs
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.csproj.CopyComplete
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.dll
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Infra\obj\Debug\netcoreapp2.1\Bolao.Infra.pdb

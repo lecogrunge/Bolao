@@ -33,11 +33,32 @@ namespace Bolao.Api.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+                    return BadRequest(Msg.ErrorGeneric400);
                 }
             }
 
             return BadRequest(response.GetErrors());
         }
-    }
+
+		[HttpPost]
+		public async Task<IActionResult> AuthUser(AuthUserRequest auth)
+		{
+			AuthUserResponse response = _userService.AuthUser(auth);
+
+			if (response.IsValid())
+			{
+				try
+				{
+					_unitOfWork.Commit();
+					return Ok(response);
+				}
+				catch (Exception ex)
+				{
+					return BadRequest(Msg.ErrorGeneric400);
+				}
+			}
+
+			return BadRequest(response.GetErrors());
+		}
+	}
 }
