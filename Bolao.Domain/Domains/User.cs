@@ -15,11 +15,9 @@ namespace Bolao.Domain.Domains
             LastName = lastName;
             Email = email;
             Password = password;
+
             CreateDate = DateTime.Now;
             Active = false;
-
-            RuleFor(x => x.FisrtName).NotEmpty().WithMessage("Primeiro Nome obrigatório.");
-            RuleFor(x => x.LastName).NotEmpty().WithMessage("Último Nome obrigatório.");
         }
 
         public Guid IdUser { get; private set; }

@@ -44,9 +44,10 @@ namespace Bolao.Api
             
             #region Injections
             services.AddScoped<BolaoContext, BolaoContext>();
+			services.AddTransient<IResponseBase, ResponseBase>();
 
-            // Services
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+			// Services
+			services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEmailService, EmailService>();
 

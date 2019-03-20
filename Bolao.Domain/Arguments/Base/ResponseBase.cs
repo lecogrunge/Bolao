@@ -1,10 +1,11 @@
-﻿using FluentValidation.Results;
+﻿using Bolao.Domain.Interfaces.Arguments;
+using FluentValidation.Results;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Bolao.Domain.Arguments.Base
 {
-    public abstract class ResponseBase
+    public abstract class ResponseBase : IResponseBase
     {
         public ResponseBase()
         {

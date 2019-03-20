@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <Folder Include="Enum\" />
-    <Folder Include="Messages\" />
     <Folder Include="Services\Base\" />
   </ItemGroup>
 
@@ -19,6 +18,21 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>..\..\EbaObra\EbaObra02\WEB\bin\System.Web.Mvc.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Messages\Msg.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Msg.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Messages\Msg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Msg.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
