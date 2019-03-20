@@ -79,6 +79,15 @@ namespace Bolao.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Campo {0} inválido..
+        /// </summary>
+        public static string InvalidField {
+            get {
+                return ResourceManager.GetString("InvalidField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Campo {0} deve conter no mínimo {1} e máximo {2} caracteres..
         /// </summary>
         public static string RangeLength {

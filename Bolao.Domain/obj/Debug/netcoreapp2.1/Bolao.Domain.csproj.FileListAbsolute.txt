@@ -19,7 +19,6 @@ C:\Projetos\Bolao\Bolao.Domain\bin\Debug\netcoreapp2.1\System.Web.WebPages.Razor
 C:\Projetos\Bolao\Bolao.Domain\bin\Debug\netcoreapp2.1\System.Web.WebPages.xml
 C:\Projetos\Bolao\Bolao.Domain\bin\Debug\netcoreapp2.1\System.Web.WebPages.Deployment.xml
 C:\Projetos\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.csproj.CopyComplete
-C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.csprojAssemblyReference.cache
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.Messages.Msg.resources
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.csproj.GenerateResource.cache
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.csproj.CoreCompileInputs.cache
@@ -30,3 +29,4 @@ C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreap
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\bin\Debug\netcoreapp2.1\Bolao.Domain.deps.json
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\bin\Debug\netcoreapp2.1\Bolao.Domain.dll
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\bin\Debug\netcoreapp2.1\Bolao.Domain.pdb
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.csprojAssemblyReference.cache

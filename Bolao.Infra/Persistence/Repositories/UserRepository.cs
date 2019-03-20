@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Bolao.Infra.Persistence.Repositories
 {
-	public class UserRepository : RepositoryBase<User>, IUserRepository
+	public sealed class UserRepository : RepositoryBase<User>, IUserRepository
 	{
 		public UserRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
 

@@ -5,13 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="8.1.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <Compile Remove="Services\Base\**" />
+    <EmbeddedResource Remove="Services\Base\**" />
+    <None Remove="Services\Base\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enum\" />
-    <Folder Include="Services\Base\" />
+    <PackageReference Include="FluentValidation" Version="8.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
