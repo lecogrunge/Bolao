@@ -11,6 +11,8 @@ namespace Bolao.Domain.Domains.Validator
 			RuleFor(x => x.Price).Must(ValidatePrice).WithMessage(string.Format(Msg.InvalidField, "Valor da aposta"));
 			RuleFor(x => x.StartDateBet).Must(ValidateStartDateBet).WithMessage(string.Format(Msg.InvalidField, "Data incial das apostas"));
 			RuleFor(x => x.StartDateBet).Must(ValidateEndDateBet).WithMessage(string.Format(Msg.InvalidField, "Data final das apostas"));
+
+			.Must((arg, agenciaDestino) => this.VerificarAgenciaExiste(agenciaDestino, arg.CodigoBancoDestino)).WithMessage(string.Format(TedMessage.agencia_nao_encontrada));
 		}
 
 		private bool ValidatePrice(decimal price)
