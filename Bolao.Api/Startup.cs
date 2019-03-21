@@ -1,7 +1,8 @@
 ﻿using Bolao.Api.Core.Compression;
+using Bolao.Domain.Arguments.Base;
+using Bolao.Domain.Interfaces.Arguments;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
-using Bolao.Domain.Interfaces.Services.Base;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
 using Bolao.Infra.Persistence.Repositories;
@@ -18,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Bolao.Api
 {
-    public class Startup
+	public class Startup
     {
         public IConfiguration Configuration { get; }
 
@@ -49,7 +50,8 @@ namespace Bolao.Api
 			// Services
 			services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IEmailService, EmailService>();
+			services.AddTransient<ITicketService, TicketService>();
+			services.AddTransient<IEmailService, EmailService>();
 
             // Repositories
             services.AddTransient<IUserRepository, UserRepository>();

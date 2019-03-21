@@ -12,10 +12,10 @@ namespace Bolao.Infra.Persistence.Repositories
 	{
 		public TicketRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
 
-		public IAsyncEnumerable<ListTicketResponse> ListTickets(ListTicketRequest request)
+		public IAsyncEnumerable<ListTicket> ListTickets(ListTicketRequest request)
 		{
 			return  _context.Tickets.Where(s => s.Active == request.Active)
-									 .Select(s => new ListTicketResponse { IdTicket = s.IdTicket, Price = s.Price })
+									 .Select(s => new ListTicket { IdTicket = s.IdTicket, Price = s.Price })
 									 .ToAsyncEnumerable();
 		}
 	}

@@ -1,85 +1,37 @@
 ﻿using Bolao.Api.Controllers.Base;
-using Bolao.Domain.Arguments.Titcket;
+using Bolao.Domain.Arguments.Ticket;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
 {
-    [Route("api/ticket")]
+	[Route("api/ticket")]
     [ApiController]
     public class TitcketController : BaseController
     {
-        private readonly ITitcketService _ticketService;
+        private readonly ITicketService _ticketService;
 
-        public TitcketController(IUnitOfWork unityOfWork, ITitcketService ticketService) : base(unityOfWork)
+        public TitcketController(IUnitOfWork unitOfWork, ITicketService ticketService) : base(unitOfWork)
         {
             _ticketService = ticketService;            
         }
 
 		[HttpGet]
-		public async Task<IActionResult> ListTitckets(ListTitcketRequest ticket)
+		public async Task<IActionResult> ListTitckets(ListTicketRequest request)
 		{
-			ListTitcketResponse response = _ticketService.ListTitcket(ticket);
+			ListTicketResponse response = _ticketService.ListTicket(request);
 
-			if (response.IsValid())
-			{
-				try
-				{
-					_unitOfWork.Commit();
-					return Ok(response);
-				}
-				catch (Exception ex)
-				{
-					return BadRequest(Msg.ErrorGeneric400);
-				}
-			}
-
-			return BadRequest(response.GetErrors());
+			return await ResponseAsync(response, response.IsValid(), response.GetErrors());
 		}
 
 		[HttpPost]
-        public async Task<IActionResult> PostTitcket(CreateTitcketRequest ticket)
+        public async Task<IActionResult> PostTitcket(CreateTicketRequest request)
         {
-            CreateTitcketResponse response = _ticketService.CreateTitcket(ticket);
+			CreateTicketResponse response = _ticketService.CreateTicket(request);
 
-            if (response.IsValid())
-            {
-                try
-                {
-                    _unitOfWork.Commit();
-                    return Ok(response);
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(Msg.ErrorGeneric400);
-                }
-            }
-
-            return BadRequest(response.GetErrors());
-        }
-
-		[HttpPost]
-		public async Task<IActionResult> AuthTitcket(AuthTitcketRequest auth)
-		{
-			AuthTitcketResponse response = _ticketService.AuthTitcket(auth);
-
-			if (response.IsValid())
-			{
-				try
-				{
-					_unitOfWork.Commit();
-					return Ok(response);
-				}
-				catch (Exception ex)
-				{
-					return BadRequest(Msg.ErrorGeneric400);
-				}
-			}
-
-			return BadRequest(response.GetErrors());
+			return await ResponseAsync(response, response.IsValid(), response.GetErrors());
 		}
 	}
 }

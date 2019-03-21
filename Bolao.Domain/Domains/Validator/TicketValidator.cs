@@ -10,9 +10,7 @@ namespace Bolao.Domain.Domains.Validator
 		{
 			RuleFor(x => x.Price).Must(ValidatePrice).WithMessage(string.Format(Msg.InvalidField, "Valor da aposta"));
 			RuleFor(x => x.StartDateBet).Must(ValidateStartDateBet).WithMessage(string.Format(Msg.InvalidField, "Data incial das apostas"));
-			RuleFor(x => x.StartDateBet).Must(ValidateEndDateBet).WithMessage(string.Format(Msg.InvalidField, "Data final das apostas"));
-
-			.Must((arg, agenciaDestino) => this.VerificarAgenciaExiste(agenciaDestino, arg.CodigoBancoDestino)).WithMessage(string.Format(TedMessage.agencia_nao_encontrada));
+			RuleFor(x => x.EndDateBet).Must((arg, ValidateEndDateBet) => this.ValidateEndDateBet(arg.StartDateBet, arg.EndDateBet)).WithMessage(string.Format(Msg.InvalidField, "Data final das apostas"));
 		}
 
 		private bool ValidatePrice(decimal price)
@@ -25,9 +23,9 @@ namespace Bolao.Domain.Domains.Validator
 			return startDate.Date > DateTime.Now.Date;
 		}
 
-		private bool ValidateEndDateBet(DateTime endDate)
+		private bool ValidateEndDateBet(DateTime startDate, DateTime endDate)
 		{
-			return endDate.Date > DateTime.Now.Date;
+			return endDate.Date > startDate.Date;
 		}
 	}
 }

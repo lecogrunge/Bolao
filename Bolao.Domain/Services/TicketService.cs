@@ -30,12 +30,12 @@ namespace Bolao.Domain.Services
 			return response;
 		}
 
-		public IAsyncEnumerable<ListTicketResponse> ListTicket(ListTicketRequest request)
+		public ListTicketResponse ListTicket(ListTicketRequest request)
 		{
 			ListTicketResponse response = new ListTicketResponse();
-			var tickets =   _ticketRepository.ListTickets(request);
 
-			return tickets;
+			response.ListTickets = _ticketRepository.ListTickets(request);
+			return response;
 		}
 	}
 }
