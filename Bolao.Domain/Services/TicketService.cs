@@ -21,6 +21,7 @@ namespace Bolao.Domain.Services
 		{
 			CreateTicketResponse response = new CreateTicketResponse();
 
+			// Validate Ticket
 			Ticket ticket = new Ticket(request.Price, request.Active, request.StartDateBet, request.EndDateBet, request.TypeBet);
 			TicketValidator ticketValidator = new TicketValidator();
 			ValidationResult ticketResult = ticketValidator.Validate(ticket);

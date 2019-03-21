@@ -88,6 +88,15 @@ namespace Bolao.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total de números inválidos..
+        /// </summary>
+        public static string InvalidLimitNumbers {
+            get {
+                return ResourceManager.GetString("InvalidLimitNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Campo {0} deve conter no mínimo {1} e máximo {2} caracteres..
         /// </summary>
         public static string RangeLength {

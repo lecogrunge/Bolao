@@ -126,6 +126,9 @@
   <data name="InvalidField" xml:space="preserve">
     <value>Campo {0} inválido.</value>
   </data>
+  <data name="InvalidLimitNumbers" xml:space="preserve">
+    <value>Total de números inválidos.</value>
+  </data>
   <data name="RangeLength" xml:space="preserve">
     <value>Campo {0} deve conter no mínimo {1} e máximo {2} caracteres.</value>
   </data>

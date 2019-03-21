@@ -9,17 +9,17 @@ namespace Bolao.Api.Controllers
 {
 	[Route("api/ticket")]
     [ApiController]
-    public class TitcketController : BaseController
+    public class TicketController : BaseController
     {
         private readonly ITicketService _ticketService;
 
-        public TitcketController(IUnitOfWork unitOfWork, ITicketService ticketService) : base(unitOfWork)
+        public TicketController(IUnitOfWork unitOfWork, ITicketService ticketService) : base(unitOfWork)
         {
             _ticketService = ticketService;            
         }
 
 		[HttpGet]
-		public async Task<IActionResult> ListTitckets(ListTicketRequest request)
+		public async Task<IActionResult> ListTickets(ListTicketRequest request)
 		{
 			ListTicketResponse response = _ticketService.ListTicket(request);
 
@@ -27,7 +27,7 @@ namespace Bolao.Api.Controllers
 		}
 
 		[HttpPost]
-        public async Task<IActionResult> PostTitcket(CreateTicketRequest request)
+        public async Task<IActionResult> PostTicket(CreateTicketRequest request)
         {
 			CreateTicketResponse response = _ticketService.CreateTicket(request);
 
