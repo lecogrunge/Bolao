@@ -5,6 +5,8 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class Ticket
     {
+		protected Ticket() { }
+
 		public Ticket(decimal price, bool active, DateTime startDateBet, DateTime endDateBet, EnumTypeBet typeBet)
 		{
 			this.IdTicket = Guid.NewGuid();

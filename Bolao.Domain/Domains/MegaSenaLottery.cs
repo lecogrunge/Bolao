@@ -5,10 +5,7 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class MegaSenaLottery
     {
-        public Guid IdMegaSenaLoterry { get; private set; }
-        public DateTime LoterryDate { get; private set; }
-
-		public ICollection<MegaSenaLotteryNumber> ListNumbers { get; private set; }
+		protected MegaSenaLottery() { }
 
 		public MegaSenaLottery(DateTime loterryDate)
 		{
@@ -16,9 +13,15 @@ namespace Bolao.Domain.Domains
 			this.LoterryDate = loterryDate;
 		}
 
+		public Guid IdMegaSenaLoterry { get; private set; }
+        public DateTime LoterryDate { get; private set; }
+
+		public ICollection<MegaSenaLotteryNumber> ListNumbers { get; private set; }
+
 		public void AddNumber(MegaSenaLotteryNumber number)
 		{
-			this.ListNumbers.Add(number);
+			if(this.ListNumbers.Count < 6)
+				this.ListNumbers.Add(number);
 		}
     }
 }

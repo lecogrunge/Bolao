@@ -1,4 +1,5 @@
 ﻿using Bolao.Domain.Domains;
+using Bolao.Domain.Enum;
 using Bolao.Domain.ObjectValue;
 using Bolao.Infra.Persistence.EF.Map;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,8 @@ namespace Bolao.Infra.Persistence.EF
 		public DbSet<User> Users { get; set; }
 		public DbSet<TypeBet> TypeBets { get; set; }
 		public DbSet<Ticket> Tickets { get; set; }
-		public DbSet<MegaSenaBetNumber> MegaSenaBetNumbers { get; set; }
 		public DbSet<MegaSenaLottery> MegaSenaLotteries { get; set; }
+		public DbSet<MegaSenaBetNumber> MegaSenaBetNumbers { get; set; }
 		public DbSet<MegaSenaLotteryNumber> MegaSenaLotteryNumbers { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,7 +42,28 @@ namespace Bolao.Infra.Persistence.EF
 			modelBuilder.Entity<User>(options =>
 			{
 			options.HasData(
-				new User("Wellington", "Fernandes", new Email("wellington_fernands@yahoo.com.br"), "123456"));
+				new User("Wellington", "Fernandes", new Email("wellington_fernands@yahoo.com.br"), "123456")
+				);
+			});
+			#endregion
+
+			#region TypeBet
+			modelBuilder.Entity<TypeBet>(options =>
+			{
+				options.HasData(
+					new TypeBet("Sena15Numbers")
+					);
+			});
+			#endregion
+
+			#region Ticket
+			modelBuilder.Entity<Ticket>(options =>
+			{
+				options.HasData(
+					new Ticket(20, true, DateTime.Now, DateTime.Now.AddDays(10), EnumTypeBet.Sena15Numbers),
+					new Ticket(12, false, DateTime.Now.AddDays(5), DateTime.Now.AddDays(9), EnumTypeBet.Sena15Numbers),
+					new Ticket(17, true, DateTime.Now.AddDays(3), DateTime.Now.AddDays(7), EnumTypeBet.Sena15Numbers)
+					);
 			});
 			#endregion
 

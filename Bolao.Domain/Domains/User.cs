@@ -1,10 +1,9 @@
 ﻿using Bolao.Domain.ObjectValue;
-using FluentValidation;
 using System;
 
 namespace Bolao.Domain.Domains
 {
-    public sealed class User : AbstractValidator<User>
+	public sealed class User
     {
         protected User() { }
 

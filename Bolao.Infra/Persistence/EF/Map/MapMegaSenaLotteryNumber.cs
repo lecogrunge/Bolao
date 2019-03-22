@@ -12,7 +12,7 @@ namespace Bolao.Infra.Persistence.EF.Map
             builder.ToTable("MegaSenaLotteryNumber");
 
             //Chave primaria
-            builder.HasKey(x => x.IdMegaSenaNumber);
+            builder.HasKey(x => x.IdMegaSenaLoterryNumber);
         }
     }
 }
