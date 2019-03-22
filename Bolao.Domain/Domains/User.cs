@@ -5,7 +5,16 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class User
     {
-        protected User() { }
+		public Guid IdUser { get; private set; }
+		public string FisrtName { get; private set; }
+		public string LastName { get; private set; }
+		public Email Email { get; private set; }
+		public string Password { get; private set; }
+		public DateTime CreateDate { get; private set; }
+		public bool Active { get; private set; }
+
+
+		protected User() { }
 
         public User(string fisrtName, string lastName, Email email, string password)
         {
@@ -18,13 +27,5 @@ namespace Bolao.Domain.Domains
             CreateDate = DateTime.Now;
             Active = false;
         }
-
-        public Guid IdUser { get; private set; }
-        public string FisrtName { get; private set; }
-        public string LastName { get; private set; }
-        public Email Email { get; private set; }
-        public string Password { get; private set; }
-        public DateTime CreateDate { get; private set; }
-        public bool Active { get; private set; }
     }
 }

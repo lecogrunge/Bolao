@@ -29,3 +29,4 @@ C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreap
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.AssemblyInfo.cs
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.dll
 C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.pdb
+C:\Users\BSI91083\Desktop\Diversos\VS2017\Bolao\Bolao.Domain\obj\Debug\netcoreapp2.1\Bolao.Domain.csprojAssemblyReference.cache

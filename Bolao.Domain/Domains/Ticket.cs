@@ -5,6 +5,15 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class Ticket
     {
+		public Guid IdTicket { get; private set; }
+		public decimal Price { get; private set; }
+		public bool Active { get; private set; }
+		public DateTime CreateDate { get; private set; }
+		public DateTime StartDateBet { get; private set; }
+		public DateTime EndDateBet { get; private set; }
+		public EnumTypeBet IdTypeBet { get; private set; }
+
+
 		protected Ticket() { }
 
 		public Ticket(decimal price, bool active, DateTime startDateBet, DateTime endDateBet, EnumTypeBet typeBet)
@@ -14,16 +23,9 @@ namespace Bolao.Domain.Domains
 			this.Active = active;
 			this.StartDateBet = startDateBet;
 			this.EndDateBet = endDateBet;
-			this.CreateDate = DateTime.Now;
 			this.IdTypeBet = typeBet;
-		}
 
-        public Guid IdTicket { get; private set; }
-        public decimal Price { get; private set; }
-        public bool Active { get; private set; }
-        public DateTime CreateDate { get; private set; }
-        public DateTime StartDateBet { get; private set; }
-        public DateTime EndDateBet { get; private set; }
-        public EnumTypeBet IdTypeBet { get; private set; }
+			this.CreateDate = DateTime.Now;
+		}
     }
 }
