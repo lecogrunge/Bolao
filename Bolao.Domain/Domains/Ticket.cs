@@ -1,5 +1,6 @@
 ﻿using Bolao.Domain.Enum;
 using System;
+using System.Collections;
 
 namespace Bolao.Domain.Domains
 {
@@ -13,6 +14,7 @@ namespace Bolao.Domain.Domains
 		public DateTime EndDateBet { get; private set; }
 		public EnumTypeBet IdTypeBet { get; private set; }
 
+		public ICollection ListBetNumbers { get; private set; }
 
 		protected Ticket() { }
 

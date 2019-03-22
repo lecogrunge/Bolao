@@ -7,12 +7,12 @@ namespace Bolao.Domain.Arguments.Base
 {
     public abstract class ResponseBase : IResponseBase
     {
-        public ResponseBase()
-        {
-            Errors = new List<ErrorResponseBase>();
-        }
+		public ResponseBase()
+		{
+			Errors = new List<ErrorResponseBase>();
+		}
 
-        protected IList<ErrorResponseBase> Errors { get; private set; }
+		protected IList<ErrorResponseBase> Errors { get; private set; }
 
         public void AddError(ValidationResult validation)
         {

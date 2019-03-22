@@ -23,7 +23,10 @@ namespace Bolao.Api.Controllers
 		{
 			CreateMegaSenaResponse response = _megaSenaService.CreateMegaSena(request);
 
-			return await ResponseAsync(response, response.IsValid(), response.GetErrors());
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
 		}
 	}
 }

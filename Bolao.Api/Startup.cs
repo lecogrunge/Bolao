@@ -45,7 +45,7 @@ namespace Bolao.Api
             
             #region Injections
             services.AddScoped<BolaoContext, BolaoContext>();
-			services.AddTransient<IResponseBase, ResponseBase>();
+			//services.AddScoped<IResponseBase, ResponseBase>();
 
 			// Services
 			services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -54,8 +54,8 @@ namespace Bolao.Api
 			services.AddTransient<IEmailService, EmailService>();
 			services.AddTransient<IMegaSenaService, MegaSenaService>();
 
-            // Repositories
-            services.AddTransient<IUserRepository, UserRepository>();
+			// Repositories
+			services.AddTransient<IUserRepository, UserRepository>();
             
             #endregion
 

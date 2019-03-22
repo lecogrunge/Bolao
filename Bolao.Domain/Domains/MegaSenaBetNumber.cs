@@ -8,6 +8,8 @@ namespace Bolao.Domain.Domains
 		public string Number { get; private set; }
 		public Guid IdTicket { get; private set; }
 
+		public Ticket Ticket { get; private set; }
+
 
 		protected MegaSenaBetNumber() { }
 

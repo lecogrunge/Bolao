@@ -8,30 +8,37 @@ using System.Threading.Tasks;
 namespace Bolao.Api.Controllers
 {
 	[Route("api/ticket")]
-    [ApiController]
-    public class TicketController : BaseController
-    {
-        private readonly ITicketService _ticketService;
+	[ApiController]
+	public class TicketController : BaseController
+	{
+		private readonly ITicketService _ticketService;
 
-        public TicketController(IUnitOfWork unitOfWork, ITicketService ticketService) : base(unitOfWork)
-        {
-            _ticketService = ticketService;            
-        }
+		public TicketController(IUnitOfWork unitOfWork, ITicketService ticketService) : base(unitOfWork)
+		{
+			_ticketService = ticketService;
+		}
 
 		[HttpGet]
 		public async Task<IActionResult> ListTickets(ListTicketRequest request)
 		{
 			ListTicketResponse response = _ticketService.ListTicket(request);
 
-			return await ResponseAsync(response, response.IsValid(), response.GetErrors());
+
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
 		}
 
 		[HttpPost]
-        public async Task<IActionResult> PostTicket(CreateTicketRequest request)
-        {
+		public async Task<IActionResult> PostTicket(CreateTicketRequest request)
+		{
 			CreateTicketResponse response = _ticketService.CreateTicket(request);
 
-			return await ResponseAsync(response, response.IsValid(), response.GetErrors());
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
 		}
 	}
 }
