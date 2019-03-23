@@ -61,7 +61,7 @@ namespace Bolao.Api
 
             services.AddCors();
             services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                     .AddJsonOptions(options =>
                     {
                         options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
