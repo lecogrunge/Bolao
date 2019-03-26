@@ -26,7 +26,7 @@ namespace Bolao.Domain.Services
 			TicketValidator ticketValidator = new TicketValidator();
 			ValidationResult ticketResult = ticketValidator.Validate(ticket);
 			if (!ticketResult.IsValid)
-				response.AddError(ticketResult);
+				response.AddErrorValidationResult(ticketResult);
 
 			return response;
 		}

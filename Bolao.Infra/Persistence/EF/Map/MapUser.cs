@@ -14,8 +14,10 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             //Chave primaria
             builder.HasKey(x => x.IdUser);
-
-            builder.Property(x => x.Password).HasMaxLength(36).IsRequired();
+			builder.Property(x => x.FisrtName).HasMaxLength(15).IsRequired();
+			builder.Property(x => x.LastName).HasMaxLength(30).IsRequired();
+			builder.Property(x => x.Password).HasMaxLength(36).IsRequired();
+			builder.Property(x => x.TokenUserCreated).IsRequired();
 
             //Mapeando objetos de valor
             builder.OwnsOne<Email>(x => x.Email, cb =>

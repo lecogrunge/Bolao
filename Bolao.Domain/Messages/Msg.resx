@@ -120,6 +120,9 @@
   <data name="ErrorGeneric400" xml:space="preserve">
     <value>Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno:</value>
   </data>
+  <data name="InvalidConfirmToken" xml:space="preserve">
+    <value>Ativação inválida.</value>
+  </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>E-mail {0} inválido.</value>
   </data>

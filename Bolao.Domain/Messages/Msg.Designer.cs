@@ -70,6 +70,15 @@ namespace Bolao.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ativação inválida..
+        /// </summary>
+        public static string InvalidConfirmToken {
+            get {
+                return ResourceManager.GetString("InvalidConfirmToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail {0} inválido..
         /// </summary>
         public static string InvalidEmail {

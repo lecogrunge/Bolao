@@ -12,7 +12,7 @@ namespace Bolao.Domain.Domains
 		public string Password { get; private set; }
 		public DateTime CreateDate { get; private set; }
 		public bool Active { get; private set; }
-
+		public Guid TokenUserCreated { get; private set; }
 
 		protected User() { }
 
@@ -26,6 +26,12 @@ namespace Bolao.Domain.Domains
 
             CreateDate = DateTime.Now;
             Active = false;
+			TokenUserCreated = Guid.NewGuid();
         }
+
+		public void ActiveUser()
+		{
+			this.Active = true;
+		}
     }
 }

@@ -1,11 +1,14 @@
-﻿using Bolao.Domain.Arguments.User;
+﻿using Bolao.Domain.Arguments.Base;
+using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
 using Bolao.Domain.Domains.Validator;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
+using Bolao.Domain.Messages;
 using Bolao.Domain.ObjectValue;
 using Bolao.Domain.ObjectValue.Validation;
 using FluentValidation.Results;
+using System;
 
 namespace Bolao.Domain.Services
 {
@@ -29,7 +32,7 @@ namespace Bolao.Domain.Services
 			EmailValidator emailValidator = new EmailValidator();
 			ValidationResult emailResult = emailValidator.Validate(email);
 			if (!emailResult.IsValid)
-				response.AddError(emailResult);
+				response.AddErrorValidationResult(emailResult);
 
 			if (!response.IsValid())
 				return response;
@@ -50,14 +53,14 @@ namespace Bolao.Domain.Services
 			EmailValidator emailValidator = new EmailValidator();
             ValidationResult emailResult = emailValidator.Validate(email);
             if (!emailResult.IsValid)
-                response.AddError(emailResult);
+                response.AddErrorValidationResult(emailResult);
 
             // User validation
             User user = new User(request.FisrtName, request.LastName, email, request.Password);
 			UserValidator userValidator = new UserValidator();
             ValidationResult userResult = userValidator.Validate(user);
             if (!userResult.IsValid)
-                response.AddError(userResult);
+                response.AddErrorValidationResult(userResult);
 
             if(!response.IsValid())
                 return response;
@@ -71,5 +74,21 @@ namespace Bolao.Domain.Services
             response.IdUser = user.IdUser;
             return response;
         }
+
+		public ConfirmUserCreatedResponse ConfirmUserCreated(Guid token)
+		{
+			ConfirmUserCreatedResponse response = new ConfirmUserCreatedResponse();
+
+			User user = _userRepository.GetUserByToken(token);
+			if (user != null)
+			{
+				user.ActiveUser();
+				_userRepository.Update(user);
+			}
+			else
+				response.AddError(new ErrorResponseBase { Message = Msg.InvalidConfirmToken, Property = string.Empty });
+
+			return response;
+		}
     }
 }
