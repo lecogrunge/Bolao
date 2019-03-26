@@ -1,10 +1,10 @@
-﻿using Bolao.Domain.Arguments.Base;
+﻿using Bolao.CrossCutting.Messages;
+using Bolao.Domain.Arguments.Base;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
 using Bolao.Domain.Domains.Validator;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
-using Bolao.Domain.Messages;
 using Bolao.Domain.ObjectValue;
 using Bolao.Domain.ObjectValue.Validation;
 using FluentValidation.Results;
@@ -12,7 +12,7 @@ using System;
 
 namespace Bolao.Domain.Services
 {
-    public sealed class UserService : IUserService
+	public sealed class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
         private readonly IEmailService _emailService;
@@ -67,11 +67,20 @@ namespace Bolao.Domain.Services
 
             // Persistence
             _userRepository.Create(user);
+						
+			#region Sending Email
+			string urlToken = "https://www.bolao.com.br?token=" + user.TokenUserCreated;
+			string emailContent = string.Format(@"
+								Olá {0}, estamos quase lá!<br />
+								Por favor click no link abaixo para confirmar seu cadastro. <br />
+								<a href='{1}' target='_blank'>Confirmar cadastro</a><br /><br />
 
-            // Other Services
-            //_emailService.SendEmail(user.Email.EmailAddress, "my title", "my content");
+								Caso você não tenha realizado nenhum cadastro em nosso sistema, favor desconsiderar esta mensagem.", user.FisrtName, urlToken);
 
-            response.IdUser = user.IdUser;
+			_emailService.SendEmail(user.Email.EmailAddress, "Confirmação de cadastro", emailContent);
+			#endregion
+
+			response.IdUser = user.IdUser;
             return response;
         }
 

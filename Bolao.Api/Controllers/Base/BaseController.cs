@@ -1,4 +1,4 @@
-﻿using Bolao.Domain.Messages;
+﻿using Bolao.CrossCutting.Messages;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Mvc;
 using System;
