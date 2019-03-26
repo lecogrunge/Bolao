@@ -99,5 +99,24 @@ namespace Bolao.Domain.Services
 
 			return response;
 		}
+
+		public ContactResponse Contact(ContactRequest request)
+		{
+			ContactResponse response = new ContactResponse();
+
+			// E-mail validation
+			Email email = new Email(request.Email);
+			EmailValidator emailValidator = new EmailValidator();
+			ValidationResult emailResult = emailValidator.Validate(email);
+			if (!emailResult.IsValid)
+				response.AddErrorValidationResult(emailResult);
+
+			if (!response.IsValid())
+				return response;
+
+			// Sending Email
+
+			return response;
+		}
     }
 }
