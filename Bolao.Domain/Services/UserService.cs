@@ -67,18 +67,9 @@ namespace Bolao.Domain.Services
 
             // Persistence
             _userRepository.Create(user);
-						
-			#region Sending Email
-			string urlToken = "https://www.bolao.com.br?token=" + user.TokenUserCreated;
-			string emailContent = string.Format(@"
-								Olá {0}, estamos quase lá!<br />
-								Por favor click no link abaixo para confirmar seu cadastro. <br />
-								<a href='{1}' target='_blank'>Confirmar cadastro</a><br /><br />
 
-								Caso você não tenha realizado nenhum cadastro em nosso sistema, favor desconsiderar esta mensagem.", user.FisrtName, urlToken);
-
-			_emailService.SendEmail(user.Email.EmailAddress, "Confirmação de cadastro", emailContent);
-			#endregion
+			// Send mail
+			_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenUserCreated, user.FisrtName);
 
 			response.IdUser = user.IdUser;
             return response;
@@ -115,6 +106,7 @@ namespace Bolao.Domain.Services
 				return response;
 
 			// Sending Email
+			_emailService.SendEmailContact(request.Name, request.Email, request.Subject, request.Message);
 
 			return response;
 		}
