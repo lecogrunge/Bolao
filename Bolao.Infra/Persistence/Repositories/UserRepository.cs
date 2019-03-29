@@ -18,7 +18,7 @@ namespace Bolao.Infra.Persistence.Repositories
 
 		public User GetUserByToken(Guid token)
 		{
-			return _context.Users.FirstOrDefault(s => s.TokenUserCreated == token);
+			return _context.Users.FirstOrDefault(s => s.TokenConfirm == token);
 		}
     }
 }

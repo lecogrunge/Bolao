@@ -4,7 +4,7 @@ using System;
 
 namespace Bolao.Domain.Services
 {
-	public sealed class EmailService : IEmailService
+6	public sealed class EmailService : IEmailService
     {
 		public void SendEmailContact(string name, string email, string subject, string message)
 		{

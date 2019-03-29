@@ -13,6 +13,7 @@ namespace Bolao.Domain.Domains
 		public DateTime StartDateBet { get; private set; }
 		public DateTime EndDateBet { get; private set; }
 		public EnumTypeBet IdTypeBet { get; private set; }
+		public EnumStatusPagSeguro StatusPagSeguro { get; private set; }
 
 		public ICollection ListBetNumbers { get; private set; }
 
