@@ -1,7 +1,9 @@
 ﻿using Bolao.Api.Core.Compression;
+using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
+using Bolao.Infra.Persistence.Repositories;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +52,7 @@ namespace Bolao.Api
 			services.AddTransient<IEmailService, EmailService>();
 
 			// Repositories
-		//	services.AddTransient<IUserRepository, UserRepository>();
+			services.AddTransient<IUserRepository, UserRepository>();
             
             #endregion
 

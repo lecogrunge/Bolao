@@ -70,7 +70,7 @@ namespace Bolao.Domain.Services
             _userRepository.Create(user);
 
 			// Send mail
-			_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenConfirm, user.FisrtName);
+			//_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenConfirm, user.FisrtName);
 
 			response.IdUser = user.UserId;
             return response;
