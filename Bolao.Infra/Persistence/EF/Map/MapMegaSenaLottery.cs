@@ -8,11 +8,11 @@ namespace Bolao.Infra.Persistence.EF.Map
     {
         public void Configure(EntityTypeBuilder<MegaSenaLottery> builder)
         {
-            //Nome da Tabela
+            // Table's name
             builder.ToTable("MegaSenaLottery");
 
-            //Chave primaria
-            builder.HasKey(x => x.IdMegaSenaLoterry);
+            // PK
+            builder.HasKey(x => x.MegaSenaLoterryId);
         }
     }
 }

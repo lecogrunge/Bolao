@@ -2,14 +2,16 @@
 {
 	public sealed class Bank
 	{
-		protected Bank() { }
+        #region Constructor
+        protected Bank() { }
 
 		public Bank(string name)
 		{
 			Name = name;
 		}
+        #endregion
 
-		public int IdBank { get; private set; }
+        public int BankId { get; private set; }
 		public string Name { get; private set; }
 	}
 }

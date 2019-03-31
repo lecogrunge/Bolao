@@ -9,17 +9,17 @@ namespace Bolao.Infra.Persistence.EF.Map
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            //Nome da Tabela
+            // Table's name
             builder.ToTable("User");
 
-            //Chave primaria
-            builder.HasKey(x => x.IdUser);
+            // PK
+            builder.HasKey(x => x.UserId);
 			builder.Property(x => x.FisrtName).HasMaxLength(15).IsRequired();
 			builder.Property(x => x.LastName).HasMaxLength(30).IsRequired();
 			builder.Property(x => x.Password).HasMaxLength(36).IsRequired();
 			builder.Property(x => x.TokenConfirm).IsRequired();
 
-            //Mapeando objetos de valor
+            // Mapping Object Value
             builder.OwnsOne<Email>(x => x.Email, cb =>
             {
                 cb.Property(x => x.EmailAddress).HasColumnName("Email").HasMaxLength(80).IsRequired();

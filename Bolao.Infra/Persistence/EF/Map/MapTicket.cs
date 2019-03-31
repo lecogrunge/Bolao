@@ -8,11 +8,11 @@ namespace Bolao.Infra.Persistence.EF.Map
     {
         public void Configure(EntityTypeBuilder<Ticket> builder)
         {
-            //Nome da Tabela
+            // Table's name
             builder.ToTable("Ticket");
 
-            //Chave primaria
-            builder.HasKey(x => x.IdTicket);
+            // PK
+            builder.HasKey(x => x.TicketId);
         }
     }
 }

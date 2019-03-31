@@ -1,0 +1,12 @@
+﻿use bolao;
+
+select * from [bolao].[dbo].[User]
+select * from [bolao].[dbo].[Ticket]
+select * from [bolao].[dbo].[MegaSenaLottery]
+select * from [bolao].[dbo].[MegaSenaLotteryNumber]
+select * from [bolao].[dbo].[MegaSenaBetNumber]
+
+select * from [bolao].[dbo].[TypeBet]
+
+
+-----------------------------------------------

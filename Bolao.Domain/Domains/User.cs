@@ -5,7 +5,24 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class User
     {
-		public Guid IdUser { get; private set; }
+        #region Constructor
+        protected User() { }
+
+        public User(string fisrtName, string lastName, Email email, string password)
+        {
+            UserId = Guid.NewGuid();
+            FisrtName = fisrtName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+
+            CreateDate = DateTime.Now;
+            Active = false;
+            TokenConfirm = Guid.NewGuid();
+        }
+        #endregion
+
+        public Guid UserId { get; private set; }
 		public string FisrtName { get; private set; }
 		public string LastName { get; private set; }
 		public Email Email { get; private set; }
@@ -14,22 +31,7 @@ namespace Bolao.Domain.Domains
 		public bool Active { get; private set; }
 		public Guid TokenConfirm { get; private set; }
 
-		protected User() { }
-
-        public User(string fisrtName, string lastName, Email email, string password)
-        {
-            IdUser = Guid.NewGuid();
-            FisrtName = fisrtName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-
-            CreateDate = DateTime.Now;
-            Active = false;
-			TokenConfirm = Guid.NewGuid();
-        }
-
-		public void ActiveUser()
+        public void ActiveUser()
 		{
 			this.Active = true;
 		}

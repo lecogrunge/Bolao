@@ -1,9 +1,9 @@
 ﻿using Bolao.Api.Core.Compression;
-using Bolao.Domain.Interfaces.Repositories;
+using Bolao.Domain.Arguments.Base;
+using Bolao.Domain.Interfaces.Arguments;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
-using Bolao.Infra.Persistence.Repositories;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Bolao.Api
 {
-	public class Startup
+    public class Startup
     {
         public IConfiguration Configuration { get; }
 
@@ -53,7 +53,7 @@ namespace Bolao.Api
 			services.AddTransient<IMegaSenaService, MegaSenaService>();
 
 			// Repositories
-			services.AddTransient<IUserRepository, UserRepository>();
+		//	services.AddTransient<IUserRepository, UserRepository>();
             
             #endregion
 

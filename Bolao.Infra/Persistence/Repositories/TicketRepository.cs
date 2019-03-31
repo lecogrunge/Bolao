@@ -15,7 +15,7 @@ namespace Bolao.Infra.Persistence.Repositories
 		public IEnumerable<ListTicket> ListTickets(ListTicketRequest request)
 		{
 			return  _context.Tickets.Where(s => s.Active == request.Active)
-									.Select(s => new ListTicket { IdTicket = s.IdTicket, Price = s.Price })
+									.Select(s => new ListTicket { IdTicket = s.TicketId, Price = s.Price })
 									.AsEnumerable();
 		}
 	}

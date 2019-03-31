@@ -4,16 +4,18 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class OwnerJackpot
 	{
-		protected OwnerJackpot() { }
+        #region Constructor
+        protected OwnerJackpot() { }
 
-		public OwnerJackpot(Guid idMegaSenaLoterry, decimal jackpot)
+		public OwnerJackpot(Guid megaSenaLoterryId, decimal jackpot)
 		{
-			IdMegaSenaLoterry = idMegaSenaLoterry;
+			MegaSenaLoterryId = megaSenaLoterryId;
 			Jackpot = jackpot;
 		}
+        #endregion
 
-		public int IdOwnerJackpot { get; private set; }
-		public Guid IdMegaSenaLoterry { get; private set; }
+        public int OwnerJackpotId { get; private set; }
+		public Guid MegaSenaLoterryId { get; private set; }
 		public decimal Jackpot { get; private set; }
 	}
 }

@@ -39,7 +39,7 @@ namespace Bolao.Domain.Services
 
 			// Verificar usuário existe
 			User user = _userRepository.AuthUser(email.EmailAddress, request.Password.Trim());
-			response.IdUser = user.IdUser;
+			response.IdUser = user.UserId;
 
 			return response;
 		}
@@ -71,7 +71,7 @@ namespace Bolao.Domain.Services
 			// Send mail
 			_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenConfirm, user.FisrtName);
 
-			response.IdUser = user.IdUser;
+			response.IdUser = user.UserId;
             return response;
         }
 

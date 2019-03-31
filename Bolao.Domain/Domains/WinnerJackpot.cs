@@ -4,18 +4,24 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class WinnerJackpot
 	{
-		protected WinnerJackpot() { }
+        #region Constructor
+        protected WinnerJackpot() { }
 
-		public WinnerJackpot(Guid idUser, Guid idTicket, decimal jackPot)
+		public WinnerJackpot(Guid userId, Guid ticketId, decimal jackPot)
 		{
-			IdUser = idUser;
-			IdTicket = idTicket;
+			UserId = userId;
+			TicketId = ticketId;
 			JackPot = jackPot;
 		}
+        #endregion
 
-		public int IdWinner { get; private set; }
-		public Guid IdUser { get; private set; }
-		public Guid IdTicket { get; private set; }
-		public decimal JackPot { get; private set; }
+        public int WinnerJackpotId { get; private set; }
+        public decimal JackPot { get; private set; }
+
+        public User User { get; private set; }
+        public Guid UserId { get; private set; }
+
+        public Ticket Ticket { get; private set; }
+		public Guid TicketId { get; private set; }
 	}
 }

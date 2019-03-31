@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolao.Infra", "Bolao.Infra\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolao.CrossCutting", "Bolao.CrossCutting\Bolao.CrossCutting.csproj", "{4D46D1F6-05CB-4410-9745-40587F266065}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolao.Api", "Bolao.Api\Bolao.Api.csproj", "{F6D90745-C477-4BC4-91CB-CB5EA4E042E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolao.Api0", "Bolao.Api\Bolao.Api0.csproj", "{F6D90745-C477-4BC4-91CB-CB5EA4E042E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolao.UI", "Bolao.UI\Bolao.UI.csproj", "{6269B849-7BF8-40DC-A453-DD2BF6870BBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolao.UI", "Bolao.UI\Bolao.UI.csproj", "{6269B849-7BF8-40DC-A453-DD2BF6870BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolao.Api", "Bolao.Api\Bolao.Api.csproj", "{59CB0E4F-4FE5-4A50-AA58-E1F01623A882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6269B849-7BF8-40DC-A453-DD2BF6870BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6269B849-7BF8-40DC-A453-DD2BF6870BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6269B849-7BF8-40DC-A453-DD2BF6870BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CB0E4F-4FE5-4A50-AA58-E1F01623A882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CB0E4F-4FE5-4A50-AA58-E1F01623A882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CB0E4F-4FE5-4A50-AA58-E1F01623A882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CB0E4F-4FE5-4A50-AA58-E1F01623A882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

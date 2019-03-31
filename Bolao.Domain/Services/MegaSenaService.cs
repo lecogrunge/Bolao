@@ -24,7 +24,7 @@ namespace Bolao.Domain.Services
 
 			// Binding numbers
 			foreach(string item in request.BetNumbers)
-				megaSena.AddNumber(new MegaSenaLotteryNumber(item, megaSena.IdMegaSenaLoterry));
+				megaSena.AddNumber(new MegaSenaLotteryNumber(item, megaSena.MegaSenaLoterryId));
 
 			// Validate
 			MegaSenaLoterryValidator megaSenaValidator = new MegaSenaLoterryValidator();
