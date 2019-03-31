@@ -1,6 +1,4 @@
 ﻿using Bolao.Api.Core.Compression;
-using Bolao.Domain.Arguments.Base;
-using Bolao.Domain.Interfaces.Arguments;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
