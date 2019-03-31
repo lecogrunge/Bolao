@@ -14,11 +14,16 @@ namespace Bolao.Domain.Arguments.Base
 
 		protected IList<ErrorResponseBase> Errors { get; private set; }
 
-        public void AddError(ValidationResult validation)
+        public void AddErrorValidationResult(ValidationResult validation)
         {
             foreach (ValidationFailure item in validation.Errors)
                 Errors.Add(new ErrorResponseBase { Property = item.PropertyName, Message = item.ErrorMessage });
         }
+
+		public void AddError(ErrorResponseBase error)
+		{
+			Errors.Add(error);
+		}
 
         public bool IsValid()
         {

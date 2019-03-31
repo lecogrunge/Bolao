@@ -8,6 +8,7 @@ namespace Bolao.Domain.Domains
 		public Guid IdMegaSenaLoterry { get; private set; }
 		public DateTime LoterryDate { get; private set; }
 		public DateTime CreateDate { get; private set; }
+		public int LoterryOfficialNumberBet { get; private set; }
 		public ICollection<MegaSenaLotteryNumber> ListNumbers { get; private set; }
 
 

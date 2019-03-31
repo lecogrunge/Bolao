@@ -3,6 +3,7 @@ using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
@@ -35,6 +36,30 @@ namespace Bolao.Api.Controllers
 		public async Task<IActionResult> AuthUser(AuthUserRequest auth)
 		{
 			AuthUserResponse response = _userService.AuthUser(auth);
+
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
+		}
+
+		[HttpGet]
+		[Route("ConfirmUserCreated")]
+		public async Task<IActionResult> ConfirmUserCreated(Guid token)
+		{
+			ConfirmUserCreatedResponse response = _userService.ConfirmUserCreated(token);
+
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
+		}
+
+		[HttpPost]
+		[Route("Contact")]
+		public async Task<IActionResult> Contact(ContactRequest request)
+		{
+			ContactResponse response = _userService.Contact(request);
 
 			if (response.IsValid())
 				return await ResponseAsync(response);

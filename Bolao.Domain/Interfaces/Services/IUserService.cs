@@ -1,15 +1,14 @@
 ﻿using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services.Base;
+using System;
 
 namespace Bolao.Domain.Interfaces.Services
 {
     public interface IUserService : IServiceBase
     {
-        //IEnumerable<ListarJogadorResponse> ListarJogador();
         CreateUserResponse CreateUser(CreateUserRequest request);
 		AuthUserResponse AuthUser(AuthUserRequest request);
-        //AlterarJogadorResponse AlterarJogador(AlterarJogadorRequest request);
-        //AutenticarJogadorResponse AutenticarJogador(AutenticarJogadorRequest request);
-        //ResponseBase ExcluirJogador(Guid id);
-    }
+		ConfirmUserCreatedResponse ConfirmUserCreated(Guid token);
+		ContactResponse Contact(ContactRequest request);
+	}
 }

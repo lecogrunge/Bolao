@@ -30,7 +30,7 @@ namespace Bolao.Domain.Services
 			MegaSenaLoterryValidator megaSenaValidator = new MegaSenaLoterryValidator();
 			ValidationResult megaSenaResult = megaSenaValidator.Validate(megaSena);
 			if (megaSenaResult.IsValid)
-				response.AddError(megaSenaResult);
+				response.AddErrorValidationResult(megaSenaResult);
 
 			if (!response.IsValid())
 				return response;

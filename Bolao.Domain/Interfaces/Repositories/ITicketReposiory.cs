@@ -7,6 +7,6 @@ namespace Bolao.Domain.Interfaces.Repositories
 {
 	public interface ITicketReposiory : IRepositoryBase<Ticket>
 	{
-		IAsyncEnumerable<ListTicket> ListTickets(ListTicketRequest request);
+		IEnumerable<ListTicket> ListTickets(ListTicketRequest request);
 	}
 }

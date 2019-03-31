@@ -6,7 +6,7 @@ namespace Bolao.Domain.Arguments.Ticket
 {
 	public sealed class ListTicketResponse : ResponseBase
 	{
-		public IAsyncEnumerable<ListTicket> ListTickets { get; set; }
+		public IEnumerable<ListTicket> ListTickets { get; set; }
 	}
 
 	public sealed class ListTicket

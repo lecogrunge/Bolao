@@ -1,4 +1,4 @@
-﻿using Bolao.Domain.Messages;
+﻿using Bolao.CrossCutting.Messages;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
