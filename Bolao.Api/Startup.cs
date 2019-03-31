@@ -48,7 +48,7 @@ namespace Bolao.Api
 			// Services
 			services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
-			services.AddTransient<ITicketService, TicketService>();
+			services.AddTransient<ILotteryService, LotteryService>();
 			services.AddTransient<IEmailService, EmailService>();
 			services.AddTransient<IMegaSenaService, MegaSenaService>();
 

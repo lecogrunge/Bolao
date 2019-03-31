@@ -10,14 +10,14 @@ namespace Bolao.Domain.Domains
         public MegaSenaBetNumber(string number, Guid ticketId)
         {
             this.Number = number;
-            this.TicketId = ticketId;
+            this.LotteryId = ticketId;
         }
         #endregion
 
         public int MegaSenaBetNumberId { get; private set; }
 		public string Number { get; private set; }
-		public Guid TicketId { get; private set; }
+		public Guid LotteryId { get; private set; }
 
-		public Ticket Ticket { get; private set; }
+		public Lottery Lottery { get; private set; }
     }
 }

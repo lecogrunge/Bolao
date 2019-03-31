@@ -10,7 +10,7 @@ namespace Bolao.Domain.Domains
 		public WinnerJackpot(Guid userId, Guid ticketId, decimal jackPot)
 		{
 			UserId = userId;
-			TicketId = ticketId;
+			LotteryId = ticketId;
 			JackPot = jackPot;
 		}
         #endregion
@@ -21,7 +21,7 @@ namespace Bolao.Domain.Domains
         public User User { get; private set; }
         public Guid UserId { get; private set; }
 
-        public Ticket Ticket { get; private set; }
-		public Guid TicketId { get; private set; }
+        public Lottery Lottery { get; private set; }
+		public Guid LotteryId { get; private set; }
 	}
 }

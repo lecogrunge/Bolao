@@ -1,12 +1,12 @@
 ﻿use bolao;
 
 select * from [bolao].[dbo].[User]
-select * from [bolao].[dbo].[Ticket]
+select * from [bolao].[dbo].[Lottery]
 select * from [bolao].[dbo].[MegaSenaLottery]
 select * from [bolao].[dbo].[MegaSenaLotteryNumber]
 select * from [bolao].[dbo].[MegaSenaBetNumber]
+select * from [bolao].[dbo].[WinnerJackpot]
+select * from [bolao].[dbo].[OwnerJackpot]
 
+select * from [bolao].[dbo].[Bank]
 select * from [bolao].[dbo].[TypeBet]
-
-
------------------------------------------------

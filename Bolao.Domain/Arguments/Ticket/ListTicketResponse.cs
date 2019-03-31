@@ -2,16 +2,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Bolao.Domain.Arguments.Ticket
+namespace Bolao.Domain.Arguments.Lottery
 {
 	public sealed class ListTicketResponse : ResponseBase
 	{
-		public IEnumerable<ListTicket> ListTickets { get; set; }
-	}
-
-	public sealed class ListTicket
-	{
-		public Guid IdTicket { get; set; }
-		public decimal Price { get; set; }
+		
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Bolao.Domain.ObjectValue;
+﻿using Bolao.CrossCutting.Common;
+using Bolao.Domain.ObjectValue;
 using System;
 
 namespace Bolao.Domain.Domains
@@ -35,5 +36,10 @@ namespace Bolao.Domain.Domains
 		{
 			this.Active = true;
 		}
+
+        public void CryptPassword()
+        {
+            this.Password = this.Password.CryptPassword();
+        }
     }
 }

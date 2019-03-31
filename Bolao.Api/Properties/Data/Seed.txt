@@ -1,0 +1,12 @@
+﻿use bolao;
+
+-- TypeBet
+insert into [bolao].[dbo].[TypeBet] values ('Sena15Numbers');
+
+-- User
+insert into [bolao].[dbo].[User] values ('d1aa6fd4-edda-4bd7-92e1-3b6a5c99af76','Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', '123456789', GETDATE(), 0, 'df406001-4c98-4c61-8265-73a6bafbfdea');
+
+-- Lottery
+insert into [bolao].[dbo].[Lottery] values ('09325371-784b-4de7-b832-401d57529b84',17.50, 1, GETDATE(), GETDATE(), GETDATE(), 3, 1);
+insert into [bolao].[dbo].[Lottery] values ('3fb76d51-53af-4370-aadd-d958b55f54a7',20, 0, GETDATE(), GETDATE(), GETDATE(), 2, 1);
+insert into [bolao].[dbo].[Lottery] values ('1cbc28fd-8335-4e6b-a404-1204a76d1a2e',10.75, 1, GETDATE(), GETDATE(), GETDATE(), 1, 1);

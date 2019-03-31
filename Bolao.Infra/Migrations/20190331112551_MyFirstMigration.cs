@@ -23,10 +23,10 @@ namespace Bolao.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ticket",
+                name: "Lottery",
                 columns: table => new
                 {
-                    IdTicket = table.Column<Guid>(nullable: false),
+                    IdLottery = table.Column<Guid>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     Active = table.Column<bool>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
@@ -37,7 +37,7 @@ namespace Bolao.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ticket", x => x.IdTicket);
+                    table.PrimaryKey("PK_Lottery", x => x.IdLottery);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,23 +98,23 @@ namespace Bolao.Infra.Migrations
                     IdMegaSenaBetNumber = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Number = table.Column<string>(nullable: true),
-                    IdTicket = table.Column<Guid>(nullable: false)
+                    IdLottery = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MegaSenaBetNumber", x => x.IdMegaSenaBetNumber);
                     table.ForeignKey(
-                        name: "FK_MegaSenaBetNumber_Ticket_IdTicket",
-                        column: x => x.IdTicket,
-                        principalTable: "Ticket",
-                        principalColumn: "IdTicket",
+                        name: "FK_MegaSenaBetNumber_Lottery_IdLottery",
+                        column: x => x.IdLottery,
+                        principalTable: "Lottery",
+                        principalColumn: "IdLottery",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MegaSenaBetNumber_IdTicket",
+                name: "IX_MegaSenaBetNumber_IdLottery",
                 table: "MegaSenaBetNumber",
-                column: "IdTicket");
+                column: "IdLottery");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MegaSenaLotteryNumber_IdMegaSenaLoterry",
@@ -137,7 +137,7 @@ namespace Bolao.Infra.Migrations
                 name: "User");
 
             migrationBuilder.DropTable(
-                name: "Ticket");
+                name: "Lottery");
 
             migrationBuilder.DropTable(
                 name: "MegaSenaLottery");

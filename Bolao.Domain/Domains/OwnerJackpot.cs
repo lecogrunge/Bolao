@@ -17,5 +17,8 @@ namespace Bolao.Domain.Domains
         public int OwnerJackpotId { get; private set; }
 		public Guid MegaSenaLoterryId { get; private set; }
 		public decimal Jackpot { get; private set; }
+        public decimal Profit { get; private set; }
+
+        public MegaSenaLottery MegaSenaLottery { get; private set; }
 	}
 }

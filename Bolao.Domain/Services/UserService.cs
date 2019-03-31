@@ -66,6 +66,7 @@ namespace Bolao.Domain.Services
                 return response;
 
             // Persistence
+            user.CryptPassword();
             _userRepository.Create(user);
 
 			// Send mail

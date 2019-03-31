@@ -1,7 +1,7 @@
-﻿namespace Bolao.Domain.Arguments.Ticket
+﻿namespace Bolao.Domain.Arguments.Lottery
 {
 	public sealed class ListTicketRequest
 	{
-		public bool Active { get; set; }
+		
 	}
 }

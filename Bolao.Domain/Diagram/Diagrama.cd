@@ -1,45 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Bolao.Domain.Domains.MegaSenaBetNumber">
-    <Position X="7.75" Y="4.25" Width="2.75" />
+  <Class Name="Bolao.Domain.Domains.Bank">
+    <Position X="0.5" Y="5.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAEACAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Domains\Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.MegaSenaBetNumber">
+    <Position X="5.25" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAACAAAAAAAAAAEAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Domains\MegaSenaBetNumber.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.MegaSenaLottery">
-    <Position X="2.75" Y="2.25" Width="2.5" />
+    <Position X="9.25" Y="1.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAIAAAAAAAAAAAAAAACAAAAAUAAABAAAAAAA=</HashCode>
+      <HashCode>AAAAAAQAAIAAAAAAAAAAAAAAACAAAAAEAAABAAAAAAA=</HashCode>
       <FileName>Domains\MegaSenaLottery.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.MegaSenaLotteryNumber">
-    <Position X="5.5" Y="1.25" Width="3" />
+    <Position X="7.25" Y="4.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAgAQAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAAAAAAMAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\MegaSenaLotteryNumber.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Bolao.Domain.Domains.Ticket">
-    <Position X="5.5" Y="4" Width="1.75" />
+  <Class Name="Bolao.Domain.Domains.OwnerJackpot">
+    <Position X="11.5" Y="6.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>CAgAAAAAAQAAAAAAIAAAAABAIAAAAAAgAAABAAAAAAA=</HashCode>
-      <FileName>Domains\Ticket.cs</FileName>
+      <HashCode>AAAAAAAQAAAAAAAAAIAAAAACACAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Domains\OwnerJackpot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.Lottery">
+    <Position X="2.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAgIAAAAAQAAAAQAAAAAAAAAIAAAAAAgAAABAAAEAAA=</HashCode>
+      <FileName>Domains\Lottery.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.TypeBet">
-    <Position X="0.5" Y="7" Width="2" />
+    <Position X="2.5" Y="5.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\TypeBet.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.User">
-    <Position X="0.5" Y="0.5" Width="1.75" />
+    <Position X="0.5" Y="0.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAECCKAAAAAAAAAAAAAAAAAAAAiAAABAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAEACKAAAAAAAAAAAgAAAAAAAAiAAABAAAAAAg=</HashCode>
       <FileName>Domains\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.WinnerJackpot">
+    <Position X="8.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAAAAAAAAAAAAgAAAAEAAAABBAAAAAAAAA=</HashCode>
+      <FileName>Domains\WinnerJackpot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.Ticket">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domains\Ticket.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

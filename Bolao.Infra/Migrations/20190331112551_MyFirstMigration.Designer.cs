@@ -27,13 +27,13 @@ namespace Bolao.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("IdTicket");
+                    b.Property<Guid>("IdLottery");
 
                     b.Property<string>("Number");
 
                     b.HasKey("IdMegaSenaBetNumber");
 
-                    b.HasIndex("IdTicket");
+                    b.HasIndex("IdLottery");
 
                     b.ToTable("MegaSenaBetNumber");
                 });
@@ -71,9 +71,9 @@ namespace Bolao.Infra.Migrations
                     b.ToTable("MegaSenaLotteryNumber");
                 });
 
-            modelBuilder.Entity("Bolao.Domain.Domains.Ticket", b =>
+            modelBuilder.Entity("Bolao.Domain.Domains.Lottery", b =>
                 {
-                    b.Property<Guid>("IdTicket")
+                    b.Property<Guid>("IdLottery")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("Active");
@@ -90,9 +90,9 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<int>("StatusPagSeguro");
 
-                    b.HasKey("IdTicket");
+                    b.HasKey("IdLottery");
 
-                    b.ToTable("Ticket");
+                    b.ToTable("Lottery");
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.TypeBet", b =>
@@ -138,9 +138,9 @@ namespace Bolao.Infra.Migrations
 
             modelBuilder.Entity("Bolao.Domain.Domains.MegaSenaBetNumber", b =>
                 {
-                    b.HasOne("Bolao.Domain.Domains.Ticket", "Ticket")
+                    b.HasOne("Bolao.Domain.Domains.Lottery", "Lottery")
                         .WithMany("ListBetNumbers")
-                        .HasForeignKey("IdTicket")
+                        .HasForeignKey("IdLottery")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

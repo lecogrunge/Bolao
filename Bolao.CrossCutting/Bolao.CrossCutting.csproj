@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Crypt\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Messages\Msg.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
