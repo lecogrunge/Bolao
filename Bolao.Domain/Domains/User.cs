@@ -17,7 +17,7 @@ namespace Bolao.Domain.Domains
             Email = email;
             Password = password;
 
-            CreateDate = DateTime.Now;
+            CreatedAt = DateTime.Now;
             Active = false;
             TokenConfirm = Guid.NewGuid();
         }
@@ -28,7 +28,7 @@ namespace Bolao.Domain.Domains
 		public string LastName { get; private set; }
 		public Email Email { get; private set; }
 		public string Password { get; private set; }
-		public DateTime CreateDate { get; private set; }
+		public DateTime CreatedAt { get; private set; }
 		public bool Active { get; private set; }
 		public Guid TokenConfirm { get; private set; }
 

@@ -17,18 +17,18 @@ namespace Bolao.Domain.Domains
             this.EndDateBet = endDateBet;
             this.TypeBetId = typeBet;
 
-            this.CreateDate = DateTime.Now;
+            this.CreatedAt = DateTime.Now;
         }
         #endregion
 
         public Guid LoterryId { get; private set; }
 		public decimal Price { get; private set; }
-		public DateTime CreateDate { get; private set; }
+		public DateTime CreatedAt { get; private set; }
 		public DateTime StartDateBet { get; private set; }
 		public DateTime EndDateBet { get; private set; }
 		public EnumTypeBet TypeBetId { get; private set; }
 		public EnumStatusPagSeguro StatusPagSeguro { get; private set; }
 
-		public ICollection<MegaSenaBetNumber> ListBetNumbers { get; private set; }
+		public ICollection<LotteryNumberResult> ListNumbersResult { get; private set; }
     }
 }

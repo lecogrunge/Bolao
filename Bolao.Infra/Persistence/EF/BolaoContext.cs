@@ -12,9 +12,8 @@ namespace Bolao.Infra.Persistence.EF
 		public DbSet<User> Users { get; set; }
 		public DbSet<TypeBet> TypeBets { get; set; }
 		public DbSet<Lottery> Lotteries { get; set; }
-		public DbSet<MegaSenaLottery> MegaSenaLotteries { get; set; }
-		public DbSet<MegaSenaBetNumber> MegaSenaBetNumbers { get; set; }
-		public DbSet<MegaSenaLotteryNumber> MegaSenaLotteryNumbers { get; set; }
+		public DbSet<LotteryNumberBet> MegaSenaBetNumbers { get; set; }
+		public DbSet<LotteryNumberResult> MegaSenaLotteryNumbers { get; set; }
         public DbSet<Bank> Banks { get; set; }
         public DbSet<WinnerJackpot> WinnersJackpots { get; set; }
         public DbSet<OwnerJackpot> OwnerJackpots { get; set; }
@@ -28,9 +27,8 @@ namespace Bolao.Infra.Persistence.EF
 
 			// aplicar configurações
 			modelBuilder.ApplyConfiguration(new MapUser());
-			modelBuilder.ApplyConfiguration(new MapMegaSenaLottery());
-			modelBuilder.ApplyConfiguration(new MapMegaSenaLotteryNumber());
-			modelBuilder.ApplyConfiguration(new MapMegaSenaBetNumber());
+			modelBuilder.ApplyConfiguration(new MapLotteryNumberResult());
+			modelBuilder.ApplyConfiguration(new MapLotteryNumberBet());
 			modelBuilder.ApplyConfiguration(new MapLottery());
 			modelBuilder.ApplyConfiguration(new MapTypeBet());
             modelBuilder.ApplyConfiguration(new MapBank());

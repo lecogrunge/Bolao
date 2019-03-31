@@ -43,7 +43,7 @@ namespace Bolao.Infra.Migrations
                     b.Property<Guid>("IdMegaSenaLoterry")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreateDate");
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<DateTime>("LoterryDate");
 
@@ -78,7 +78,7 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<bool>("Active");
 
-                    b.Property<DateTime>("CreateDate");
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<DateTime>("EndDateBet");
 
@@ -115,7 +115,7 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<bool>("Active");
 
-                    b.Property<DateTime>("CreateDate");
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("FisrtName")
                         .IsRequired()

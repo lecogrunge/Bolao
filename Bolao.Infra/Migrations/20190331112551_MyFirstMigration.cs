@@ -14,7 +14,7 @@ namespace Bolao.Infra.Migrations
                 {
                     IdMegaSenaLoterry = table.Column<Guid>(nullable: false),
                     LoterryDate = table.Column<DateTime>(nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     LoterryOfficialNumberBet = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -29,7 +29,7 @@ namespace Bolao.Infra.Migrations
                     IdLottery = table.Column<Guid>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     Active = table.Column<bool>(nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     StartDateBet = table.Column<DateTime>(nullable: false),
                     EndDateBet = table.Column<DateTime>(nullable: false),
                     IdTypeBet = table.Column<int>(nullable: false),
@@ -62,7 +62,7 @@ namespace Bolao.Infra.Migrations
                     LastName = table.Column<string>(maxLength: 30, nullable: false),
                     Email = table.Column<string>(maxLength: 80, nullable: false),
                     Password = table.Column<string>(maxLength: 36, nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     Active = table.Column<bool>(nullable: false),
                     TokenConfirm = table.Column<Guid>(nullable: false)
                 },

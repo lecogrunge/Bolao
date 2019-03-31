@@ -30,7 +30,21 @@ namespace Bolao.Domain.Services
 			return response;
 		}
 
-		public ListLotteryResponse ListLottery(ListLotteryRequest request)
+        public void InsertResult()
+        {
+
+            // Binding numbers
+            //foreach (string item in request.BetNumbers)
+            //    megaSena.AddNumber(new LotteryNumberResult(item, megaSena.MegaSenaLoterryId));
+
+            //// Validate
+            //MegaSenaLoterryValidator megaSenaValidator = new MegaSenaLoterryValidator();
+            //ValidationResult megaSenaResult = megaSenaValidator.Validate(megaSena);
+            //if (megaSenaResult.IsValid)
+            //    response.AddErrorValidationResult(megaSenaResult);
+        }
+
+        public ListLotteryResponse ListLottery(ListLotteryRequest request)
 		{
 			ListLotteryResponse response = new ListLotteryResponse();
 

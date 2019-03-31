@@ -19,7 +19,7 @@ namespace Bolao.Api.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> ListLotterys(ListLotteryRequest request)
+		public async Task<IActionResult> ListLotteries(ListLotteryRequest request)
 		{
 			ListLotteryResponse response = _ticketService.ListLottery(request);
 

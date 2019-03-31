@@ -5,9 +5,9 @@
         #region Constructor
         protected TypeBet() { }
 
-		public TypeBet(string description)
+		public TypeBet(string title)
 		{
-			this.Description = description;
+			this.Title = title;
 		}
         #endregion
 
