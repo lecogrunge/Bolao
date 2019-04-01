@@ -21,7 +21,7 @@ namespace Bolao.Domain.Services
 			CreateLotteryResponse response = new CreateLotteryResponse();
 
 			// Validate Lottery
-			Lottery ticket = new Lottery(request.Price, request.StartDateBet, request.EndDateBet, request.TypeBet);
+			Lottery ticket = new Lottery(request.Price, request.StartDateBet, request.EndDateBet, request.TypeBetId);
 			LotteryValidator ticketValidator = new LotteryValidator();
 			ValidationResult ticketResult = ticketValidator.Validate(ticket);
 			if (!ticketResult.IsValid)

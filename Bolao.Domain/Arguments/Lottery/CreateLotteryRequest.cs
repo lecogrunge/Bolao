@@ -8,6 +8,6 @@ namespace Bolao.Domain.Arguments.Lottery
 		public decimal Price { get; set; }
         public DateTime EndDateBet { get; set; }
 		public DateTime StartDateBet { get; set; }
-		public EnumTypeBet TypeBet { get; set; }
+		public int TypeBetId { get; set; }
 	}
 }
