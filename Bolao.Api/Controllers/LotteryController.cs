@@ -30,7 +30,18 @@ namespace Bolao.Api.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> PostLottery(CreateLotteryRequest request)
+		public async Task<IActionResult> CreateLottery(CreateLotteryRequest request)
+		{
+			CreateLotteryResponse response = _ticketService.CreateLottery(request);
+
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> InsertNumbersLotteryResult(CreateLotteryRequest request)
 		{
 			CreateLotteryResponse response = _ticketService.CreateLottery(request);
 
