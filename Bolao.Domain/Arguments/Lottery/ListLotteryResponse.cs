@@ -13,5 +13,9 @@ namespace Bolao.Domain.Arguments.Lottery
 	{
 		public Guid LotteryId { get; set; }
 		public decimal Price { get; set; }
+		public DateTime StartDateBet { get; set; }
+		public DateTime EndDateBet { get; set; }
+		public DateTime LotteryDateBet { get; set; }
+		public string TypeBet { get; set; }
 	}
 }

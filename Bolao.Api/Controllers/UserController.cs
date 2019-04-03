@@ -54,17 +54,5 @@ namespace Bolao.Api.Controllers
 
 			return BadRequest(response.GetErrors());
 		}
-
-		[HttpPost]
-		[Route("Contact")]
-		public async Task<IActionResult> Contact(ContactRequest request)
-		{
-			ContactResponse response = _userService.Contact(request);
-
-			if (response.IsValid())
-				return await ResponseAsync(response);
-
-			return BadRequest(response.GetErrors());
-		}
 	}
 }

@@ -9,14 +9,14 @@ namespace Bolao.Domain.Domains
         #region Constructor
         protected Lottery() { }
 
-        public Lottery(decimal price, DateTime startDateBet, DateTime endDateBet, int typeBetId)
+        public Lottery(decimal price, DateTime startDateBet, DateTime endDateBet, DateTime lotteryDateBet, int typeBetId)
         {
             this.LoterryId = Guid.NewGuid();
             this.Price = price;
             this.StartDateBet = startDateBet;
             this.EndDateBet = endDateBet;
             this.TypeBetId = typeBetId;
-
+			this.LotteryDateBet = lotteryDateBet;
             this.CreatedAt = DateTime.Now;
         }
         #endregion
@@ -26,6 +26,7 @@ namespace Bolao.Domain.Domains
 		public DateTime CreatedAt { get; private set; }
 		public DateTime StartDateBet { get; private set; }
 		public DateTime EndDateBet { get; private set; }
+		public DateTime LotteryDateBet { get; private set; }
 		public EnumStatusPagSeguro StatusPagSeguro { get; private set; }
 
 		public TypeBet TypeBet { get; private set; }

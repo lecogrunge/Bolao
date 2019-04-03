@@ -9,6 +9,5 @@ namespace Bolao.Domain.Interfaces.Services
         CreateUserResponse CreateUser(CreateUserRequest request);
 		AuthUserResponse AuthUser(AuthUserRequest request);
 		ConfirmUserCreatedResponse ConfirmUserCreated(Guid token);
-		ContactResponse Contact(ContactRequest request);
 	}
 }

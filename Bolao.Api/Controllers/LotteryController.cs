@@ -23,7 +23,6 @@ namespace Bolao.Api.Controllers
 		{
 			ListLotteryResponse response = _ticketService.ListLottery(request);
 
-
 			if (response.IsValid())
 				return await ResponseAsync(response);
 
