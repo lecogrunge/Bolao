@@ -7,38 +7,48 @@ using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
 {
-	[Route("api/lottery")]
-	[ApiController]
-	public class LotteryController : BaseController
-	{
-		private readonly ILotteryService _ticketService;
+    [Route("api/lottery")]
+    [ApiController]
+    public class LotteryController : BaseController
+    {
+        private readonly ILotteryService _ticketService;
 
-		public LotteryController(IUnitOfWork unitOfWork, ILotteryService ticketService) : base(unitOfWork)
-		{
-			_ticketService = ticketService;
-		}
+        public LotteryController(IUnitOfWork unitOfWork, ILotteryService ticketService) : base(unitOfWork)
+        {
+            _ticketService = ticketService;
+        }
 
-		[HttpGet]
-		public async Task<IActionResult> ListLotteries(ListLotteryRequest request)
-		{
-			ListLotteryResponse response = _ticketService.ListLottery(request);
+        [HttpGet]
+        public async Task<IActionResult> ListLotteries(ListLotteryRequest request)
+        {
+            ListLotteryResponse response = _ticketService.ListLottery(request);
 
+            if (response.IsValid())
+                return await ResponseAsync(response);
 
-			if (response.IsValid())
-				return await ResponseAsync(response);
+            return BadRequest(response.GetErrors());
+        }
 
-			return BadRequest(response.GetErrors());
-		}
+        [HttpPost]
+        public async Task<IActionResult> CreateLottery(CreateLotteryRequest request)
+        {
+            CreateLotteryResponse response = _ticketService.CreateLottery(request);
 
-		[HttpPost]
-		public async Task<IActionResult> PostLottery(CreateLotteryRequest request)
-		{
-			CreateLotteryResponse response = _ticketService.CreateLottery(request);
+            if (response.IsValid())
+                return await ResponseAsync(response);
 
-			if (response.IsValid())
-				return await ResponseAsync(response);
+            return BadRequest(response.GetErrors());
+        }
 
-			return BadRequest(response.GetErrors());
-		}
-	}
+        [HttpPost("InsertNumbersLotteryResult")]
+        public async Task<IActionResult> InsertNumbersLotteryResult(CreateLotteryRequest request)
+        {
+            CreateLotteryResponse response = _ticketService.CreateLottery(request);
+
+            if (response.IsValid())
+                return await ResponseAsync(response);
+
+            return BadRequest(response.GetErrors());
+        }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using Bolao.CrossCutting.Messages;
+﻿using Bolao.CrossCutting.Common;
+using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Base;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
@@ -34,14 +35,16 @@ namespace Bolao.Domain.Services
 			if (!emailResult.IsValid)
 				response.AddErrorValidationResult(emailResult);
 
-			if (!response.IsValid())
-				return response;
-
 			// Verificar usuário existe
-			User user = _userRepository.AuthUser(email.EmailAddress, request.Password.Trim());
-			response.IdUser = user.UserId;
+			User user = _userRepository.AuthUser(email.EmailAddress, request.Password.CryptPassword());
+            if (user == null)
+                response.AddError(new ErrorResponseBase { Message = Msg.InvalidAuth, Property = null});
 
-			return response;
+            if (!response.IsValid())
+                return response;
+
+            response.IdUser = user.UserId;
+            return response;
 		}
 
 		public CreateUserResponse CreateUser(CreateUserRequest request)
@@ -61,12 +64,15 @@ namespace Bolao.Domain.Services
             ValidationResult userResult = userValidator.Validate(user);
             if (!userResult.IsValid)
                 response.AddErrorValidationResult(userResult);
+            
+            if (_userRepository.IsEmailExist(user.Email.EmailAddress))
+                response.AddError(new ErrorResponseBase {Message = Msg.EmailExists, Property = "Email" });
 
             if(!response.IsValid())
                 return response;
 
             // Persistence
-            user.CryptPassword();
+            user.CryptPassword(user.Password);
             _userRepository.Create(user);
 
 			// Send mail
@@ -88,26 +94,6 @@ namespace Bolao.Domain.Services
 			}
 			else
 				response.AddError(new ErrorResponseBase { Message = Msg.InvalidConfirmToken, Property = string.Empty });
-
-			return response;
-		}
-
-		public ContactResponse Contact(ContactRequest request)
-		{
-			ContactResponse response = new ContactResponse();
-
-			// E-mail validation
-			Email email = new Email(request.Email);
-			EmailValidator emailValidator = new EmailValidator();
-			ValidationResult emailResult = emailValidator.Validate(email);
-			if (!emailResult.IsValid)
-				response.AddErrorValidationResult(emailResult);
-
-			if (!response.IsValid())
-				return response;
-
-			// Sending Email
-			_emailService.SendEmailContact(request.Name, request.Email, request.Subject, request.Message);
 
 			return response;
 		}

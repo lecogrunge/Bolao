@@ -53,7 +53,6 @@ namespace Bolao.Api
 
 			// Repositories
 			services.AddTransient<IUserRepository, UserRepository>();
-            
             #endregion
 
             services.AddCors();
@@ -72,7 +71,7 @@ namespace Bolao.Api
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Growups API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Bolão API", Version = "v1" });
 
                 var security = new Dictionary<string, IEnumerable<string>>
                 {
@@ -88,7 +87,6 @@ namespace Bolao.Api
                 });
 
                 c.AddSecurityRequirement(security);
-
             });
         }
 

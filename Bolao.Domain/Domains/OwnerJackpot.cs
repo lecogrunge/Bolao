@@ -7,10 +7,11 @@ namespace Bolao.Domain.Domains
         #region Constructor
         protected OwnerJackpot() { }
 
-		public OwnerJackpot(Guid lotteryId, decimal jackpot)
+		public OwnerJackpot(Guid lotteryId, decimal jackpot, decimal profit)
 		{
 			LotteryId = lotteryId;
 			Jackpot = jackpot;
+            Profit = profit;
 		}
         #endregion
 

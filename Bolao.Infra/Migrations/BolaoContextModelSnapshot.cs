@@ -34,23 +34,28 @@ namespace Bolao.Infra.Migrations
 
             modelBuilder.Entity("Bolao.Domain.Domains.Buy", b =>
                 {
-                    b.Property<int>("BuyId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("BuyId")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<Guid>("LotteryId");
 
-                    b.Property<decimal>("Total");
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.Property<int>("TotalTicket");
 
-                    b.Property<decimal>("UnitPrice");
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(5, 2)");
+
+                    b.Property<Guid>("UserId");
 
                     b.HasKey("BuyId");
 
                     b.HasIndex("LotteryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Buy");
                 });
@@ -64,7 +69,10 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<DateTime>("EndDateBet");
 
-                    b.Property<decimal>("Price");
+                    b.Property<DateTime>("LotteryDateBet");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.Property<DateTime>("StartDateBet");
 
@@ -73,6 +81,8 @@ namespace Bolao.Infra.Migrations
                     b.Property<int>("TypeBetId");
 
                     b.HasKey("LoterryId");
+
+                    b.HasIndex("TypeBetId");
 
                     b.ToTable("Lottery");
                 });
@@ -117,11 +127,13 @@ namespace Bolao.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Jackpot");
+                    b.Property<decimal>("Jackpot")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.Property<Guid>("LotteryId");
 
-                    b.Property<decimal>("Profit");
+                    b.Property<decimal>("Profit")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.HasKey("OwnerJackpotId");
 
@@ -137,13 +149,11 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<int>("BuyId");
 
-                    b.Property<Guid>("UserId");
+                    b.Property<Guid?>("BuyId1");
 
                     b.HasKey("TicketId");
 
-                    b.HasIndex("BuyId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("BuyId1");
 
                     b.ToTable("Ticket");
                 });
@@ -182,7 +192,7 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(36);
+                        .HasMaxLength(50);
 
                     b.Property<Guid>("TokenConfirm");
 
@@ -197,7 +207,8 @@ namespace Bolao.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("JackPot");
+                    b.Property<decimal>("JackPot")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.Property<Guid>("LotteryId");
 
@@ -217,6 +228,19 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.Lottery", "Lottery")
                         .WithMany()
                         .HasForeignKey("LotteryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Bolao.Domain.Domains.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Bolao.Domain.Domains.Lottery", b =>
+                {
+                    b.HasOne("Bolao.Domain.Domains.TypeBet", "TypeBet")
+                        .WithMany()
+                        .HasForeignKey("TypeBetId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -248,13 +272,7 @@ namespace Bolao.Infra.Migrations
                 {
                     b.HasOne("Bolao.Domain.Domains.Buy", "Buy")
                         .WithMany()
-                        .HasForeignKey("BuyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Bolao.Domain.Domains.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BuyId1");
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.User", b =>

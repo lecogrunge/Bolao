@@ -61,11 +61,29 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Este e-mail já existe em nossa base de dados..
+        /// </summary>
+        public static string EmailExists {
+            get {
+                return ResourceManager.GetString("EmailExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno:.
         /// </summary>
         public static string ErrorGeneric400 {
             get {
                 return ResourceManager.GetString("ErrorGeneric400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail ou senha inválido..
+        /// </summary>
+        public static string InvalidAuth {
+            get {
+                return ResourceManager.GetString("InvalidAuth", resourceCulture);
             }
         }
         

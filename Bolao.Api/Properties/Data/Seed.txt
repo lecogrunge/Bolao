@@ -1,7 +1,7 @@
 ﻿use bolao;
 
 -- TypeBet
-insert into [bolao].[dbo].[TypeBet] values ('Sena15Numbers');
+insert into [bolao].[dbo].[TypeBet] values ('Sena15Numbers', 'descrição');
 
 -- User
 insert into [bolao].[dbo].[User] values ('d1aa6fd4-edda-4bd7-92e1-3b6a5c99af76','Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', '123456789', GETDATE(), 0, 'df406001-4c98-4c61-8265-73a6bafbfdea');

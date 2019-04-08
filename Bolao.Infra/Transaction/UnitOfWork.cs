@@ -13,7 +13,7 @@ namespace Bolao.Infra.Transaction
 
         public void Commit()
         {
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
             _context.Dispose();
         }
     }

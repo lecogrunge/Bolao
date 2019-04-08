@@ -13,6 +13,9 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             // PK
             builder.HasKey(x => x.OwnerJackpotId);
+
+            builder.Property(x => x.Jackpot).HasColumnType<decimal>("decimal(5, 2)").IsRequired();
+            builder.Property(x => x.Profit).HasColumnType<decimal>("decimal(5, 2)").IsRequired();
         }
     }
 }

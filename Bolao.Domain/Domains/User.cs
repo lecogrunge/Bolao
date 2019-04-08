@@ -37,9 +37,9 @@ namespace Bolao.Domain.Domains
 			this.Active = true;
 		}
 
-        public void CryptPassword()
+        public void CryptPassword(string password)
         {
-            this.Password = this.Password.CryptPassword();
+            this.Password = password.CryptPassword();
         }
     }
 }

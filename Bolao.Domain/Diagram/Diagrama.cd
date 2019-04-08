@@ -8,18 +8,24 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.LotteryNumberBet">
-    <Position X="7.25" Y="6.75" Width="2.75" />
+    <Position X="8.5" Y="6" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgACAEAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\LotteryBetNumber.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Ticket" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.LotteryNumberResult">
-    <Position X="5.5" Y="3.5" Width="3" />
+    <Position X="5.25" Y="0.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Domains\LotteryNumberResult.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Lottery" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.OwnerJackpot">
     <Position X="12.5" Y="6.25" Width="2.25" />
@@ -29,21 +35,27 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.Lottery">
-    <Position X="3.25" Y="4.25" Width="1.75" />
+    <Position X="0.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CAAIAAAAAQAAAAQAAKAAAAAAIAAAAAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>CAAIAAAAAQAAAIQAAKAAAAAAIAAABAAAAAAAAAAEAAA=</HashCode>
       <FileName>Domains\Lottery.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TypeBet" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ListNumbersResult" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.TypeBet">
-    <Position X="6" Y="1.5" Width="2" />
+    <Position X="0.5" Y="0.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\TypeBet.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.User">
-    <Position X="0.5" Y="4" Width="1.75" />
+    <Position X="3.5" Y="8.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEACKAAAAAACAAAAgAAIAAAAAiAAAAAAAAAAg=</HashCode>
       <FileName>Domains\User.cs</FileName>
@@ -57,18 +69,33 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.Ticket">
-    <Position X="5.5" Y="6.5" Width="1.5" />
+    <Position X="6" Y="5.75" Width="1.5" />
+    <AssociationLine Name="Buy" Type="Bolao.Domain.Domains.Buy" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="6.875" Y="5.75" />
+        <Point X="6.875" Y="5.375" />
+        <Point X="4.25" Y="5.375" />
+        <Point X="4.25" Y="5.75" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAIBAACAAAAAAAAAAAAAAAgABAAAABAABAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\Ticket.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Buy" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.Buy">
-    <Position X="3" Y="7.75" Width="1.5" />
+    <Position X="3.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAACAAAAAAAAAACAAAAAABgAAQAAABAAAAAAAAAA=</HashCode>
+      <HashCode>IAABAACAAAAAAAAAACAAAAgABgAAQAAABAAAAAAAAAA=</HashCode>
       <FileName>Domains\Buy.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Lottery" />
+      <Property Name="User" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

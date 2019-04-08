@@ -30,7 +30,7 @@ namespace Bolao.Infra.Persistence.Repositories.Base
 
         public void Create(TEntity entity)
         {
-            this._context.Set<TEntity>().AddAsync(entity);
+            this._context.Set<TEntity>().Add(entity);
         }
 
         public void Update(TEntity entity)

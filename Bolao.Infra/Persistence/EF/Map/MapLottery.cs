@@ -13,6 +13,8 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             // PK
             builder.HasKey(x => x.LoterryId);
+
+            builder.Property(x => x.Price).HasColumnType<decimal>("decimal(5, 2)").IsRequired();
         }
     }
 }

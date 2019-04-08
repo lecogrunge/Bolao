@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmailExists" xml:space="preserve">
+    <value>Este e-mail já existe em nossa base de dados.</value>
+  </data>
   <data name="ErrorGeneric400" xml:space="preserve">
     <value>Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno:</value>
+  </data>
+  <data name="InvalidAuth" xml:space="preserve">
+    <value>E-mail ou senha inválido.</value>
   </data>
   <data name="InvalidConfirmToken" xml:space="preserve">
     <value>Ativação inválida.</value>
