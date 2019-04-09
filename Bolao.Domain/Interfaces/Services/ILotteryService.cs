@@ -6,7 +6,7 @@ namespace Bolao.Domain.Interfaces.Services
 	public interface ILotteryService : IServiceBase
 	{
 		CreateLotteryResponse CreateLottery(CreateLotteryRequest request);
-		ListLotteryResponse ListLottery(ListLotteryRequest request);
+		ListLotteryResponse ListLottery(bool active);
 		NumberLotteryResponse InsertNumbersLotteryResult(NumberLotteryRequest request);
 	}
 }

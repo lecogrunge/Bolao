@@ -19,9 +19,9 @@ namespace Bolao.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListLotteries(ListLotteryRequest request)
+        public async Task<IActionResult> ListLotteries(bool active)
         {
-            ListLotteryResponse response = _lotteryService.ListLottery(request);
+            ListLotteryResponse response = _lotteryService.ListLottery(active);
 
             if (response.IsValid())
                 return await ResponseAsync(response);

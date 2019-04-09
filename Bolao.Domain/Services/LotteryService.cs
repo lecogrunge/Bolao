@@ -58,11 +58,11 @@ namespace Bolao.Domain.Services
 		}
 
 
-        public ListLotteryResponse ListLottery(ListLotteryRequest request)
+        public ListLotteryResponse ListLottery(bool active)
 		{
 			ListLotteryResponse response = new ListLotteryResponse();
 
-			response.ListLotteries = _lotteryRepository.ListLotteries(request);
+			response.ListLotteries = _lotteryRepository.ListLotteries(active);
 			return response;
 		}
 	}
