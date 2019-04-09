@@ -37,10 +37,15 @@ namespace Bolao.Api
             });
             #endregion
 
-            #region Sql Conection
-            services.AddDbContext<BolaoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
+            //#region Sql Conection
+            //services.AddDbContext<BolaoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
+            //#endregion
+
+            #region Mysql Connection
+            var connection = Configuration.GetConnectionString("SqlConnection");
+            services.AddDbContext<BolaoContext>(o => o.UseMySql(connection));
             #endregion
-            
+
             #region Injections
             services.AddScoped<BolaoContext, BolaoContext>();
 			//services.AddScoped<IResponseBase, ResponseBase>();

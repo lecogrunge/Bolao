@@ -3,7 +3,6 @@ using System;
 using Bolao.Infra.Persistence.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bolao.Infra.Migrations
@@ -16,14 +15,12 @@ namespace Bolao.Infra.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Bolao.Domain.Domains.Bank", b =>
                 {
                     b.Property<int>("BankId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
@@ -90,8 +87,7 @@ namespace Bolao.Infra.Migrations
             modelBuilder.Entity("Bolao.Domain.Domains.LotteryNumberBet", b =>
                 {
                     b.Property<int>("LotteryNumberBetId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Number");
 
@@ -107,8 +103,7 @@ namespace Bolao.Infra.Migrations
             modelBuilder.Entity("Bolao.Domain.Domains.LotteryNumberResult", b =>
                 {
                     b.Property<int>("LotteryNumberResultId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("LoterryId");
 
@@ -124,8 +119,7 @@ namespace Bolao.Infra.Migrations
             modelBuilder.Entity("Bolao.Domain.Domains.OwnerJackpot", b =>
                 {
                     b.Property<int>("OwnerJackpotId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<decimal>("Jackpot")
                         .HasColumnType("decimal(5, 2)");
@@ -161,8 +155,7 @@ namespace Bolao.Infra.Migrations
             modelBuilder.Entity("Bolao.Domain.Domains.TypeBet", b =>
                 {
                     b.Property<int>("TypeBetId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -204,8 +197,7 @@ namespace Bolao.Infra.Migrations
             modelBuilder.Entity("Bolao.Domain.Domains.WinnerJackpot", b =>
                 {
                     b.Property<int>("WinnerJackpotId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<decimal>("JackPot")
                         .HasColumnType("decimal(5, 2)");

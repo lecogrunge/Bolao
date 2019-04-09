@@ -1,0 +1,8 @@
+﻿FTP
+username: bolaomilgrau
+password: *zS4vv18
+
+Database
+Name: dbbolao
+User Database: userbolao
+Password: 5bO78up&
