@@ -11,17 +11,17 @@ namespace Bolao.Api.Controllers
     [ApiController]
     public class LotteryController : BaseController
     {
-        private readonly ILotteryService _ticketService;
+        private readonly ILotteryService _lotteryService;
 
-        public LotteryController(IUnitOfWork unitOfWork, ILotteryService ticketService) : base(unitOfWork)
+        public LotteryController(IUnitOfWork unitOfWork, ILotteryService lotteryService) : base(unitOfWork)
         {
-            _ticketService = ticketService;
+            _lotteryService = lotteryService;
         }
 
         [HttpGet]
         public async Task<IActionResult> ListLotteries(ListLotteryRequest request)
         {
-            ListLotteryResponse response = _ticketService.ListLottery(request);
+            ListLotteryResponse response = _lotteryService.ListLottery(request);
 
             if (response.IsValid())
                 return await ResponseAsync(response);
@@ -32,7 +32,7 @@ namespace Bolao.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLottery(CreateLotteryRequest request)
         {
-            CreateLotteryResponse response = _ticketService.CreateLottery(request);
+            CreateLotteryResponse response = _lotteryService.CreateLottery(request);
 
             if (response.IsValid())
                 return await ResponseAsync(response);
@@ -41,9 +41,9 @@ namespace Bolao.Api.Controllers
         }
 
         [HttpPost("InsertNumbersLotteryResult")]
-        public async Task<IActionResult> InsertNumbersLotteryResult(CreateLotteryRequest request)
+        public async Task<IActionResult> InsertNumbersLotteryResult(NumberLotteryRequest request)
         {
-            CreateLotteryResponse response = _ticketService.CreateLottery(request);
+            NumberLotteryResponse response = _lotteryService.InsertNumbersLotteryResult(request);
 
             if (response.IsValid())
                 return await ResponseAsync(response);

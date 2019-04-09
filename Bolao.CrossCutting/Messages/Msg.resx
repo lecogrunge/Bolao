@@ -138,6 +138,9 @@
   <data name="InvalidLimitNumbers" xml:space="preserve">
     <value>Total de números inválidos.</value>
   </data>
+  <data name="InvalidNumberLottery" xml:space="preserve">
+    <value>Número inválido.</value>
+  </data>
   <data name="RangeLength" xml:space="preserve">
     <value>Campo {0} deve conter no mínimo {1} e máximo {2} caracteres.</value>
   </data>

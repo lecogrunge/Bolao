@@ -9,11 +9,11 @@ namespace Bolao.Domain.Services
 {
     public sealed class LotteryService : ILotteryService
 	{
-		private readonly ILotteryReposiory _ticketRepository;
+		private readonly ILotteryReposiory _lotteryRepository;
 
-		public LotteryService(ILotteryReposiory ticketRepository)
+		public LotteryService(ILotteryReposiory lotteryRepository)
 		{
-			_ticketRepository = ticketRepository;
+			_lotteryRepository = lotteryRepository;
 		}
 
 		public CreateLotteryResponse CreateLottery(CreateLotteryRequest request)
@@ -21,34 +21,48 @@ namespace Bolao.Domain.Services
 			CreateLotteryResponse response = new CreateLotteryResponse();
 
 			// Validate Lottery
-			Lottery ticket = new Lottery(request.Price, request.StartDateBet, request.EndDateBet, request.LotteryDateBet, (int)request.TypeBetId);
+			Lottery lottery = new Lottery(request.Price, request.StartDateBet, request.EndDateBet, request.LotteryDateBet, (int)request.TypeBetId);
 			LotteryValidator ticketValidator = new LotteryValidator();
-			ValidationResult ticketResult = ticketValidator.Validate(ticket);
+			ValidationResult ticketResult = ticketValidator.Validate(lottery);
 			if (!ticketResult.IsValid)
 				response.AddErrorValidationResult(ticketResult);
+
+			_lotteryRepository.Create(lottery);
 
 			return response;
 		}
 
-        public void InsertResult()
-        {
+		public NumberLotteryResponse InsertNumbersLotteryResult(NumberLotteryRequest request)
+		{
+			NumberLotteryResponse response = new NumberLotteryResponse();
+			Lottery lottery =  _lotteryRepository.Find(request.LotteryId);
 
-            // Binding numbers
-            //foreach (string item in request.BetNumbers)
-            //    megaSena.AddNumber(new LotteryNumberResult(item, megaSena.MegaSenaLoterryId));
+			//Binding numbers
+			foreach (string item in request.Numbers)
+			{
+				LotteryNumberResult number = new LotteryNumberResult(item, request.LotteryId);
+				LotteryNumberResultValidator numberValidator = new LotteryNumberResultValidator();
+				ValidationResult numberResult = numberValidator.Validate(number);
+				if (!numberResult.IsValid)
+				{
+					response.AddErrorValidationResult(numberResult);
+					return response;
+				}
 
-            //// Validate
-            //MegaSenaLoterryValidator megaSenaValidator = new MegaSenaLoterryValidator();
-            //ValidationResult megaSenaResult = megaSenaValidator.Validate(megaSena);
-            //if (megaSenaResult.IsValid)
-            //    response.AddErrorValidationResult(megaSenaResult);
-        }
+				lottery.ListNumbersResult.Add(number);
+			}
+
+			_lotteryRepository.Create(lottery);
+
+			return response;
+		}
+
 
         public ListLotteryResponse ListLottery(ListLotteryRequest request)
 		{
 			ListLotteryResponse response = new ListLotteryResponse();
 
-			response.ListLotteries = _ticketRepository.ListLotteries(request);
+			response.ListLotteries = _lotteryRepository.ListLotteries(request);
 			return response;
 		}
 	}

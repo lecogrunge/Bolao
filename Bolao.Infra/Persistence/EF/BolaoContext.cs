@@ -12,8 +12,8 @@ namespace Bolao.Infra.Persistence.EF
         public DbSet<User> Users { get; set; }
         public DbSet<TypeBet> TypeBets { get; set; }
         public DbSet<Lottery> Lotteries { get; set; }
-        public DbSet<LotteryNumberBet> MegaSenaBetNumbers { get; set; }
-        public DbSet<LotteryNumberResult> MegaSenaLotteryNumbers { get; set; }
+        public DbSet<LotteryNumberBet> LotteryNumbersBet { get; set; }
+        public DbSet<LotteryNumberResult> LotteryNumbersResult { get; set; }
         public DbSet<Bank> Banks { get; set; }
         public DbSet<WinnerJackpot> WinnersJackpots { get; set; }
         public DbSet<OwnerJackpot> OwnerJackpots { get; set; }

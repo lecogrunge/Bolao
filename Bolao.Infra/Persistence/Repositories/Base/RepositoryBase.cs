@@ -18,7 +18,27 @@ namespace Bolao.Infra.Persistence.Repositories.Base
             this._context = context;
         }
 
-        public async Task<IEnumerable<TEntity>> FindAllAsync()
+		public TEntity Find(int id)
+		{
+			return this._context.Set<TEntity>().Find(id);
+		}
+
+		public TEntity Find(Guid id)
+		{
+			return this._context.Set<TEntity>().Find(id);
+		}
+
+		public async Task<TEntity> FindAsync(int id)
+		{
+			return await this._context.Set<TEntity>().FindAsync(id);
+		}
+
+		public async Task<TEntity> FindAsync(Guid id)
+		{
+			return await this._context.Set<TEntity>().FindAsync(id);
+		}
+
+		public async Task<IEnumerable<TEntity>> FindAllAsync()
         {
             return await this._context.Set<TEntity>().ToListAsync();
         }

@@ -124,6 +124,15 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Número inválido..
+        /// </summary>
+        public static string InvalidNumberLottery {
+            get {
+                return ResourceManager.GetString("InvalidNumberLottery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Campo {0} deve conter no mínimo {1} e máximo {2} caracteres..
         /// </summary>
         public static string RangeLength {

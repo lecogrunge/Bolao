@@ -7,6 +7,6 @@ namespace Bolao.Domain.Interfaces.Services
 	{
 		CreateLotteryResponse CreateLottery(CreateLotteryRequest request);
 		ListLotteryResponse ListLottery(ListLotteryRequest request);
-        void InsertResult();
+		NumberLotteryResponse InsertNumbersLotteryResult(NumberLotteryRequest request);
 	}
 }
