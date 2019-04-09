@@ -54,10 +54,12 @@ namespace Bolao.Api
 			services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
 			services.AddTransient<ILotteryService, LotteryService>();
+			services.AddTransient<ITicketService, TicketService>();
 			services.AddTransient<IEmailService, EmailService>();
 
 			// Repositories
 			services.AddTransient<IUserRepository, UserRepository>();
+			services.AddTransient<ILotteryReposiory, LotteryRepository>();
             #endregion
 
             services.AddCors();
