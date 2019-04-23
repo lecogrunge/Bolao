@@ -3,6 +3,7 @@ using Bolao.Domain.Enum;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bolao.Domain.Domains.Validator
 {
@@ -39,6 +40,10 @@ namespace Bolao.Domain.Domains.Validator
 
         private bool ValidateLimitNumbers(ICollection<LotteryNumberResult> numbers, int typeBetId)
         {
+			// Deixar cadastrar caso o resultado ainda não tenha sido publicado
+			if (!numbers.Any())
+				return true;
+
             if((int)EnumTypeBet.Sena15Numbers == typeBetId)
                 return numbers.Count == 6;
 

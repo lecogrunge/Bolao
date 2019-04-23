@@ -16,8 +16,8 @@ namespace Bolao.Infra.Persistence.Repositories
 		public IEnumerable<ListLottery> ListLotteries(bool active)
 		{
 			return  _context.Lotteries.Where(s => s.StartDateBet <= DateTime.Now && s.EndDateBet >= DateTime.Now)
-									.Select(s => new ListLottery { LotteryId = s.LoterryId, Price = s.Price })
-									.AsEnumerable();
+									  .Select(s => new ListLottery { LotteryId = s.LoterryId, Price = s.Price })
+									  .ToList();
 		}
 	}
 }

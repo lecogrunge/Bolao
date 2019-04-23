@@ -18,6 +18,8 @@ namespace Bolao.Domain.Domains
             this.TypeBetId = typeBetId;
 			this.LotteryDateBet = lotteryDateBet;
             this.CreatedAt = DateTime.Now;
+
+			this.ListNumbersResult = new List<LotteryNumberResult>();
         }
         #endregion
 
