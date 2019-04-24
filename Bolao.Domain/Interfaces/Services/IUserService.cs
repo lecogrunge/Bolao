@@ -9,5 +9,6 @@ namespace Bolao.Domain.Interfaces.Services
         CreateUserResponse CreateUser(CreateUserRequest request);
 		AuthUserResponse AuthUser(AuthUserRequest request);
 		ConfirmUserCreatedResponse ConfirmUserCreated(Guid token);
+		ForgotPasswordResponse ForgotPassword(string email);
 	}
 }

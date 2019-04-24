@@ -19,7 +19,7 @@ namespace Bolao.Domain.Domains
 
             CreatedAt = DateTime.Now;
             Active = false;
-            TokenConfirm = Guid.NewGuid();
+			Security = new Security(UserId);
         }
         #endregion
 
@@ -30,7 +30,7 @@ namespace Bolao.Domain.Domains
 		public string Password { get; private set; }
 		public DateTime CreatedAt { get; private set; }
 		public bool Active { get; private set; }
-		public Guid TokenConfirm { get; private set; }
+		public Security Security { get; private set; }
 
         public void ActiveUser()
 		{

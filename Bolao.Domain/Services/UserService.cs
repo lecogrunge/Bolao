@@ -97,5 +97,25 @@ namespace Bolao.Domain.Services
 
 			return response;
 		}
-    }
+
+		public ForgotPasswordResponse ForgotPassword(string emailUser)
+		{
+			ForgotPasswordResponse response = new ForgotPasswordResponse();
+			
+			// E-mail validation
+			Email email = new Email(emailUser);
+			EmailValidator emailValidator = new EmailValidator();
+			ValidationResult emailResult = emailValidator.Validate(email);
+			if (!emailResult.IsValid)
+				response.AddErrorValidationResult(emailResult);
+
+			if (!response.IsValid())
+				return response;
+
+			// Send mail
+			//_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenConfirm, user.FisrtName);
+
+			return response;
+		}
+	}
 }
