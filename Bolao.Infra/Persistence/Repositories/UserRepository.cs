@@ -17,9 +17,14 @@ namespace Bolao.Infra.Persistence.Repositories
 			return base._context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email) && s.Password.Equals(password));
 		}
 
-		public User GetUserByToken(Guid token)
+		public User GetUserByTokenConfirmation(Guid token)
 		{
 			return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenCreateConfirmed == token);
+		}
+
+		public User GetUserByTokenForgotPassword(Guid token)
+		{
+			return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenForgotPassword == token);
 		}
 
         public bool IsEmailExist(string email)

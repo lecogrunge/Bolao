@@ -88,7 +88,7 @@ namespace Bolao.Domain.Services
 		{
 			ConfirmUserCreatedResponse response = new ConfirmUserCreatedResponse();
 
-			User user = _userRepository.GetUserByToken(token);
+			User user = _userRepository.GetUserByTokenConfirmation(token);
 			if (user != null)
 			{
 				user.ActiveUser();
@@ -109,11 +109,10 @@ namespace Bolao.Domain.Services
 			EmailValidator emailValidator = new EmailValidator();
 			ValidationResult emailResult = emailValidator.Validate(email);
 			if (!emailResult.IsValid)
+			{
 				response.AddErrorValidationResult(emailResult);
-
-			if (!response.IsValid())
 				return response;
-
+			}
 
 			// Persistence
 			UserSecurity security = _userSecurityRepository.GetByEmail(email.EmailAddress);
@@ -121,14 +120,33 @@ namespace Bolao.Domain.Services
 			_userSecurityRepository.Update(security);
 
 			// Send mail
-			_emailService.SendEmailForgotPassword(email.EmailAddress);
+			_emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword);
 
 			return response;
 		}
 
 		public ChangePasswordResponse ChangePassword(ChangePasswordRequest request)
 		{
-			throw new NotImplementedException();
+			ChangePasswordResponse response = new ChangePasswordResponse();
+
+			// Validation
+			if (!request.NewPassword.Equals(request.NewPasswordConfirm))
+			{
+				response.AddError(new ErrorResponseBase { Message = Msg.PasswordNotTheSame, Property = "Password" });
+				return response;
+			}
+
+			User user = _userRepository.GetUserByTokenForgotPassword(request.Token);
+			if (user == null)
+			{
+				response.AddError(new ErrorResponseBase { Message = Msg.InvalidForgotPasswordToken, Property = string.Empty });
+				return response;
+			}
+
+			user.CryptPassword(request.NewPassword);
+			_userRepository.Update(user);
+
+			return response;
 		}
 	}
 }

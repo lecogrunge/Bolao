@@ -7,7 +7,9 @@ namespace Bolao.Domain.Interfaces.Repositories
     public interface IUserRepository : IRepositoryBase<User>
     {
 		User AuthUser(string email, string password);
-		User GetUserByToken(Guid token);
-        bool IsEmailExist(string email);
+		User GetUserByTokenConfirmation(Guid token);
+		User GetUserByTokenForgotPassword(Guid token)
+
+		bool IsEmailExist(string email);
 	}
 }

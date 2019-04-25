@@ -115,6 +115,15 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token inválido..
+        /// </summary>
+        public static string InvalidForgotPasswordToken {
+            get {
+                return ResourceManager.GetString("InvalidForgotPasswordToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total de números inválidos..
         /// </summary>
         public static string InvalidLimitNumbers {
@@ -129,6 +138,15 @@ namespace Bolao.CrossCutting.Messages {
         public static string InvalidNumberLottery {
             get {
                 return ResourceManager.GetString("InvalidNumberLottery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As senhas estão diferentes..
+        /// </summary>
+        public static string PasswordNotTheSame {
+            get {
+                return ResourceManager.GetString("PasswordNotTheSame", resourceCulture);
             }
         }
         

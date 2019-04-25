@@ -6,6 +6,6 @@ namespace Bolao.Domain.Interfaces.Services
     {
 		void SendEmailNewUser(string to, Guid token, string firstName);
 		void SendEmailContact(string name, string email, string subject, string message);
-		void SendEmailForgotPassword(string to);
+		void SendEmailForgotPassword(string to, Guid token);
 	}
 }
