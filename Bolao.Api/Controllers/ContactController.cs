@@ -2,6 +2,7 @@
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Infra.Transaction;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Bolao.Api.Controllers
 {
     [Route("api/contact")]
     [ApiController]
+	[AllowAnonymous]
     public class ContactController : BaseController
     {
         private readonly IContactService _contactService;

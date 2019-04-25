@@ -2,6 +2,7 @@
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Infra.Transaction;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace Bolao.Api.Controllers
 {
 	[Route("api/user")]
 	[ApiController]
+	[AllowAnonymous]
 	public class UserController : BaseController
 	{
 		private readonly IUserService _userService;
