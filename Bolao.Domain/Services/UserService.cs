@@ -16,11 +16,13 @@ namespace Bolao.Domain.Services
 	public sealed class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IEmailService _emailService;
-
-        public UserService(IUserRepository userRepository, IEmailService emailService)
+		private readonly IUserSecurityRepository _userSecurityRepository;
+		private readonly IEmailService _emailService;
+		
+        public UserService(IUserRepository userRepository, IUserSecurityRepository userSecurityRepository, IEmailService emailService)
         {
             this._userRepository = userRepository;
+			this._userSecurityRepository = userSecurityRepository;
             this._emailService = emailService;
         }
 
@@ -71,12 +73,12 @@ namespace Bolao.Domain.Services
             if(!response.IsValid())
                 return response;
 
-            // Persistence
+            // Persistence 
             user.CryptPassword(user.Password);
             _userRepository.Create(user);
 
 			// Send mail
-			//_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenConfirm, user.FisrtName);
+			_emailService.SendEmailNewUser(user.Email.EmailAddress, user.UserSecurity.TokenCreateConfirmed, user.FisrtName);
 
 			response.IdUser = user.UserId;
             return response;
@@ -112,10 +114,21 @@ namespace Bolao.Domain.Services
 			if (!response.IsValid())
 				return response;
 
+
+			// Persistence
+			UserSecurity security = _userSecurityRepository.GetByEmail(email.EmailAddress);
+			security.GenerateTokenForgotPassword();
+			_userSecurityRepository.Update(security);
+
 			// Send mail
-			//_emailService.SendEmailNewUser(user.Email.EmailAddress, user.TokenConfirm, user.FisrtName);
+			_emailService.SendEmailForgotPassword(email.EmailAddress);
 
 			return response;
+		}
+
+		public ChangePasswordResponse ChangePassword(ChangePasswordRequest request)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

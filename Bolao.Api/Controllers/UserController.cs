@@ -66,5 +66,17 @@ namespace Bolao.Api.Controllers
 
 			return BadRequest(response.GetErrors());
 		}
+
+		[HttpGet]
+		[Route("change-password")]
+		public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
+		{
+			ChangePasswordResponse response = _userService.ChangePassword(request);
+
+			if (response.IsValid())
+				return await ResponseAsync(response);
+
+			return BadRequest(response.GetErrors());
+		}
 	}
 }

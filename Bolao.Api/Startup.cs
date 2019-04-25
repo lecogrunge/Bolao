@@ -60,6 +60,7 @@ namespace Bolao.Api
 			// Repositories
 			services.AddTransient<IUserRepository, UserRepository>();
 			services.AddTransient<ILotteryReposiory, LotteryRepository>();
+			services.AddTransient<IUserSecurityRepository, UserSecurityRepository>();
             #endregion
 
             services.AddCors();

@@ -17,7 +17,7 @@ namespace Bolao.Infra.Persistence.EF.Map
 			builder.Property(x => x.FisrtName).HasMaxLength(15).IsRequired();
 			builder.Property(x => x.LastName).HasMaxLength(30).IsRequired();
 			builder.Property(x => x.Password).HasMaxLength(50).IsRequired();
-			builder.Property(x => x.TokenConfirm).IsRequired();
+			builder.Property(x => x.UserSecurityId).IsRequired();
 
             // Mapping Object Value
             builder.OwnsOne<Email>(x => x.Email, cb =>

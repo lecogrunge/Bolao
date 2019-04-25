@@ -2,6 +2,7 @@
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Infra.Persistence.EF;
 using Bolao.Infra.Persistence.Repositories.Base;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -13,17 +14,17 @@ namespace Bolao.Infra.Persistence.Repositories
 
 		public User AuthUser(string email, string password)
 		{
-			return _context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email) && s.Password.Equals(password));
+			return base._context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email) && s.Password.Equals(password));
 		}
 
 		public User GetUserByToken(Guid token)
 		{
-			return _context.Users.FirstOrDefault(s => s.TokenConfirm == token);
+			return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenCreateConfirmed == token);
 		}
 
         public bool IsEmailExist(string email)
         {
-            return _context.Users.Any(s => s.Email.EmailAddress.Equals(email));
+            return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email));
         }
     }
 }

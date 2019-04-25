@@ -10,6 +10,7 @@ namespace Bolao.Infra.Persistence.EF
         public BolaoContext(DbContextOptions<BolaoContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+		public DbSet<UserSecurity> UserSecurities { get; set; }
         public DbSet<TypeBet> TypeBets { get; set; }
         public DbSet<Lottery> Lotteries { get; set; }
         public DbSet<LotteryNumberBet> LotteryNumbersBet { get; set; }
@@ -27,7 +28,8 @@ namespace Bolao.Infra.Persistence.EF
 
             // aplicar configurações
             modelBuilder.ApplyConfiguration(new MapUser());
-            modelBuilder.ApplyConfiguration(new MapLotteryNumberResult());
+			modelBuilder.ApplyConfiguration(new MapUserSecurity());
+			modelBuilder.ApplyConfiguration(new MapLotteryNumberResult());
             modelBuilder.ApplyConfiguration(new MapLotteryNumberBet());
             modelBuilder.ApplyConfiguration(new MapLottery());
             modelBuilder.ApplyConfiguration(new MapTypeBet());
