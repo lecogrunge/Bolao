@@ -1,6 +1,7 @@
 ﻿using Bolao.CrossCutting.Common;
 using Bolao.Domain.ObjectValue;
 using System;
+using System.Collections.Generic;
 
 namespace Bolao.Domain.Domains
 {
@@ -21,6 +22,7 @@ namespace Bolao.Domain.Domains
             Active = false;
 			UserSecurity = new UserSecurity(UserId);
 			UserSecurityId = UserSecurity.UserSecurityId;
+			ContactTypes = new HashSet<ContactType>();
         }
         #endregion
 
@@ -31,6 +33,7 @@ namespace Bolao.Domain.Domains
 		public string Password { get; private set; }
 		public DateTime CreatedAt { get; private set; }
 		public bool Active { get; private set; }
+		public ICollection<ContactType> ContactTypes { get; set; }
 		public int UserSecurityId { get; private set; }
 		public UserSecurity UserSecurity { get; private set; }
 

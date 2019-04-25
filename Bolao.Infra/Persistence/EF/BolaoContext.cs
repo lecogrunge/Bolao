@@ -11,6 +11,7 @@ namespace Bolao.Infra.Persistence.EF
 
         public DbSet<User> Users { get; set; }
 		public DbSet<UserSecurity> UserSecurities { get; set; }
+		public DbSet<ContactType> ContactTypes { get; set; }
         public DbSet<TypeBet> TypeBets { get; set; }
         public DbSet<Lottery> Lotteries { get; set; }
         public DbSet<LotteryNumberBet> LotteryNumbersBet { get; set; }
