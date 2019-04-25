@@ -46,6 +46,8 @@ namespace Bolao.Domain.Services
                 return response;
 
             response.IdUser = user.UserId;
+			response.FirstName = user.FisrtName;
+
             return response;
 		}
 
