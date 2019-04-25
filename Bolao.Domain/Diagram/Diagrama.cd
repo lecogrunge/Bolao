@@ -50,14 +50,14 @@
   <Class Name="Bolao.Domain.Domains.TypeBet">
     <Position X="0.5" Y="0.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAgIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\TypeBet.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.User">
     <Position X="3.5" Y="8.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEACKAAAAAACAAAAgAAIAAAAAiAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAEAAAACKAAAAAAiAAAAgAAIAAAAAiAAAAAAAAAAg=</HashCode>
       <FileName>Domains\User.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -94,6 +94,16 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Lottery" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.UserSecurity">
+    <Position X="3.25" Y="12.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAAAAAAAAEgAAAAgAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Domains\UserSecurity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
       <Property Name="User" />
     </ShowAsAssociation>
   </Class>
