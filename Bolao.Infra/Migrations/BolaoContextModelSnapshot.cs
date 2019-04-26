@@ -57,6 +57,18 @@ namespace Bolao.Infra.Migrations
                     b.ToTable("Buy");
                 });
 
+            modelBuilder.Entity("Bolao.Domain.Domains.ContactType", b =>
+                {
+                    b.Property<int>("ContactTypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("ContactTypeId");
+
+                    b.ToTable("ContactTypes");
+                });
+
             modelBuilder.Entity("Bolao.Domain.Domains.Lottery", b =>
                 {
                     b.Property<Guid>("LoterryId")
@@ -187,11 +199,46 @@ namespace Bolao.Infra.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<Guid>("TokenConfirm");
-
                     b.HasKey("UserId");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("Bolao.Domain.Domains.UserContactType", b =>
+                {
+                    b.Property<int>("UserContactTypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ContactTypeId");
+
+                    b.Property<Guid>("UserId");
+
+                    b.HasKey("UserContactTypeId");
+
+                    b.HasIndex("ContactTypeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UsersContactTypes");
+                });
+
+            modelBuilder.Entity("Bolao.Domain.Domains.UserSecurity", b =>
+                {
+                    b.Property<Guid>("UserSecurityId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("TokenCreateConfirmed");
+
+                    b.Property<Guid>("TokenForgotPassword");
+
+                    b.Property<Guid>("UserId");
+
+                    b.HasKey("UserSecurityId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserSecurity");
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.WinnerJackpot", b =>
@@ -285,6 +332,27 @@ namespace Bolao.Infra.Migrations
                                 .HasForeignKey("Bolao.Domain.ObjectValue.Email", "UserId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
+                });
+
+            modelBuilder.Entity("Bolao.Domain.Domains.UserContactType", b =>
+                {
+                    b.HasOne("Bolao.Domain.Domains.ContactType", "ContactType")
+                        .WithMany("UsersContactTypes")
+                        .HasForeignKey("ContactTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Bolao.Domain.Domains.User", "User")
+                        .WithMany("UsersContactTypes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Bolao.Domain.Domains.UserSecurity", b =>
+                {
+                    b.HasOne("Bolao.Domain.Domains.User", "User")
+                        .WithOne("UserSecurity")
+                        .HasForeignKey("Bolao.Domain.Domains.UserSecurity", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.WinnerJackpot", b =>

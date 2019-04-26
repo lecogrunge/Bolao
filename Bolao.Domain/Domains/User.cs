@@ -21,8 +21,7 @@ namespace Bolao.Domain.Domains
             CreatedAt = DateTime.Now;
             Active = false;
 			UserSecurity = new UserSecurity(UserId);
-			UserSecurityId = UserSecurity.UserSecurityId;
-			ContactTypes = new HashSet<ContactType>();
+			UsersContactTypes = new HashSet<UserContactType>();
         }
         #endregion
 
@@ -33,8 +32,7 @@ namespace Bolao.Domain.Domains
 		public string Password { get; private set; }
 		public DateTime CreatedAt { get; private set; }
 		public bool Active { get; private set; }
-		public ICollection<ContactType> ContactTypes { get; set; }
-		public int UserSecurityId { get; private set; }
+		public ICollection<UserContactType> UsersContactTypes { get; set; }
 		public UserSecurity UserSecurity { get; private set; }
 
         public void ActiveUser()
