@@ -13,12 +13,12 @@ namespace Bolao.Domain.Services
 			smtp.Send("contato@bolao.com.br", string.Format("[Contato] - {0}", subject), message);
 		}
 
-		public void SendEmailForgotPassword(string to)
-		{
-			throw new NotImplementedException();
-		}
+        public void SendEmailForgotPassword(string to, Guid token)
+        {
+            throw new NotImplementedException();
+        }
 
-		public void SendEmailNewUser(string to, Guid token, string firstName)
+        public void SendEmailNewUser(string to, Guid token, string firstName)
         {
 			string urlToken = "https://www.bolao.com.br?token=" + token;
 			string emailContent = string.Format(@"

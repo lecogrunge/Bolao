@@ -8,8 +8,7 @@ namespace Bolao.Domain.Interfaces.Repositories
     {
 		User AuthUser(string email, string password);
 		User GetUserByTokenConfirmation(Guid token);
-		User GetUserByTokenForgotPassword(Guid token)
-
+        User GetUserByTokenForgotPassword(Guid token);
 		bool IsEmailExist(string email);
 	}
 }
