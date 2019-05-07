@@ -25,7 +25,10 @@ namespace Bolao.Domain.Services
 			LotteryValidator ticketValidator = new LotteryValidator();
 			ValidationResult ticketResult = ticketValidator.Validate(lottery);
 			if (!ticketResult.IsValid)
+			{
 				response.AddErrorValidationResult(ticketResult);
+				return response;
+			}
 
 			_lotteryRepository.Create(lottery);
 
