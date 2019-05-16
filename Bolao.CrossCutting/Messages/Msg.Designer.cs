@@ -70,7 +70,7 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno:.
+        ///   Looks up a localized string similar to Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista..
         /// </summary>
         public static string ErrorGeneric400 {
             get {

@@ -121,7 +121,7 @@
     <value>Este e-mail já existe em nossa base de dados.</value>
   </data>
   <data name="ErrorGeneric400" xml:space="preserve">
-    <value>Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno:</value>
+    <value>Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista.</value>
   </data>
   <data name="InvalidAuth" xml:space="preserve">
     <value>E-mail ou senha inválido.</value>
