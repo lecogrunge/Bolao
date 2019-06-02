@@ -26,8 +26,8 @@ namespace Bolao.Api.Controllers
         {
             ContactResponse response = _contactService.Contact(request);
 
-            if (response.IsValid())
-                return await ResponseAsync(response);
+			if (response.IsValid())
+				return Ok();
 
             return BadRequest(response.GetErrors());
         }

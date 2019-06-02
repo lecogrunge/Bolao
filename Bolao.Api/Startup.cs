@@ -56,6 +56,7 @@ namespace Bolao.Api
 			services.AddTransient<ILotteryService, LotteryService>();
 			services.AddTransient<ITicketService, TicketService>();
 			services.AddTransient<IEmailService, EmailService>();
+			services.AddTransient<IContactService, ContactService>();
 
 			// Repositories
 			services.AddTransient<IUserRepository, UserRepository>();
