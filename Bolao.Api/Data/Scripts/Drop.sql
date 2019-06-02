@@ -1,0 +1,14 @@
+﻿DROP TABLE __efmigrationshistory;
+DROP TABLE lotterynumberbet;
+DROP TABLE lotterynumberresult;
+DROP TABLE ownerjackpot;
+DROP TABLE winnerjackpot;
+DROP TABLE ticket;
+DROP TABLE buy;
+DROP TABLE lottery;
+DROP TABLE userscontacttypes;
+DROP TABLE usersecurity;
+DROP TABLE contacttypes;
+DROP TABLE user;
+DROP TABLE typebet;
+DROP TABLE bank;

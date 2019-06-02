@@ -42,7 +42,7 @@ namespace Bolao.Infra.Persistence.EF
             modelBuilder.ApplyConfiguration(new MapBuy());
 
             base.OnModelCreating(modelBuilder);
-            this.Seed(modelBuilder);
+            //this.Seed(modelBuilder);
         }
 
         public void Seed(ModelBuilder modelBuilder)

@@ -1,0 +1,14 @@
+﻿DELETE FROM __efmigrationshistory;
+DELETE FROM lotterynumberbet;
+DELETE FROM lotterynumberresult;
+DELETE FROM ownerjackpot;
+DELETE FROM winnerjackpot;
+DELETE FROM ticket;
+DELETE FROM buy;
+DELETE FROM lottery;
+DELETE FROM userscontacttypes;
+DELETE FROM usersecurity;
+DELETE FROM contacttypes;
+DELETE FROM user;
+DELETE FROM typebet;
+DELETE FROM bank;
