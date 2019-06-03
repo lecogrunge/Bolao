@@ -1,19 +1,64 @@
 ﻿@page
 @model ContactModel
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contato";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@Model.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<fieldset>
+    <legend>jksj</legend>
+
+    <div class="input-group col-md-6">
+        <label>Nome:</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon1">
+    </div>
+
+    <br />
+
+    <div class="input-group col-md-6">
+        <label>E-mail:</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon1">
+    </div>
+
+    <br />
+
+    <div class="input-group col-md-6">
+        <label>Assunto:</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon1">
+    </div>
+
+    <br />
+
+    <div class="input-group col-md-8">
+        <label>Mensagem:</label>
+        <textarea class="form-control" aria-describedby="basic-addon1"></textarea>
+    </div>
+    
+    <br />
+</fieldset>
+
+<button id="btn-enviar" class="btn btn-success">Enviar</button>
 
 <address>
     <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+@section Scripts
+{
+<script>
+    $(document).ready(function () {
+        $.ajax('/jquery/getjsondata',
+            {
+                dataType: 'json', // type of response data
+                timeout: 500,     // timeout milliseconds
+                success: function (data, status, xhr) {   // success callback function
+                    $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback 
+                    $('p').append('Error: ' + errorMessage);
+                }
+            });
+    });
+</script>
+}
