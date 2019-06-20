@@ -68,9 +68,11 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+    
     <script type="text/javascript">
-        var path = "@Url.Content("~")";
+        var path = 'https://localhost:44303/api/';
     </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

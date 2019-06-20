@@ -22,7 +22,7 @@ namespace Bolao.Api.Controllers
 
         [HttpPost]
         [Route("Contact")]
-        public async Task<IActionResult> Contact(ContactRequest request)
+        public async Task<IActionResult> Contact([FromForm] ContactRequest request)
         {
             ContactResponse response = _contactService.Contact(request);
 

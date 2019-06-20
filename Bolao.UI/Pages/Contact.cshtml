@@ -33,7 +33,7 @@
         <label>Mensagem:</label>
         <textarea class="form-control" aria-describedby="basic-addon1"></textarea>
     </div>
-    
+
     <br />
 </fieldset>
 
@@ -45,20 +45,30 @@
 </address>
 
 @section Scripts
-{
-<script>
-    $(document).ready(function () {
-        $.ajax('/jquery/getjsondata',
-            {
-                dataType: 'json', // type of response data
-                timeout: 500,     // timeout milliseconds
-                success: function (data, status, xhr) {   // success callback function
-                    $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);
-                },
-                error: function (jqXhr, textStatus, errorMessage) { // error callback 
-                    $('p').append('Error: ' + errorMessage);
-                }
+    {
+    <script>
+        $(document).ready(function () {
+            var dados = {
+                "Name": "string",
+                "Email": "string",
+                "Subject": "string",
+                "Message": "string"
+            };
+
+            $("#btn-enviar").on("click", function () {
+                $.ajax(path + 'contact/Contact',
+                    {
+                        dataType: 'json',
+                        data: JSON.stringify(dados),
+                        method: "POST",
+                        success: function (data, status, xhr) {   // success callback function
+                            $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);
+                        },
+                        error: function (jqXhr, textStatus, errorMessage) { // error callback
+                            $('p').append('Error: ' + errorMessage);
+                        }
+                    });
             });
-    });
-</script>
+        });
+    </script>
 }
