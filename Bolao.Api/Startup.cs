@@ -1,4 +1,5 @@
 ﻿using Bolao.Api.Core.Compression;
+using Bolao.Domain.Identity;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Services;
@@ -7,12 +8,14 @@ using Bolao.Infra.Persistence.Repositories;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System;
 using System.Collections.Generic;
 
 namespace Bolao.Api
@@ -64,6 +67,32 @@ namespace Bolao.Api
 			services.AddTransient<IUserSecurityRepository, UserSecurityRepository>();
             #endregion
 
+            #region Identity
+            services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<BolaoContext>()
+               .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options => 
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8; // default: 6
+                options.Password.RequiredUniqueChars = 6; // default: 1
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+            });
+
+            services.ConfigureApplicationCookie(options => 
+            {
+                options.CookieHttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true; // quando passar da metade do tempo de expiração do cookie, renova!
+            });
+            #endregion
+
             services.AddCors();
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
@@ -103,17 +132,16 @@ namespace Bolao.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+                app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 
             app.UseHttpsRedirection();
             app.UseResponseCompression();
+
+            #region Identity
+            app.UseAuthentication();
+            #endregion
 
             #region Swagger
             // Enable middleware to serve generated Swagger as a JSON endpoint.
