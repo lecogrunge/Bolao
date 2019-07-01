@@ -1,0 +1,101 @@
+﻿@page
+@model Bolao.UI.Pages.Contact.IndexModel
+
+
+<h2>Contato</h2>
+
+<fieldset>
+    <legend>jksj</legend>
+    <form method="post">
+        <div class="input-group col-md-6">
+            <label>Nome:</label>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" id="txt-name">
+        </div>
+
+        <br />
+
+        <div class="input-group col-md-6">
+            <label>E-mail:</label>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" id="txt-email">
+        </div>
+
+        <br />
+
+        <div class="input-group col-md-6">
+            <label>Assunto:</label>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" id="txt-subject">
+        </div>
+
+        <br />
+
+        <div class="input-group col-md-8">
+            <label>Mensagem:</label>
+            <textarea class="form-control" aria-describedby="basic-addon1" id="txt-message"></textarea>
+        </div>
+
+        <br />
+    </form>
+</fieldset>
+
+<button id="btn-send-contact" class="btn btn-success">Enviar</button>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            //$.ajaxSetup({
+            //    headers: {
+            //        'Content-Type': 'application/json',
+            //        'Accept': 'application/json'
+            //    }
+            //});
+
+            $("#btn-send-contact").on("click", function () {
+                //var request = {
+                //    "Name": $("#txt-name").val(),
+                //    "Email": $("#txt-email").val(),
+                //    "Subject": $("#txt-subject").val(),
+                //    "Message": $("#txt-message").val()
+                //};
+
+                var request = {
+                    "Name": "string",
+                    "Email": "string",
+                    "Subject": "string",
+                    "Message": "string"
+                };
+
+                //$.post(path + 'contact/Contact',
+                //    JSON.stringify(dados),
+                //    function (data, status) {
+                //        alert("Data: " + data + "\nStatus: " + status);
+                //    });
+
+                $.ajax({
+                    url: path + 'contact/Contact',
+                    type: "POST",
+                    dataType: 'json',
+                    async: true,
+                    data: JSON.stringify(request),
+                    //contentType: "application/json",
+
+                    //headers: {
+                    //    'Content-Type': 'application/json',
+                    //    'Accept': 'application/json'
+                    //},
+                    success: function (data, status, xhr) {   // success callback function
+                        $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) { // error callback
+                        console.log('Error: ' + errorMessage + " " + JSON.stringify(jqXhr) + " " + JSON.stringify(textStatus));
+                    }
+                });
+            });
+        });
+    </script>
+}

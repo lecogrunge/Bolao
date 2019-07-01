@@ -55,7 +55,7 @@ namespace Bolao.Api
 
 			// Services
 			services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<ILotteryService, LotteryService>();
 			services.AddTransient<ITicketService, TicketService>();
 			services.AddTransient<IEmailService, EmailService>();
@@ -68,29 +68,29 @@ namespace Bolao.Api
             #endregion
 
             #region Identity
-            services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<BolaoContext>()
-               .AddDefaultTokenProviders();
+            //services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
+            //    .AddEntityFrameworkStores<BolaoContext>()
+            //   .AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(options => 
-            {
-                options.Password.RequireDigit = true;
-                options.Password.RequiredLength = 8; // default: 6
-                options.Password.RequiredUniqueChars = 6; // default: 1
-                options.Password.RequireLowercase = true;
-                options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequireUppercase = true;
-            });
+            //services.Configure<IdentityOptions>(options => 
+            //{
+            //    options.Password.RequireDigit = true;
+            //    options.Password.RequiredLength = 8; // default: 6
+            //    options.Password.RequiredUniqueChars = 6; // default: 1
+            //    options.Password.RequireLowercase = true;
+            //    options.Password.RequireNonAlphanumeric = true;
+            //    options.Password.RequireUppercase = true;
+            //});
 
-            services.ConfigureApplicationCookie(options => 
-            {
-                options.CookieHttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-                options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Logout";
-                options.AccessDeniedPath = "/Account/AccessDenied";
-                options.SlidingExpiration = true; // quando passar da metade do tempo de expiração do cookie, renova!
-            });
+            //services.ConfigureApplicationCookie(options => 
+            //{
+            //    options.CookieHttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+            //    options.LoginPath = "/Account/Login";
+            //    options.LogoutPath = "/Account/Logout";
+            //    options.AccessDeniedPath = "/Account/AccessDenied";
+            //    options.SlidingExpiration = true; // quando passar da metade do tempo de expiração do cookie, renova!
+            //});
             #endregion
 
             services.AddCors();
@@ -111,20 +111,20 @@ namespace Bolao.Api
             {
                 c.SwaggerDoc("v1", new Info { Title = "Bolão API", Version = "v1" });
 
-                var security = new Dictionary<string, IEnumerable<string>>
-                {
-                    {"Bearer", new string[] { }},
-                };
+                //var security = new Dictionary<string, IEnumerable<string>>
+                //{
+                //    {"Bearer", new string[] { }},
+                //};
 
-                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
-                });
+                //c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                //{
+                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                //    Name = "Authorization",
+                //    In = "header",
+                //    Type = "apiKey"
+                //});
 
-                c.AddSecurityRequirement(security);
+                //c.AddSecurityRequirement(security);
             });
         }
 
@@ -137,11 +137,14 @@ namespace Bolao.Api
                 app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 
             app.UseHttpsRedirection();
-            app.UseResponseCompression();
-
-            #region Identity
-            app.UseAuthentication();
-            #endregion
+           // app.UseResponseCompression();
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            //#region Identity
+            //app.UseAuthentication();
+            //#endregion
 
             #region Swagger
             // Enable middleware to serve generated Swagger as a JSON endpoint.

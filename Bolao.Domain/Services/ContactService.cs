@@ -1,5 +1,5 @@
 ﻿using Bolao.CrossCutting.Messages;
-using Bolao.Domain.Arguments.User;
+using Bolao.Domain.Arguments.Contact;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.ObjectValue;
 using Bolao.Domain.ObjectValue.Validation;
@@ -7,7 +7,7 @@ using FluentValidation.Results;
 
 namespace Bolao.Domain.Services
 {
-	public sealed class ContactService : IContactService
+    public sealed class ContactService : IContactService
 	{
 		private readonly IEmailService _emailService;
 
@@ -40,7 +40,7 @@ namespace Bolao.Domain.Services
 				return response;
 
 			// Sending Email
-			_emailService.SendEmailContact(request.Name, request.Email, request.Subject, request.Message);
+			_emailService.SendEmailContact(request.Name, request.Email.Trim().ToLower(), request.Subject, request.Message);
 
 			return response;
 		}

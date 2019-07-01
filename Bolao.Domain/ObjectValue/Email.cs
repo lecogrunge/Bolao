@@ -8,7 +8,7 @@ namespace Bolao.Domain.ObjectValue
 
         public Email(string address)
         {
-            EmailAddress = address.Trim().ToLower();
+            EmailAddress = address;
         }
 
         public string EmailAddress { get; private set; }
