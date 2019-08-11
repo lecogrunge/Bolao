@@ -13,6 +13,8 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             // PK
             builder.HasKey(x => x.TypeBetId);
+            builder.Property(x => x.Title).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Description).IsRequired();
         }
     }
 }

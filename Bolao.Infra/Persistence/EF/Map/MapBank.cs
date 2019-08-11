@@ -13,6 +13,7 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             // PK
             builder.HasKey(x => x.BankId);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             // PK
             builder.HasKey(x => x.LotteryNumberResultId);
+            builder.Property(x => x.Number).HasMaxLength(2).IsRequired();
         }
     }
 }

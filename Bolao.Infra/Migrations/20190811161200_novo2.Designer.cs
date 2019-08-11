@@ -3,14 +3,16 @@ using System;
 using Bolao.Infra.Persistence.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bolao.Infra.Migrations
 {
     [DbContext(typeof(BolaoContext))]
-    partial class BolaoContextModelSnapshot : ModelSnapshot
+    [Migration("20190811161200_novo2")]
+    partial class novo2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,9 +24,7 @@ namespace Bolao.Infra.Migrations
                     b.Property<int>("BankId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Name");
 
                     b.HasKey("BankId");
 
@@ -126,9 +126,7 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<Guid>("LoterryId");
 
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasMaxLength(2);
+                    b.Property<string>("Number");
 
                     b.HasKey("LotteryNumberResultId");
 

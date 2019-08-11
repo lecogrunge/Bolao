@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bolao.Infra.Migrations
 {
     [DbContext(typeof(BolaoContext))]
-    [Migration("20190811155851_novo")]
-    partial class novo
+    [Migration("20190811161509_novo3")]
+    partial class novo3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,9 @@ namespace Bolao.Infra.Migrations
                     b.Property<int>("BankId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.HasKey("BankId");
 
@@ -126,7 +128,9 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<Guid>("LoterryId");
 
-                    b.Property<string>("Number");
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(2);
 
                     b.HasKey("LotteryNumberResultId");
 
@@ -176,9 +180,12 @@ namespace Bolao.Infra.Migrations
                     b.Property<int>("TypeBetId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.HasKey("TypeBetId");
 

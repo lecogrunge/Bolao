@@ -13,7 +13,7 @@ namespace Bolao.Infra.Persistence.EF.Map
 
 			// PK
 			builder.HasKey(x => x.ContactTypeId);
-			builder.Property(x => x.Description).IsRequired();
+			builder.Property(x => x.Description).HasMaxLength(50).IsRequired();
 		}
 	}
 }
