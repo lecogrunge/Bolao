@@ -48,41 +48,41 @@ namespace Bolao.Infra.Persistence.EF
 
         public void Seed(ModelBuilder modelBuilder)
         {
-            #region User
-            User user = new User("Wellington", "Fernandes", new Email("wellington.m.fernandes@gmail.com"), "123");
-            modelBuilder.Entity<User>().HasData(user);
-			#endregion
+            //#region User
+            //User user = new User("Wellington", "Fernandes", new Email("wellington.m.fernandes@gmail.com"), "123");
+            //modelBuilder.Entity<User>().HasData(user);
+            //#endregion
 
-			#region TypeBet
-			TypeBet typeBet = new TypeBet("Sena15Numbers", "Descição");
-			typeBet.SetId(1);
-			modelBuilder.Entity<TypeBet>().HasData(typeBet);
-			#endregion
+            #region TypeBet
+            TypeBet typeBet = new TypeBet("Sena15Numbers", "Descição");
+            
+            modelBuilder.Entity<TypeBet>().HasData(typeBet);
+            #endregion
 
-			#region Lottery
-			Lottery lottery = new Lottery(17, DateTime.Now, DateTime.Now.AddDays(7), DateTime.Now.AddDays(8), typeBet.TypeBetId);
-			modelBuilder.Entity<TypeBet>().HasData(new TypeBet("Sena15Numbers", "Descição"));
-			#endregion
+            #region Lottery
+            Lottery lottery = new Lottery(17, DateTime.Now, DateTime.Now.AddDays(7), DateTime.Now.AddDays(8), typeBet.TypeBetId);
+            modelBuilder.Entity<TypeBet>().HasData(new TypeBet("Sena15Numbers", "Descição"));
+            #endregion
 
-			#region LotteryNumberResult            
-			#region Resultado 1
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("01", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("02", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("03", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("04", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("05", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("06", lottery.LoterryId));
-			#endregion
+            #region LotteryNumberResult            
+            #region Resultado 1
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("01", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("02", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("03", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("04", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("05", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("06", lottery.LoterryId));
+            #endregion
 
-			#region Resultado 2
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("07", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("08", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("09", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("10", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("11", lottery.LoterryId));
-			modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("12", lottery.LoterryId));
-			#endregion
-			#endregion
-		}
-	}
+            #region Resultado 2
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("07", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("08", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("09", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("10", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("11", lottery.LoterryId));
+            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("12", lottery.LoterryId));
+            #endregion
+            #endregion
+        }
+    }
 }

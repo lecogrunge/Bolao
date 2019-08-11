@@ -1,5 +1,4 @@
 ﻿using Bolao.Api.Core.Compression;
-using Bolao.Domain.Identity;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Services;
@@ -8,15 +7,12 @@ using Bolao.Infra.Persistence.Repositories;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using System;
-using System.Collections.Generic;
 
 namespace Bolao.Api
 {
@@ -138,7 +134,7 @@ namespace Bolao.Api
                 app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 
            // app.UseHttpsRedirection();
-           // app.UseResponseCompression();
+            app.UseResponseCompression();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyHeader()

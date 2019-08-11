@@ -122,7 +122,7 @@ namespace Bolao.Domain.Services
 			_userSecurityRepository.Update(security);
 
 			// Send mail
-			_emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword);
+			_emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword.Value);
 
 			return response;
 		}

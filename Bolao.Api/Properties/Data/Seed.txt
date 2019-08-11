@@ -1,12 +1,24 @@
 ﻿use bolao;
 
--- TypeBet
-insert into [bolao].[dbo].[TypeBet] values ('Sena15Numbers', 'descrição');
-
 -- User
-insert into [bolao].[dbo].[User] values ('d1aa6fd4-edda-4bd7-92e1-3b6a5c99af76','Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', '123456789', GETDATE(), 0, 'df406001-4c98-4c61-8265-73a6bafbfdea');
+insert into User values (1, 'Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', '123456789', NOW(), 0);
+-- UserSecurity
+insert into usersecurity values (1, 'f9cc0483-4644-4ea3-842a-9bab42b91f6f', null, 1)
+
+
+-- TypeBet
+insert into TypeBet values (1, 'Sena15Numbers', 'descrição');
 
 -- Lottery
-insert into [bolao].[dbo].[Lottery] values ('09325371-784b-4de7-b832-401d57529b84',17.50, 1, GETDATE(), GETDATE(), GETDATE(), 3, 1);
-insert into [bolao].[dbo].[Lottery] values ('3fb76d51-53af-4370-aadd-d958b55f54a7',20, 0, GETDATE(), GETDATE(), GETDATE(), 2, 1);
-insert into [bolao].[dbo].[Lottery] values ('1cbc28fd-8335-4e6b-a404-1204a76d1a2e',10.75, 1, GETDATE(), GETDATE(), GETDATE(), 1, 1);
+insert into Lottery values (1, 17.50, (NOW() + INTERVAL 1 DAY), NOW(), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 3 DAY), 3, 1);
+insert into Lottery values (2, 20,    (NOW() + INTERVAL 2 DAY), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 5 DAY), (NOW() + INTERVAL 6 DAY), 2, 1);
+insert into Lottery values (3, 10.75,  NOW()                  , (NOW() + INTERVAL 1 DAY), (NOW() + INTERVAL 2 DAY), (NOW() + INTERVAL 3 DAY), 1, 1);
+
+
+-- LotteryNumberResult
+insert into lotterynumberresult values (1, '01', 1);
+insert into lotterynumberresult values (2, '02', 1);
+insert into lotterynumberresult values (3, '03', 1);
+insert into lotterynumberresult values (4, '04', 1);
+insert into lotterynumberresult values (5, '05', 1);
+insert into lotterynumberresult values (6, '06', 1);

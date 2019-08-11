@@ -14,7 +14,7 @@ namespace Bolao.Domain.Domains
 
 		public Guid UserSecurityId { get; private set; }
 		public Guid TokenCreateConfirmed { get; private set; }
-		public Guid TokenForgotPassword { get; private set; }
+		public Guid? TokenForgotPassword { get; private set; }
 		public Guid UserId { get; private set; }
 		public User User { get; set; }
 

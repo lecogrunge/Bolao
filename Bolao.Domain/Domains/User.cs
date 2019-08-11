@@ -7,7 +7,6 @@ namespace Bolao.Domain.Domains
 {
 	public sealed class User
     {
-        #region Constructor
         protected User() { }
 
         public User(string fisrtName, string lastName, Email email, string password)
@@ -23,7 +22,6 @@ namespace Bolao.Domain.Domains
 			UserSecurity = new UserSecurity(UserId);
 			UsersContactTypes = new HashSet<UserContactType>();
         }
-        #endregion
 
         public Guid UserId { get; private set; }
 		public string FisrtName { get; private set; }

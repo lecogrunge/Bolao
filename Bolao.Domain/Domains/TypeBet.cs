@@ -12,11 +12,6 @@
 		}
         #endregion
 
-        public void SetId(int id)
-        {
-            this.TypeBetId = id;
-        }
-
         public int TypeBetId { get; private set; }
         public string Title { get; set; }
         public string Description { get; private set; }

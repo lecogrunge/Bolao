@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Bolao.Domain.ObjectValue
+﻿namespace Bolao.Domain.ObjectValue
 {
     public sealed class Email
     {
