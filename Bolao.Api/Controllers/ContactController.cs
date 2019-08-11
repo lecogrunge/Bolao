@@ -4,7 +4,6 @@ using Bolao.Domain.Interfaces.Services;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
 {
@@ -24,12 +23,12 @@ namespace Bolao.Api.Controllers
         [Route("contact")]
         [IgnoreAntiforgeryTokenAttribute]
         [AllowAnonymous]
-        public IActionResult Contact([FromBody] ContactRequest request)
+        public IActionResult Contact(ContactRequest request)
         {
             ContactResponse response = _contactService.Contact(request);
 
-			if (response.IsValid())
-				return Json("");
+            if (response.IsValid())
+                return Json(true);
 
             return BadRequest(response.GetErrors());
         }

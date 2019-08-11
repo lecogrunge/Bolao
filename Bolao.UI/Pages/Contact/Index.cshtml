@@ -7,6 +7,7 @@
 <fieldset>
     <legend>jksj</legend>
     <form method="post">
+
         <div class="input-group col-md-6">
             <label>Nome:</label>
             <input type="text" class="form-control" aria-describedby="basic-addon1" id="txt-name">
@@ -32,7 +33,7 @@
             <label>Mensagem:</label>
             <textarea class="form-control" aria-describedby="basic-addon1" id="txt-message"></textarea>
         </div>
-
+        @Html.AntiForgeryToken()
         <br />
     </form>
 </fieldset>
@@ -50,8 +51,9 @@
         $(document).ready(function () {
             //$.ajaxSetup({
             //    headers: {
-            //        'Content-Type': 'application/json',
-            //        'Accept': 'application/json'
+            //        //'Content-Type': 'application/json',
+            //        //'Accept': 'application/json'
+            //        "X-XSRF-Token": $("input[name=__RequestVerificationToken]").val()
             //    }
             //});
 
@@ -75,21 +77,27 @@
                 //    function (data, status) {
                 //        alert("Data: " + data + "\nStatus: " + status);
                 //    });
-
+                
                 $.ajax({
-                    url: path + 'contact/Contact',
+                    //url: 'https://localhost:44303/api/contact/Contact',
+                    url: 'https://localhost:44358/api/values',
                     type: "POST",
                     dataType: 'json',
-                    async: true,
                     data: JSON.stringify(request),
+                    headers: { 'X-XSRF-TOKEN': $("[name='__RequestVerificationToken']").val() },
+
+                   // headers["X-XSRF-Token"]: $("input[name=__RequestVerificationToken]").val(),
                     //contentType: "application/json",
 
                     //headers: {
                     //    'Content-Type': 'application/json',
                     //    'Accept': 'application/json'
                     //},
+                    //beforeSend: function (request) {
+                    //    request.setRequestHeader("X-XSRF-TOKEN", $("[name='__RequestVerificationToken']").val());
+                    //},
                     success: function (data, status, xhr) {   // success callback function
-                        $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);
+                        console.log(data + ' ' + status+ ' ' + xhr);
                     },
                     error: function (jqXhr, textStatus, errorMessage) { // error callback
                         console.log('Error: ' + errorMessage + " " + JSON.stringify(jqXhr) + " " + JSON.stringify(textStatus));

@@ -98,8 +98,9 @@ namespace Bolao.Api
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                     .AddJsonOptions(options =>
                     {
-                        options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                  //      options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
                     });
+            services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 
             ConfigureSwaggerService(services);
         }
@@ -136,7 +137,7 @@ namespace Bolao.Api
             else
                 app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
            // app.UseResponseCompression();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()

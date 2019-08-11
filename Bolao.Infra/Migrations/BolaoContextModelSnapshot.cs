@@ -34,7 +34,8 @@ namespace Bolao.Infra.Migrations
                     b.Property<Guid>("BuyId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("DateTime");
 
                     b.Property<Guid>("LotteryId");
 
@@ -74,16 +75,20 @@ namespace Bolao.Infra.Migrations
                     b.Property<Guid>("LoterryId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("DateTime");
 
-                    b.Property<DateTime>("EndDateBet");
+                    b.Property<DateTime>("EndDateBet")
+                        .HasColumnType("DateTime");
 
-                    b.Property<DateTime>("LotteryDateBet");
+                    b.Property<DateTime>("LotteryDateBet")
+                        .HasColumnType("DateTime");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(5, 2)");
 
-                    b.Property<DateTime>("StartDateBet");
+                    b.Property<DateTime>("StartDateBet")
+                        .HasColumnType("DateTime");
 
                     b.Property<int>("StatusPagSeguro");
 
@@ -185,7 +190,8 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<bool>("Active");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("FisrtName")
                         .IsRequired()

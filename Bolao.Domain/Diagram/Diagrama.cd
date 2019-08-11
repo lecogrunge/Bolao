@@ -54,13 +54,6 @@
       <FileName>Domains\TypeBet.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Bolao.Domain.Domains.User">
-    <Position X="3.5" Y="8.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAAAACKAAAAAACAAAAgAAIIAAAAiAAAAAAAAAAg=</HashCode>
-      <FileName>Domains\User.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Bolao.Domain.Domains.WinnerJackpot">
     <Position X="12.5" Y="3.5" Width="2.25" />
     <TypeIdentifier>
@@ -112,6 +105,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\ContactType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.User">
+    <Position X="3.5" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACKAAAAAACAAAAgAAIIAAAAiAAAAAAAAAAg=</HashCode>
+      <FileName>Domains\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

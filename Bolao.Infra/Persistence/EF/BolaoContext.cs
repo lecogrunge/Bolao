@@ -1,16 +1,13 @@
 ﻿using Bolao.Domain.Domains;
-using Bolao.Domain.Identity;
 using Bolao.Domain.ObjectValue;
 using Bolao.Infra.Persistence.EF.Map;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Bolao.Infra.Persistence.EF
 {
-    //public class BolaoContext : DbContext
-    public class BolaoContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    public class BolaoContext : DbContext
+    //public class BolaoContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         public BolaoContext(DbContextOptions<BolaoContext> options) : base(options) { }
 
@@ -35,8 +32,8 @@ namespace Bolao.Infra.Persistence.EF
 
             // aplicar configurações
             modelBuilder.ApplyConfiguration(new MapUser());
-			modelBuilder.ApplyConfiguration(new MapUserSecurity());
-			modelBuilder.ApplyConfiguration(new MapLotteryNumberResult());
+            modelBuilder.ApplyConfiguration(new MapUserSecurity());
+            modelBuilder.ApplyConfiguration(new MapLotteryNumberResult());
             modelBuilder.ApplyConfiguration(new MapLotteryNumberBet());
             modelBuilder.ApplyConfiguration(new MapLottery());
             modelBuilder.ApplyConfiguration(new MapTypeBet());

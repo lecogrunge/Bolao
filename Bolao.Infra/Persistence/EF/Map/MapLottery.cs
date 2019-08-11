@@ -15,6 +15,10 @@ namespace Bolao.Infra.Persistence.EF.Map
             builder.HasKey(x => x.LoterryId);
 
             builder.Property(x => x.Price).HasColumnType<decimal>("decimal(5, 2)").IsRequired();
+            builder.Property(x => x.CreatedAt).HasColumnType("DateTime").IsRequired();
+            builder.Property(x => x.EndDateBet).HasColumnType("DateTime").IsRequired();
+            builder.Property(x => x.StartDateBet).HasColumnType("DateTime").IsRequired();
+            builder.Property(x => x.LotteryDateBet).HasColumnType("DateTime").IsRequired();
         }
     }
 }

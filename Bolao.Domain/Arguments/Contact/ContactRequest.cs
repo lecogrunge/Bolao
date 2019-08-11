@@ -1,6 +1,6 @@
 ﻿namespace Bolao.Domain.Arguments.Contact
 {
-	public  class ContactRequest
+	public sealed class ContactRequest
 	{
 		public string Name { get; set; }
 		public string Email { get; set; }

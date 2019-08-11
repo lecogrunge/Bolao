@@ -16,6 +16,7 @@ namespace Bolao.Infra.Persistence.EF.Map
 
             builder.Property(x => x.UnitPrice).HasColumnType<decimal>("decimal(5, 2)").IsRequired();
             builder.Property(x => x.Total).HasColumnType<decimal>("decimal(5, 2)").IsRequired();
+            builder.Property(x => x.CreatedAt).HasColumnType("DateTime").IsRequired();
         }
     }
 }
