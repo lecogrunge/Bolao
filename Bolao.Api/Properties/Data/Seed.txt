@@ -1,18 +1,18 @@
 ﻿use bolao;
 
--- User
-insert into User values (1, 'Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', '123456789', NOW(), 0);
+-- User (senha 12345678)
+insert into User values ('e3ca0996-3fb7-4c84-9c21-19582fa7ef01', 'Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', 'JSgMVult8JW1aIYRt9yme4QIZOw2uPYkmeAUDgV3Q30=', NOW(), 0);
 -- UserSecurity
-insert into usersecurity values (1, 'f9cc0483-4644-4ea3-842a-9bab42b91f6f', null, 1)
+insert into usersecurity values ('266c1514-2147-45e3-9635-3891d46b6178', 'f9cc0483-4644-4ea3-842a-9bab42b91f6f', null, 'e3ca0996-3fb7-4c84-9c21-19582fa7ef01')
 
 
 -- TypeBet
 insert into TypeBet values (1, 'Sena15Numbers', 'descrição');
 
 -- Lottery
-insert into Lottery values (1, 17.50, (NOW() + INTERVAL 1 DAY), NOW(), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 3 DAY), 3, 1);
-insert into Lottery values (2, 20,    (NOW() + INTERVAL 2 DAY), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 5 DAY), (NOW() + INTERVAL 6 DAY), 2, 1);
-insert into Lottery values (3, 10.75,  NOW()                  , (NOW() + INTERVAL 1 DAY), (NOW() + INTERVAL 2 DAY), (NOW() + INTERVAL 3 DAY), 1, 1);
+insert into Lottery values ('2a0869ba-d0e9-44d1-8204-1c6a0ef0608c', 17.50, (NOW() + INTERVAL 1 DAY), NOW(), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 3 DAY), 3, 1);
+insert into Lottery values ('55285952-c986-45b4-b8d6-ec0ecfadbc47', 20,    (NOW() + INTERVAL 2 DAY), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 5 DAY), (NOW() + INTERVAL 6 DAY), 2, 1);
+insert into Lottery values ('204d4d6f-612b-4629-bfe1-0fa46ed1fe00', 10.75,  NOW()                  , (NOW() + INTERVAL 1 DAY), (NOW() + INTERVAL 2 DAY), (NOW() + INTERVAL 3 DAY), 1, 1);
 
 
 -- LotteryNumberResult

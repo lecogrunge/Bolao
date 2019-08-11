@@ -52,7 +52,7 @@ namespace Bolao.Domain.Services
 					return response;
 				}
 
-				lottery.ListNumbersResult.Add(number);
+				lottery.SetNumberInListLottery(number);
 			}
 
 			_lotteryRepository.Create(lottery);

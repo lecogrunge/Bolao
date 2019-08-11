@@ -20,7 +20,7 @@
   <Class Name="Bolao.Domain.Domains.TypeBet">
     <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAgIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\TypeBet.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -43,11 +43,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.ContactType">
-    <Position X="1" Y="8.5" Width="1.5" />
+    <Position X="10.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\ContactType.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="UsersContactTypes" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.Lottery">
     <Position X="0.5" Y="3.75" Width="1.75" />
@@ -102,6 +105,17 @@
       <HashCode>AAABAACAAAAAAAAAAAAAAAgAAAAEAAAABBAAAAAAAAA=</HashCode>
       <FileName>Domains\WinnerJackpot.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="Bolao.Domain.Domains.UserContactType">
+    <Position X="6.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAEAAAAAEAAAgAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Domains\UserContactType.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="ContactType" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

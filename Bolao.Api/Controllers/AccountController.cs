@@ -23,7 +23,7 @@ namespace Bolao.Api.Controllers
 
 		[HttpPost]
 		[Route("signup")]
-		public async Task<IActionResult> Signup([FromForm]CreateAccountRequest signup)
+		public async Task<IActionResult> Signup(CreateAccountRequest signup)
 		{
 			CreateAccountResponse response = _accountService.CreateAccount(signup);
 
