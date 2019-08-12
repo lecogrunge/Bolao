@@ -1,9 +1,12 @@
-﻿using Bolao.Domain.Arguments.Lottery;
+﻿using Bolao.CrossCutting.Messages;
+using Bolao.Domain.Arguments.Base;
+using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Domains;
 using Bolao.Domain.Domains.Validator;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using FluentValidation.Results;
+using System.Linq;
 
 namespace Bolao.Domain.Services
 {
@@ -38,9 +41,21 @@ namespace Bolao.Domain.Services
 		public NumberLotteryResponse InsertNumbersLotteryResult(NumberLotteryRequest request)
 		{
 			NumberLotteryResponse response = new NumberLotteryResponse();
-			Lottery lottery =  _lotteryRepository.Find(request.LotteryId);
+			Lottery lottery =  _lotteryRepository.FindLottery(request.LotteryId);
 
-			//Binding numbers
+            if (lottery == null)
+            {
+                response.AddError(new ErrorResponseBase(string.Empty, Msg.LotteryNotFound));
+                return response;
+            }
+
+            if (request.Numbers.Count() != lottery.TypeBet.CountNumberResult)
+            {
+                response.AddError(new ErrorResponseBase("Number", Msg.LimiteLotteryResultInvalid));
+                return response;
+            }
+
+			// Binding numbers
 			foreach (string item in request.Numbers)
 			{
 				LotteryNumberResult number = new LotteryNumberResult(item, request.LotteryId);
@@ -52,14 +67,19 @@ namespace Bolao.Domain.Services
 					return response;
 				}
 
+                if (lottery.ListNumbersResult.Any(s => s.Number.Contains(item)))
+                {
+                    response.AddError(new ErrorResponseBase("Number", Msg.NumberBetDuplicated));
+                    return response;
+                }
+
 				lottery.SetNumberInListLottery(number);
 			}
 
-			_lotteryRepository.Create(lottery);
+			_lotteryRepository.Update(lottery);
 
 			return response;
 		}
-
 
         public ListLotteryResponse ListLottery(bool active)
 		{

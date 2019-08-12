@@ -144,6 +144,15 @@
   <data name="InvalidNumberLottery" xml:space="preserve">
     <value>Número inválido.</value>
   </data>
+  <data name="LimiteLotteryResultInvalid" xml:space="preserve">
+    <value>Quantidade de números informados é inválido.</value>
+  </data>
+  <data name="LotteryNotFound" xml:space="preserve">
+    <value>Jogo não encontrado.</value>
+  </data>
+  <data name="NumberBetDuplicated" xml:space="preserve">
+    <value>Números duplicados.</value>
+  </data>
   <data name="PasswordNotTheSame" xml:space="preserve">
     <value>As senhas estão diferentes.</value>
   </data>

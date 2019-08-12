@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bolao.Infra.Migrations
 {
     [DbContext(typeof(BolaoContext))]
-    [Migration("20190811161509_novo3")]
-    partial class novo3
+    [Migration("20190812012204_novo")]
+    partial class novo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,7 +71,7 @@ namespace Bolao.Infra.Migrations
 
                     b.HasKey("ContactTypeId");
 
-                    b.ToTable("ContactTypes");
+                    b.ToTable("ContactType");
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.Lottery", b =>
@@ -180,6 +180,10 @@ namespace Bolao.Infra.Migrations
                     b.Property<int>("TypeBetId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CountNumberBet");
+
+                    b.Property<int>("CountNumberResult");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
@@ -234,7 +238,7 @@ namespace Bolao.Infra.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UsersContactTypes");
+                    b.ToTable("UserContactType");
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.UserSecurity", b =>
@@ -244,7 +248,7 @@ namespace Bolao.Infra.Migrations
 
                     b.Property<Guid>("TokenCreateConfirmed");
 
-                    b.Property<Guid>("TokenForgotPassword");
+                    b.Property<Guid?>("TokenForgotPassword");
 
                     b.Property<Guid>("UserId");
 
@@ -282,12 +286,12 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.Lottery", "Lottery")
                         .WithMany()
                         .HasForeignKey("LotteryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Bolao.Domain.Domains.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.Lottery", b =>
@@ -295,7 +299,7 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.TypeBet", "TypeBet")
                         .WithMany()
                         .HasForeignKey("TypeBetId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.LotteryNumberBet", b =>
@@ -303,7 +307,7 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.Ticket", "Ticket")
                         .WithMany()
                         .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.LotteryNumberResult", b =>
@@ -311,7 +315,7 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.Lottery", "Lottery")
                         .WithMany("ListNumbersResult")
                         .HasForeignKey("LoterryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.OwnerJackpot", b =>
@@ -319,7 +323,7 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.Lottery", "Lottery")
                         .WithMany()
                         .HasForeignKey("LotteryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.Ticket", b =>
@@ -340,7 +344,7 @@ namespace Bolao.Infra.Migrations
                                 .HasColumnName("Email")
                                 .HasMaxLength(80);
 
-                            b1.ToTable("User");
+                            b1.ToTable("Email");
 
                             b1.HasOne("Bolao.Domain.Domains.User")
                                 .WithOne("Email")
@@ -354,12 +358,12 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.ContactType", "ContactType")
                         .WithMany("UsersContactTypes")
                         .HasForeignKey("ContactTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Bolao.Domain.Domains.User", "User")
                         .WithMany("UsersContactTypes")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.UserSecurity", b =>
@@ -367,7 +371,7 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.User", "User")
                         .WithOne("UserSecurity")
                         .HasForeignKey("Bolao.Domain.Domains.UserSecurity", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Bolao.Domain.Domains.WinnerJackpot", b =>
@@ -375,12 +379,12 @@ namespace Bolao.Infra.Migrations
                     b.HasOne("Bolao.Domain.Domains.Lottery", "Lottery")
                         .WithMany()
                         .HasForeignKey("LotteryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Bolao.Domain.Domains.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

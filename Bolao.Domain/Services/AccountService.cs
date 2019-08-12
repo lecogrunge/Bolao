@@ -40,7 +40,7 @@ namespace Bolao.Domain.Services
 			// Verificar usuário existe
 			User user = _userRepository.AuthUser(email.EmailAddress, request.Password.CryptPassword());
             if (user == null)
-                response.AddError(new ErrorResponseBase { Message = Msg.InvalidAuth, Property = null});
+                response.AddError(new ErrorResponseBase(string.Empty, Msg.InvalidAuth)); 
 
             if (!response.IsValid())
                 return response;
@@ -70,7 +70,7 @@ namespace Bolao.Domain.Services
                 response.AddErrorValidationResult(userResult);
             
             if (_userRepository.IsEmailExist(user.Email.EmailAddress))
-                response.AddError(new ErrorResponseBase {Message = Msg.EmailExists, Property = "Email" });
+                response.AddError(new ErrorResponseBase("Email", Msg.EmailExists));
 
             if(!response.IsValid())
                 return response;
@@ -91,13 +91,13 @@ namespace Bolao.Domain.Services
 			ConfirmAccountResponse response = new ConfirmAccountResponse();
 
 			User user = _userRepository.GetUserByTokenConfirmation(token);
-			if (user != null)
-			{
-				user.ActiveUser();
-				_userRepository.Update(user);
-			}
-			else
-				response.AddError(new ErrorResponseBase { Message = Msg.InvalidConfirmToken, Property = string.Empty });
+            if (user != null)
+            {
+                user.ActiveUser();
+                _userRepository.Update(user);
+            }
+            else
+                response.AddError(new ErrorResponseBase(string.Empty, Msg.InvalidConfirmToken));
 
 			return response;
 		}
@@ -134,14 +134,14 @@ namespace Bolao.Domain.Services
 			// Validation
 			if (!request.NewPassword.Equals(request.NewPasswordConfirm))
 			{
-				response.AddError(new ErrorResponseBase { Message = Msg.PasswordNotTheSame, Property = "Password" });
+				response.AddError(new ErrorResponseBase("Password", Msg.PasswordNotTheSame));
 				return response;
 			}
 
 			User user = _userRepository.GetUserByTokenForgotPassword(request.Token);
 			if (user == null)
 			{
-				response.AddError(new ErrorResponseBase { Message = Msg.InvalidForgotPasswordToken, Property = string.Empty });
+				response.AddError(new ErrorResponseBase(string.Empty, Msg.InvalidForgotPasswordToken));
 				return response;
 			}
 

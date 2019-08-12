@@ -17,7 +17,7 @@ namespace Bolao.Domain.Arguments.Base
         public void AddErrorValidationResult(ValidationResult validation)
         {
             foreach (ValidationFailure item in validation.Errors)
-                Errors.Add(new ErrorResponseBase { Property = item.PropertyName, Message = item.ErrorMessage });
+                Errors.Add(new ErrorResponseBase(item.PropertyName, item.ErrorMessage));
         }
 
 		public void AddError(ErrorResponseBase error)

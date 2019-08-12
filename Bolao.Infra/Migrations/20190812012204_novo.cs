@@ -14,7 +14,7 @@ namespace Bolao.Infra.Migrations
                 {
                     BankId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -22,7 +22,7 @@ namespace Bolao.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContactTypes",
+                name: "ContactType",
                 columns: table => new
                 {
                     ContactTypeId = table.Column<int>(nullable: false)
@@ -31,7 +31,7 @@ namespace Bolao.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContactTypes", x => x.ContactTypeId);
+                    table.PrimaryKey("PK_ContactType", x => x.ContactTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -40,8 +40,10 @@ namespace Bolao.Infra.Migrations
                 {
                     TypeBetId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    CountNumberResult = table.Column<int>(nullable: false),
+                    CountNumberBet = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +57,6 @@ namespace Bolao.Infra.Migrations
                     UserId = table.Column<Guid>(nullable: false),
                     FisrtName = table.Column<string>(maxLength: 15, nullable: false),
                     LastName = table.Column<string>(maxLength: 30, nullable: false),
-                    Email = table.Column<string>(maxLength: 80, nullable: false),
                     Password = table.Column<string>(maxLength: 50, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "DateTime", nullable: false),
                     Active = table.Column<bool>(nullable: false)
@@ -86,11 +87,29 @@ namespace Bolao.Infra.Migrations
                         column: x => x.TypeBetId,
                         principalTable: "TypeBet",
                         principalColumn: "TypeBetId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Email",
+                columns: table => new
+                {
+                    Email = table.Column<string>(maxLength: 80, nullable: false),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Email", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_Email_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UsersContactTypes",
+                name: "UserContactType",
                 columns: table => new
                 {
                     UserContactTypeId = table.Column<int>(nullable: false)
@@ -100,19 +119,19 @@ namespace Bolao.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsersContactTypes", x => x.UserContactTypeId);
+                    table.PrimaryKey("PK_UserContactType", x => x.UserContactTypeId);
                     table.ForeignKey(
-                        name: "FK_UsersContactTypes_ContactTypes_ContactTypeId",
+                        name: "FK_UserContactType_ContactType_ContactTypeId",
                         column: x => x.ContactTypeId,
-                        principalTable: "ContactTypes",
+                        principalTable: "ContactType",
                         principalColumn: "ContactTypeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_UsersContactTypes_User_UserId",
+                        name: "FK_UserContactType_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,7 +140,7 @@ namespace Bolao.Infra.Migrations
                 {
                     UserSecurityId = table.Column<Guid>(nullable: false),
                     TokenCreateConfirmed = table.Column<Guid>(nullable: false),
-                    TokenForgotPassword = table.Column<Guid>(nullable: false),
+                    TokenForgotPassword = table.Column<Guid>(nullable: true),
                     UserId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -132,7 +151,7 @@ namespace Bolao.Infra.Migrations
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -155,13 +174,13 @@ namespace Bolao.Infra.Migrations
                         column: x => x.LotteryId,
                         principalTable: "Lottery",
                         principalColumn: "LoterryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Buy_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,7 +189,7 @@ namespace Bolao.Infra.Migrations
                 {
                     LotteryNumberResultId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Number = table.Column<string>(nullable: true),
+                    Number = table.Column<string>(maxLength: 2, nullable: false),
                     LoterryId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -181,7 +200,7 @@ namespace Bolao.Infra.Migrations
                         column: x => x.LoterryId,
                         principalTable: "Lottery",
                         principalColumn: "LoterryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,7 +221,7 @@ namespace Bolao.Infra.Migrations
                         column: x => x.LotteryId,
                         principalTable: "Lottery",
                         principalColumn: "LoterryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -223,13 +242,13 @@ namespace Bolao.Infra.Migrations
                         column: x => x.LotteryId,
                         principalTable: "Lottery",
                         principalColumn: "LoterryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_WinnerJackpot_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -268,7 +287,7 @@ namespace Bolao.Infra.Migrations
                         column: x => x.TicketId,
                         principalTable: "Ticket",
                         principalColumn: "TicketId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -307,13 +326,13 @@ namespace Bolao.Infra.Migrations
                 column: "BuyId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UsersContactTypes_ContactTypeId",
-                table: "UsersContactTypes",
+                name: "IX_UserContactType_ContactTypeId",
+                table: "UserContactType",
                 column: "ContactTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UsersContactTypes_UserId",
-                table: "UsersContactTypes",
+                name: "IX_UserContactType_UserId",
+                table: "UserContactType",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -339,6 +358,9 @@ namespace Bolao.Infra.Migrations
                 name: "Bank");
 
             migrationBuilder.DropTable(
+                name: "Email");
+
+            migrationBuilder.DropTable(
                 name: "LotteryNumberBet");
 
             migrationBuilder.DropTable(
@@ -348,7 +370,7 @@ namespace Bolao.Infra.Migrations
                 name: "OwnerJackpot");
 
             migrationBuilder.DropTable(
-                name: "UsersContactTypes");
+                name: "UserContactType");
 
             migrationBuilder.DropTable(
                 name: "UserSecurity");
@@ -360,7 +382,7 @@ namespace Bolao.Infra.Migrations
                 name: "Ticket");
 
             migrationBuilder.DropTable(
-                name: "ContactTypes");
+                name: "ContactType");
 
             migrationBuilder.DropTable(
                 name: "Buy");

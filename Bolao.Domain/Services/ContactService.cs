@@ -1,4 +1,5 @@
 ﻿using Bolao.CrossCutting.Messages;
+using Bolao.Domain.Arguments.Base;
 using Bolao.Domain.Arguments.Contact;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.ObjectValue;
@@ -27,14 +28,14 @@ namespace Bolao.Domain.Services
 			if (!emailResult.IsValid)
 				response.AddErrorValidationResult(emailResult);
 
-			if (string.IsNullOrEmpty(request.Name))
-				response.AddError(new Arguments.Base.ErrorResponseBase { Property = "Name", Message = string.Format(Msg.RequiredFieldX, "Nome") });
+            if (string.IsNullOrEmpty(request.Name))
+                response.AddError(new ErrorResponseBase("Name", string.Format(Msg.RequiredFieldX, "Nome")));
 
-			if (string.IsNullOrEmpty(request.Subject))
-				response.AddError(new Arguments.Base.ErrorResponseBase { Property = "Subject", Message = string.Format(Msg.RequiredFieldX, "Assunto") });
+            if (string.IsNullOrEmpty(request.Subject))
+                response.AddError(new ErrorResponseBase("Subject", string.Format(Msg.RequiredFieldX, "Assunto")));
 
-			if (string.IsNullOrEmpty(request.Message))
-				response.AddError(new Arguments.Base.ErrorResponseBase { Property = "Message", Message = string.Format(Msg.RequiredFieldX, "Mensagem") });
+            if (string.IsNullOrEmpty(request.Message))
+                response.AddError(new ErrorResponseBase("Message", string.Format(Msg.RequiredFieldX, "Mensagem")));
 
 			if (!response.IsValid())
 				return response;

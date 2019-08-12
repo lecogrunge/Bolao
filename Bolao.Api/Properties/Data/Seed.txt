@@ -7,7 +7,7 @@ insert into usersecurity values ('266c1514-2147-45e3-9635-3891d46b6178', 'f9cc04
 
 
 -- TypeBet
-insert into TypeBet values (1, 'Sena15Numbers', 'descrição');
+insert into TypeBet values (1, 'Sena15Numbers', 'descrição', 6, 15);
 
 -- Lottery
 insert into Lottery values ('2a0869ba-d0e9-44d1-8204-1c6a0ef0608c', 17.50, (NOW() + INTERVAL 1 DAY), NOW(), (NOW() + INTERVAL 3 DAY), (NOW() + INTERVAL 3 DAY), 3, 1);

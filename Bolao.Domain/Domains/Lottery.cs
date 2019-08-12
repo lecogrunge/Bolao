@@ -7,8 +7,6 @@ namespace Bolao.Domain.Domains
     public sealed class Lottery
     {
         #region Constructor
-        
-
         public Lottery(decimal price, DateTime startDateBet, DateTime endDateBet, DateTime lotteryDateBet, int typeBetId)
         {
             LoterryId = Guid.NewGuid();

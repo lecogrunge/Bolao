@@ -142,6 +142,33 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quantidade de números informados é inválido..
+        /// </summary>
+        public static string LimiteLotteryResultInvalid {
+            get {
+                return ResourceManager.GetString("LimiteLotteryResultInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jogo não encontrado..
+        /// </summary>
+        public static string LotteryNotFound {
+            get {
+                return ResourceManager.GetString("LotteryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Números duplicados..
+        /// </summary>
+        public static string NumberBetDuplicated {
+            get {
+                return ResourceManager.GetString("NumberBetDuplicated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to As senhas estão diferentes..
         /// </summary>
         public static string PasswordNotTheSame {

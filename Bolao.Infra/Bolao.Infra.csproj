@@ -8,6 +8,11 @@
     <Compile Remove="Migrations\20190426030136_myfirstmigration1.cs" />
     <Compile Remove="Migrations\20190811153124_novo.cs" />
     <Compile Remove="Migrations\20190811155851_novo.cs" />
+    <Compile Remove="Migrations\20190811160857_novo.cs" />
+    <Compile Remove="Migrations\20190811161200_novo2.cs" />
+    <Compile Remove="Migrations\20190811161509_novo3.cs" />
+    <Compile Remove="Migrations\20190811171815_novo4.cs" />
+    <Compile Remove="Migrations\20190812004938_novo5.cs" />
   </ItemGroup>
 
   <ItemGroup>

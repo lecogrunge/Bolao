@@ -2,7 +2,8 @@
 using Bolao.Domain.ObjectValue;
 using Bolao.Infra.Persistence.EF.Map;
 using Microsoft.EntityFrameworkCore;
-using System;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq;
 
 namespace Bolao.Infra.Persistence.EF
 {
@@ -42,6 +43,19 @@ namespace Bolao.Infra.Persistence.EF
             modelBuilder.ApplyConfiguration(new MapOwnerJackpot());
             modelBuilder.ApplyConfiguration(new MapBuy());
 
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                // equivalent of modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+                entityType.Relational().TableName = entityType.DisplayName();
+
+                // equivalent of modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+                // and modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+                entityType.GetForeignKeys()
+                    .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade)
+                    .ToList()
+                    .ForEach(fk => fk.DeleteBehavior = DeleteBehavior.Restrict);
+            }
+
             base.OnModelCreating(modelBuilder);
             //this.Seed(modelBuilder);
         }
@@ -53,36 +67,36 @@ namespace Bolao.Infra.Persistence.EF
             //modelBuilder.Entity<User>().HasData(user);
             //#endregion
 
-            #region TypeBet
-            TypeBet typeBet = new TypeBet("Sena15Numbers", "Descição");
+            //#region TypeBet
+            //TypeBet typeBet = new TypeBet("Sena15Numbers", "Descição");
             
-            modelBuilder.Entity<TypeBet>().HasData(typeBet);
-            #endregion
+            //modelBuilder.Entity<TypeBet>().HasData(typeBet);
+            //#endregion
 
-            #region Lottery
-            Lottery lottery = new Lottery(17, DateTime.Now, DateTime.Now.AddDays(7), DateTime.Now.AddDays(8), typeBet.TypeBetId);
-            modelBuilder.Entity<TypeBet>().HasData(new TypeBet("Sena15Numbers", "Descição"));
-            #endregion
+            //#region Lottery
+            //Lottery lottery = new Lottery(17, DateTime.Now, DateTime.Now.AddDays(7), DateTime.Now.AddDays(8), typeBet.TypeBetId);
+            //modelBuilder.Entity<TypeBet>().HasData(new TypeBet("Sena15Numbers", "Descição"));
+            //#endregion
 
-            #region LotteryNumberResult            
-            #region Resultado 1
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("01", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("02", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("03", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("04", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("05", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("06", lottery.LoterryId));
-            #endregion
+            //#region LotteryNumberResult            
+            //#region Resultado 1
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("01", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("02", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("03", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("04", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("05", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("06", lottery.LoterryId));
+            //#endregion
 
-            #region Resultado 2
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("07", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("08", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("09", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("10", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("11", lottery.LoterryId));
-            modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("12", lottery.LoterryId));
-            #endregion
-            #endregion
+            //#region Resultado 2
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("07", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("08", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("09", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("10", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("11", lottery.LoterryId));
+            //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("12", lottery.LoterryId));
+            //#endregion
+            //#endregion
         }
     }
 }
