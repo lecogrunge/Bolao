@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bolao.Domain.Arguments.Lottery
 {
-	public sealed class MakeBetRequest
-	{
-		public Guid LotteryId { get; set; }
-		public decimal LotteryPrice { get; set; }
-		public decimal TotalUnitBet { get; set; }
-		public Guid UserId { get; set; }
+    public sealed class MakeBetRequest
+    {
+        public Guid LotteryId { get; set; }
 
-		public string[] BetNumbers { get; set; }
-	}
+        public ICollection<BetNumber> BetNumbers { get; set; }
+
+        public struct BetNumber
+        {
+            public string[] Numbers { get; set; }
+        }
+    }
 }

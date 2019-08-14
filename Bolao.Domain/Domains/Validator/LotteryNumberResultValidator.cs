@@ -9,12 +9,19 @@ namespace Bolao.Domain.Domains.Validator
 		{
 			RuleFor(x => x.Number).Cascade(CascadeMode.StopOnFirstFailure)
 								  .NotEmpty().WithMessage(string.Format(Msg.InvalidField, "Número"))
-								  .Must(ValidarNumero).WithMessage(Msg.InvalidNumberLottery);
+								  .Must(ValidateNumberSize).WithMessage(Msg.InvalidNumberLottery)
+                                  .Must(ValidateIsNumber).WithMessage(Msg.InvalidNumberLottery);
 		}
 
-		private bool ValidarNumero(string number)
+		private bool ValidateNumberSize(string number)
 		{
 			return number.Length == 2;
 		}
+
+        // TODO
+        private bool ValidateIsNumber(string number)
+        {
+            return false;
+        }
 	}
 }

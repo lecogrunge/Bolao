@@ -7,7 +7,14 @@ namespace Bolao.Domain.Services
 	{
 		public MakeBetResponse MakeBet(MakeBetRequest request)
 		{
-			throw new System.NotImplementedException();
+            MakeBetResponse response = new MakeBetResponse();
+
+            foreach (var item in request.BetNumbers)
+            {
+                
+            }
+
+            return response;
 		}
 	}
 }
