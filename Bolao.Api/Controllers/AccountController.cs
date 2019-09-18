@@ -1,6 +1,7 @@
 ﻿using Bolao.Api.Controllers.Base;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services;
+using Bolao.Domain.Interfaces.UnitOfWork;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

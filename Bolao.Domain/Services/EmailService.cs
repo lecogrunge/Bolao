@@ -10,7 +10,7 @@ namespace Bolao.Domain.Services
 		{
 
 			EmailSmtp smtp = new EmailSmtp();
-			smtp.Send("contato@bolao.com.br", string.Format("[Contato] - {0}", subject), message);
+			smtp.Send("wellington_fernands@yahoo.com.br", string.Format("[Contato] - {0}", subject), message);
 		}
 
         public void SendEmailForgotPassword(string to, Guid token)

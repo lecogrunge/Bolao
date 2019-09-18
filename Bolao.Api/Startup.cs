@@ -1,6 +1,7 @@
 ﻿using Bolao.Api.Core.Compression;
 using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
+using Bolao.Domain.Interfaces.UnitOfWork;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
 using Bolao.Infra.Persistence.Repositories;
@@ -56,11 +57,6 @@ namespace Bolao.Api
 			services.AddTransient<ITicketService, TicketService>();
 			services.AddTransient<IEmailService, EmailService>();
 			services.AddTransient<IContactService, ContactService>();
-
-			// Repositories
-			services.AddTransient<IUserRepository, UserRepository>();
-			services.AddTransient<ILotteryReposiory, LotteryRepository>();
-			services.AddTransient<IUserSecurityRepository, UserSecurityRepository>();
             #endregion
 
             #region Identity

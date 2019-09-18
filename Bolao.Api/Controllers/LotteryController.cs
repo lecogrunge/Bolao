@@ -1,7 +1,7 @@
 ﻿using Bolao.Api.Controllers.Base;
 using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Interfaces.Services;
-using Bolao.Infra.Transaction;
+using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

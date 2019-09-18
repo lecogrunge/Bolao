@@ -1,12 +1,12 @@
 ﻿using Bolao.CrossCutting.Messages;
-using Bolao.Infra.Transaction;
+using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers.Base
 {
-	public class BaseController : Controller
+    public class BaseController : Controller
 	{
 		protected readonly IUnitOfWork _unitOfWork;
 
