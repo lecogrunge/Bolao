@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Bolao.Infra.Persistence.Repositories
 {
-	public sealed class UserSecurityRepository : RepositoryBase<UserSecurity>, IUserSecurityRepository
+	public sealed class UserSecurityRepository : RepositoryBase<UserSecurity, BolaoContext>, IUserSecurityRepository
 	{
 		public UserSecurityRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
 

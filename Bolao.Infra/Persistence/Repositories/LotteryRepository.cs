@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Bolao.Infra.Persistence.Repositories
 {
-	public sealed class LotteryRepository : RepositoryBase<Lottery>, ILotteryReposiory
+	public sealed class LotteryRepository : RepositoryBase<Lottery, BolaoContext>, ILotteryReposiory
 	{
 		public LotteryRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
 

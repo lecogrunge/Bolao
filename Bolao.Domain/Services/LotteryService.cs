@@ -45,13 +45,13 @@ namespace Bolao.Domain.Services
 
             if (lottery == null)
             {
-                response.AddError(new ErrorResponseBase(string.Empty, Msg.LotteryNotFound));
+                response.AddError(new ErrorResponse(string.Empty, Msg.LotteryNotFound));
                 return response;
             }
 
             if (request.Numbers.Count() != lottery.TypeBet.CountNumberResult)
             {
-                response.AddError(new ErrorResponseBase("Number", Msg.LimiteLotteryResultInvalid));
+                response.AddError(new ErrorResponse("Number", Msg.LimiteLotteryResultInvalid));
                 return response;
             }
 
@@ -69,7 +69,7 @@ namespace Bolao.Domain.Services
 
                 if (lottery.ListNumbersResult.Any(s => s.Number.Contains(item)))
                 {
-                    response.AddError(new ErrorResponseBase("Number", Msg.NumberBetDuplicated));
+                    response.AddError(new ErrorResponse("Number", Msg.NumberBetDuplicated));
                     return response;
                 }
 

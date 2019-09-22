@@ -29,13 +29,13 @@ namespace Bolao.Domain.Services
 				response.AddErrorValidationResult(emailResult);
 
             if (string.IsNullOrEmpty(request.Name))
-                response.AddError(new ErrorResponseBase("Name", string.Format(Msg.RequiredFieldX, "Nome")));
+                response.AddError(new ErrorResponse("Name", string.Format(Msg.RequiredFieldX, "Nome")));
 
             if (string.IsNullOrEmpty(request.Subject))
-                response.AddError(new ErrorResponseBase("Subject", string.Format(Msg.RequiredFieldX, "Assunto")));
+                response.AddError(new ErrorResponse("Subject", string.Format(Msg.RequiredFieldX, "Assunto")));
 
             if (string.IsNullOrEmpty(request.Message))
-                response.AddError(new ErrorResponseBase("Message", string.Format(Msg.RequiredFieldX, "Mensagem")));
+                response.AddError(new ErrorResponse("Message", string.Format(Msg.RequiredFieldX, "Mensagem")));
 
 			if (!response.IsValid())
 				return response;

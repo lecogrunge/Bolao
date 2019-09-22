@@ -20,7 +20,7 @@ namespace Bolao.Api.Controllers.Base
 		{
 			try
 			{
-				_unitOfWork.Commit();
+				_unitOfWork.CommitTransaction();
 				return Ok(result);
 			}
 			catch (Exception ex)

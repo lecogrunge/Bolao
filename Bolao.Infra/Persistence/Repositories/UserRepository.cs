@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace Bolao.Infra.Persistence.Repositories
 {
-	public sealed class UserRepository : RepositoryBase<User>, IUserRepository
+    public sealed class UserRepository : RepositoryBase<User, BolaoContext>, IUserRepository
 	{
-		public UserRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
+		public UserRepository(BolaoContext _context) : base(_context) { }
 
 		public User AuthUser(string email, string password)
 		{

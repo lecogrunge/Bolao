@@ -5,7 +5,6 @@ namespace Bolao.Domain.Interfaces.Arguments
 {
 	public interface IResponseBase
 	{
-		bool IsValid();
-		IList<ErrorResponseBase> GetErrors();
+		IList<ErrorResponse> GetErrors();
 	}
 }

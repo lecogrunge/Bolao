@@ -40,7 +40,7 @@ namespace Bolao.Domain.Services
 			// Verificar usuário existe
 			User user = _userRepository.AuthUser(email.EmailAddress, request.Password.CryptPassword());
             if (user == null)
-                response.AddError(new ErrorResponseBase(string.Empty, Msg.InvalidAuth)); 
+                response.AddError(new ErrorResponse(string.Empty, Msg.InvalidAuth)); 
 
             if (!response.IsValid())
                 return response;
@@ -70,7 +70,7 @@ namespace Bolao.Domain.Services
                 response.AddErrorValidationResult(userResult);
             
             if (_userRepository.IsEmailExist(user.Email.EmailAddress))
-                response.AddError(new ErrorResponseBase("Email", Msg.EmailExists));
+                response.AddError(new ErrorResponse("Email", Msg.EmailExists));
 
             if(!response.IsValid())
                 return response;
@@ -97,7 +97,7 @@ namespace Bolao.Domain.Services
                 _userRepository.Update(user);
             }
             else
-                response.AddError(new ErrorResponseBase(string.Empty, Msg.InvalidConfirmToken));
+                response.AddError(new ErrorResponse(string.Empty, Msg.InvalidConfirmToken));
 
 			return response;
 		}
@@ -134,14 +134,14 @@ namespace Bolao.Domain.Services
 			// Validation
 			if (!request.NewPassword.Equals(request.NewPasswordConfirm))
 			{
-				response.AddError(new ErrorResponseBase("Password", Msg.PasswordNotTheSame));
+				response.AddError(new ErrorResponse("Password", Msg.PasswordNotTheSame));
 				return response;
 			}
 
 			User user = _userRepository.GetUserByTokenForgotPassword(request.Token);
 			if (user == null)
 			{
-				response.AddError(new ErrorResponseBase(string.Empty, Msg.InvalidForgotPasswordToken));
+				response.AddError(new ErrorResponse(string.Empty, Msg.InvalidForgotPasswordToken));
 				return response;
 			}
 

@@ -9,18 +9,18 @@ namespace Bolao.Domain.Arguments.Base
     {
 		public ResponseBase()
 		{
-			Errors = new List<ErrorResponseBase>();
+			Errors = new List<ErrorResponse>();
 		}
 
-		protected IList<ErrorResponseBase> Errors { get; private set; }
+		protected IList<ErrorResponse> Errors { get; private set; }
 
         public void AddErrorValidationResult(ValidationResult validation)
         {
             foreach (ValidationFailure item in validation.Errors)
-                Errors.Add(new ErrorResponseBase(item.PropertyName, item.ErrorMessage));
+                Errors.Add(new ErrorResponse(item.PropertyName, item.ErrorMessage));
         }
 
-		public void AddError(ErrorResponseBase error)
+		public void AddError(ErrorResponse error)
 		{
 			Errors.Add(error);
 		}
@@ -30,7 +30,7 @@ namespace Bolao.Domain.Arguments.Base
             return !Errors.Any();
         }
 
-        public IList<ErrorResponseBase> GetErrors()
+        public IList<ErrorResponse> GetErrors()
         {
             return this.Errors;
         }

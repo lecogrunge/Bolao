@@ -1,19 +1,19 @@
-﻿using System;
+﻿using Bolao.Domain.Interfaces.Repositories.Base;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Bolao.Domain.Interfaces.Repositories.Base;
-using Bolao.Infra.Persistence.EF;
-using Microsoft.EntityFrameworkCore;
 
 namespace Bolao.Infra.Persistence.Repositories.Base
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+    public abstract class RepositoryBase<TEntity, TContext> : IRepositoryBase<TEntity> where TEntity : class 
+                                                                              where TContext : DbContext
     {
-        protected BolaoContext _context { get; set; }
+        protected TContext _context { get; set; }
 
-        public RepositoryBase(BolaoContext context)
+        public RepositoryBase(TContext context)
         {
             this._context = context;
         }

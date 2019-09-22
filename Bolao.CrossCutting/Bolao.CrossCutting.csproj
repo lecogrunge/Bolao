@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Messages\Msg.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -45,7 +45,7 @@ namespace Bolao.Api.Controllers
 
 			return BadRequest(response.GetErrors());
 		}
-
+           
 		[HttpGet]
 		[Route("confirm-account")]
 		public async Task<IActionResult> ConfirmAccount(Guid token)
