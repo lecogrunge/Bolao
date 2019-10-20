@@ -1,8 +1,10 @@
 ﻿using Bolao.Api.Controllers.Base;
+using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
@@ -18,16 +20,23 @@ namespace Bolao.Api.Controllers
             _ticketService = ticketService;
         }
 
-		[HttpPost]
-		[Route("MakeBet")]
-		public async Task<IActionResult> MakeBet(MakeBetRequest request)
-		{
-			MakeBetResponse response = _ticketService.MakeBet(request);
+        [HttpPost]
+        [Route("MakeBet")]
+        public async Task<IActionResult> MakeBet(MakeBetRequest request)
+        {
+            try
+            {
+                MakeBetResponse response = _ticketService.MakeBet(request);
 
-			if (response.IsValid())
-				return await ResponseAsync(response);
+                if (response.IsValid())
+                    return await ResponseAsync(response);
 
-			return BadRequest(response.GetErrors());
-		}
-	}
+                return BadRequest(response.GetErrors());
+            }
+            catch (Exception)
+            {
+                return BadRequest(Msg.ErrorGeneric400);
+            }
+        }
+    }
 }

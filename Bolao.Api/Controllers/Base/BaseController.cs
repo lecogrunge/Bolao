@@ -1,7 +1,7 @@
-﻿using Bolao.CrossCutting.Messages;
-using Bolao.Domain.Interfaces.UnitOfWork;
+﻿using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers.Base
@@ -25,8 +25,8 @@ namespace Bolao.Api.Controllers.Base
 			}
 			catch (Exception ex)
 			{
-				return BadRequest(Msg.ErrorGeneric400);
-			}
+                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
+            }
 		}
 	}
 }

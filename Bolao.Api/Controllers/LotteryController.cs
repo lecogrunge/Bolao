@@ -1,8 +1,10 @@
 ﻿using Bolao.Api.Controllers.Base;
+using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
@@ -21,34 +23,55 @@ namespace Bolao.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> ListLotteries(bool active)
         {
-            ListLotteryResponse response = _lotteryService.ListLottery(active);
+            try
+            {
+                ListLotteryResponse response = _lotteryService.ListLottery(active);
 
-            if (response.IsValid())
-                return await ResponseAsync(response);
+                if (response.IsValid())
+                    return await ResponseAsync(response);
 
-            return BadRequest(response.GetErrors());
+                return BadRequest(response.GetErrors());
+            }
+            catch (Exception)
+            {
+                return BadRequest(Msg.ErrorGeneric400);
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateLottery(CreateLotteryRequest request)
         {
-            CreateLotteryResponse response = _lotteryService.CreateLottery(request);
+            try
+            {
+                CreateLotteryResponse response = _lotteryService.CreateLottery(request);
 
-            if (response.IsValid())
-                return await ResponseAsync(response);
+                if (response.IsValid())
+                    return await ResponseAsync(response);
 
-            return BadRequest(response.GetErrors());
+                return BadRequest(response.GetErrors());
+            }
+            catch (Exception)
+            {
+                return BadRequest(Msg.ErrorGeneric400);
+            }
         }
 
         [HttpPost("InsertNumbersLotteryResult")]
         public async Task<IActionResult> InsertNumbersLotteryResult(NumberLotteryRequest request)
         {
-            NumberLotteryResponse response = _lotteryService.InsertNumbersLotteryResult(request);
+            try
+            {
+                NumberLotteryResponse response = _lotteryService.InsertNumbersLotteryResult(request);
 
-            if (response.IsValid())
-                return await ResponseAsync(response);
+                if (response.IsValid())
+                    return await ResponseAsync(response);
 
-            return BadRequest(response.GetErrors());
+                return BadRequest(response.GetErrors());
+            }
+            catch (Exception)
+            {
+                return BadRequest(Msg.ErrorGeneric400);
+            }
         }
     }
 }
