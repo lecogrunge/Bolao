@@ -1,4 +1,5 @@
-﻿using Bolao.Domain.Interfaces.Arguments;
+﻿using Bolao.Domain.Arguments.Base.Error;
+using Bolao.Domain.Interfaces.Arguments;
 using FluentValidation.Results;
 using System.Collections.Generic;
 using System.Linq;

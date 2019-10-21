@@ -1,5 +1,5 @@
 ﻿using Bolao.CrossCutting.Messages;
-using Bolao.Domain.Arguments.Base;
+using Bolao.Domain.Arguments.Base.Error;
 using Bolao.Domain.Arguments.Contact;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.ObjectValue;

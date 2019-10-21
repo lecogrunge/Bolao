@@ -1,4 +1,4 @@
-﻿namespace Bolao.Domain.Arguments.Base
+﻿namespace Bolao.Domain.Arguments.Base.Error
 {
     public sealed class ErrorResponse
     {

@@ -1,6 +1,8 @@
-﻿namespace Bolao.Domain.Arguments.User
+﻿using Bolao.Domain.Arguments.Base;
+
+namespace Bolao.Domain.Arguments.User
 {
-    public sealed class CreateAccountRequest
+    public sealed class CreateAccountRequest : BaseRequest
     {
         public string FisrtName { get;  set; }
         public string LastName { get;  set; }

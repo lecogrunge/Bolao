@@ -1,9 +1,9 @@
-﻿using Bolao.Domain.Arguments.Base;
+﻿using Bolao.Domain.Arguments.Base.Error;
 using System.Collections.Generic;
 
 namespace Bolao.Domain.Interfaces.Arguments
 {
-	public interface IResponseBase
+    public interface IResponseBase
 	{
 		IList<ErrorResponse> GetErrors();
 	}

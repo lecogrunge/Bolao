@@ -1,6 +1,7 @@
 ﻿using Bolao.CrossCutting.Common;
 using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Base;
+using Bolao.Domain.Arguments.Base.Error;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
 using Bolao.Domain.Domains.Validator;
