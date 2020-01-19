@@ -1,18 +1,22 @@
 ﻿namespace Bolao.Domain.Domains
 {
     public sealed class TypeBet
-	{
+    {
         #region Constructor
-        protected TypeBet() { }
 
-		public TypeBet(string title, string description, int countNumberResult, int countNumberBet)
-		{
-			this.Title = title;
-            this.Description = description;
-            this.CountNumberResult = countNumberResult;
-            this.CountNumberBet = countNumberBet;
-		}
-        #endregion
+        protected TypeBet()
+        {
+        }
+
+        public TypeBet(string title, string description, int countNumberResult, int countNumberBet)
+        {
+            Title = title;
+            Description = description;
+            CountNumberResult = countNumberResult;
+            CountNumberBet = countNumberBet;
+        }
+
+        #endregion Constructor
 
         public int TypeBetId { get; private set; }
         public string Title { get; set; }

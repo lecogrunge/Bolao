@@ -9,6 +9,9 @@ namespace Bolao.Api.Core.Compression
         public string EncodingName => "br";
         public bool SupportsFlush => true;
 
-        public Stream CreateStream(Stream outputStream) => new BrotliStream(outputStream, CompressionLevel.Optimal, true);
+        public Stream CreateStream(Stream outputStream)
+        {
+            return new BrotliStream(outputStream, CompressionLevel.Optimal, true);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Bolao.Infra.Transaction
         private readonly BolaoContext _context;
         private IUserRepository _userRepository;
         private ILotteryReposiory _lotteryRepository;
-        private IUserSecurityRepository _userSecurityRepository;
+        private readonly IUserSecurityRepository _userSecurityRepository;
         private IDbContextTransaction _transaction;
 
         public UnitOfWork(BolaoContext context)
@@ -44,25 +44,10 @@ namespace Bolao.Infra.Transaction
             _context.Dispose();
         }
 
-        public IUserRepository UserRepository
-        {
-            get
-            {
-                return _userRepository = _userRepository ?? new UserRepository(_context);
-            }
-        }
+        public IUserRepository UserRepository => _userRepository = _userRepository ?? new UserRepository(_context);
 
-        public ILotteryReposiory LotteryReposiory
-        {
-            get
-            {
-                return _lotteryRepository = _lotteryRepository ?? new LotteryRepository(_context);
-            }
-        }
+        public ILotteryReposiory LotteryReposiory => _lotteryRepository = _lotteryRepository ?? new LotteryRepository(_context);
 
-        public IUserSecurityRepository UserSecurityRepository
-        {
-            get => _userSecurityRepository ?? new UserSecurityRepository(_context);
-        }
+        public IUserSecurityRepository UserSecurityRepository => _userSecurityRepository ?? new UserSecurityRepository(_context);
     }
 }

@@ -28,7 +28,9 @@ namespace Bolao.Api.Controllers
                 ListLotteryResponse response = _lotteryService.ListLottery(active);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }
@@ -46,7 +48,9 @@ namespace Bolao.Api.Controllers
                 CreateLotteryResponse response = _lotteryService.CreateLottery(request);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }
@@ -64,7 +68,9 @@ namespace Bolao.Api.Controllers
                 NumberLotteryResponse response = _lotteryService.InsertNumbersLotteryResult(request);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }

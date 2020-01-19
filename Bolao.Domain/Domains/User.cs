@@ -5,9 +5,11 @@ using System.Collections.Generic;
 
 namespace Bolao.Domain.Domains
 {
-	public sealed class User
+    public sealed class User
     {
-        protected User() { }
+        protected User()
+        {
+        }
 
         public User(string fisrtName, string lastName, Email email, string password)
         {
@@ -19,28 +21,28 @@ namespace Bolao.Domain.Domains
 
             CreatedAt = DateTime.Now;
             Active = false;
-			UserSecurity = new UserSecurity(UserId);
-			UsersContactTypes = new HashSet<UserContactType>();
+            UserSecurity = new UserSecurity(UserId);
+            UsersContactTypes = new HashSet<UserContactType>();
         }
 
         public Guid UserId { get; private set; }
-		public string FisrtName { get; private set; }
-		public string LastName { get; private set; }
-		public Email Email { get; private set; }
-		public string Password { get; private set; }
-		public DateTime CreatedAt { get; private set; }
-		public bool Active { get; private set; }
-		public ICollection<UserContactType> UsersContactTypes { get; set; }
-		public UserSecurity UserSecurity { get; private set; }
+        public string FisrtName { get; private set; }
+        public string LastName { get; private set; }
+        public Email Email { get; private set; }
+        public string Password { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public bool Active { get; private set; }
+        public ICollection<UserContactType> UsersContactTypes { get; set; }
+        public UserSecurity UserSecurity { get; private set; }
 
         public void ActiveUser()
-		{
-			this.Active = true;
-		}
+        {
+            Active = true;
+        }
 
         public void CryptPassword(string password)
         {
-            this.Password = password.CryptPassword();
+            Password = password.CryptPassword();
         }
     }
 }

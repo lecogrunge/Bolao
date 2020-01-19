@@ -2,8 +2,7 @@
 
 namespace Bolao.Domain.Arguments.User
 {
-	public sealed class ForgotPasswordResponse : ResponseBase
-	{
-
-	}
+    public sealed class ForgotPasswordResponse : ResponseBase
+    {
+    }
 }

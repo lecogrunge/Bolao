@@ -2,7 +2,9 @@
 {
     public sealed class Email
     {
-        protected Email() { }
+        protected Email()
+        {
+        }
 
         public Email(string address)
         {

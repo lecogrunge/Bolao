@@ -10,11 +10,13 @@ namespace Bolao.Infra.Persistence.EF
     public class BolaoContext : DbContext
     //public class BolaoContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
-        public BolaoContext(DbContextOptions<BolaoContext> options) : base(options) { }
+        public BolaoContext(DbContextOptions<BolaoContext> options) : base(options)
+        {
+        }
 
         public DbSet<User> Users { get; set; }
-		public DbSet<UserSecurity> UserSecurities { get; set; }
-		public DbSet<ContactType> ContactTypes { get; set; }
+        public DbSet<UserSecurity> UserSecurities { get; set; }
+        public DbSet<ContactType> ContactTypes { get; set; }
         public DbSet<UserContactType> UsersContactTypes { get; set; }
         public DbSet<TypeBet> TypeBets { get; set; }
         public DbSet<Lottery> Lotteries { get; set; }
@@ -43,7 +45,7 @@ namespace Bolao.Infra.Persistence.EF
             modelBuilder.ApplyConfiguration(new MapOwnerJackpot());
             modelBuilder.ApplyConfiguration(new MapBuy());
 
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            foreach (Microsoft.EntityFrameworkCore.Metadata.IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
             {
                 // equivalent of modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
                 entityType.Relational().TableName = entityType.DisplayName();
@@ -69,7 +71,7 @@ namespace Bolao.Infra.Persistence.EF
 
             //#region TypeBet
             //TypeBet typeBet = new TypeBet("Sena15Numbers", "Descição");
-            
+
             //modelBuilder.Entity<TypeBet>().HasData(typeBet);
             //#endregion
 
@@ -78,7 +80,7 @@ namespace Bolao.Infra.Persistence.EF
             //modelBuilder.Entity<TypeBet>().HasData(new TypeBet("Sena15Numbers", "Descição"));
             //#endregion
 
-            //#region LotteryNumberResult            
+            //#region LotteryNumberResult
             //#region Resultado 1
             //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("01", lottery.LoterryId));
             //modelBuilder.Entity<TypeBet>().HasData(new LotteryNumberBet("02", lottery.LoterryId));

@@ -29,7 +29,9 @@ namespace Bolao.Api.Controllers
                 MakeBetResponse response = _ticketService.MakeBet(request);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }

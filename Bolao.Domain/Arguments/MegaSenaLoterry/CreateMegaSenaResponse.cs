@@ -2,7 +2,7 @@
 
 namespace Bolao.Domain.Arguments.MegaSenaLoterry
 {
-	public sealed class CreateMegaSenaResponse : ResponseBase
-	{
-	}
+    public sealed class CreateMegaSenaResponse : ResponseBase
+    {
+    }
 }

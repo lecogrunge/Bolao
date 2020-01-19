@@ -12,7 +12,7 @@ namespace Bolao.Infra.Persistence.EF.Map
             builder.ToTable("UserContactType");
 
             // PK
-            builder.HasKey(x => new { x.UserContactTypeId});
+            builder.HasKey(x => new { x.UserContactTypeId });
 
             builder.HasOne(x => x.User)
                    .WithMany(x => x.UsersContactTypes)

@@ -9,6 +9,7 @@ namespace Bolao.CrossCutting.Common
     public static class Crypt
     {
         #region MD5
+
         public static string CryptMD5(this string valor)
         {
             MD5 md5Hash = MD5.Create();
@@ -26,10 +27,13 @@ namespace Bolao.CrossCutting.Common
 
             return sBuilder.ToString();
         }
-        #endregion
 
-        #region Crypt 
+        #endregion MD5
+
+        #region Crypt
+
         private const string securityKey = "c8ca050c-7674-472e-bfd6-8b63a3dd4f55";
+
         public static string CryptPassword(this string password)
         {
             byte[] clearBytes = Encoding.Unicode.GetBytes(password.Trim());
@@ -50,13 +54,14 @@ namespace Bolao.CrossCutting.Common
             }
             return password;
         }
-        #endregion
+
+        #endregion Crypt
 
         public static string CompressString(this string text)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(text);
-            var memoryStream = new MemoryStream();
-            using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Compress, true))
+            MemoryStream memoryStream = new MemoryStream();
+            using (GZipStream gZipStream = new GZipStream(memoryStream, CompressionMode.Compress, true))
             {
                 gZipStream.Write(buffer, 0, buffer.Length);
             }
@@ -75,7 +80,7 @@ namespace Bolao.CrossCutting.Common
         public static string DecompressString(this string compressedText)
         {
             byte[] gZipBuffer = Convert.FromBase64String(compressedText.Replace("@", "+"));
-            using (var memoryStream = new MemoryStream())
+            using (MemoryStream memoryStream = new MemoryStream())
             {
                 int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
                 memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
@@ -83,7 +88,7 @@ namespace Bolao.CrossCutting.Common
                 byte[] buffer = new byte[dataLength];
 
                 memoryStream.Position = 0;
-                using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                using (GZipStream gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
                 {
                     gZipStream.Read(buffer, 0, buffer.Length);
                 }

@@ -1,6 +1,4 @@
-﻿using FluentValidation.Results;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
 using System.Text;
 

@@ -12,8 +12,8 @@ namespace Bolao.Domain.Domains
 
         public Guid LotteryId { get; private set; }
         public Lottery Lottery { get; private set; }
-		
-		public Guid UserId { get; private set; }
-		public User User { get; private set; }
-	}
+
+        public Guid UserId { get; private set; }
+        public User User { get; private set; }
+    }
 }

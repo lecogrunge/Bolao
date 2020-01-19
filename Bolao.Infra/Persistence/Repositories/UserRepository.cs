@@ -11,7 +11,9 @@ namespace Bolao.Infra.Persistence.Repositories
 {
     public sealed class UserRepository : RepositoryBase<User, BolaoContext>, IUserRepository
     {
-        public UserRepository(BolaoContext _context) : base(_context) { }
+        public UserRepository(BolaoContext _context) : base(_context)
+        {
+        }
 
         public User AuthUser(string email, string password)
         {

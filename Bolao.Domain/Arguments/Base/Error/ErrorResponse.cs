@@ -7,8 +7,8 @@
 
         public ErrorResponse(string property, string message)
         {
-            this.Property = property;
-            this.Message = message;
+            Property = property;
+            Message = message;
         }
     }
 }

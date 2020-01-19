@@ -1,7 +1,7 @@
 ﻿namespace Bolao.Domain.Enum
 {
-	public enum EnumStatusPagSeguro
-	{
-		Aprovado = 1
-	}
+    public enum EnumStatusPagSeguro
+    {
+        Aprovado = 1
+    }
 }

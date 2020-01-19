@@ -32,7 +32,9 @@ namespace Bolao.Api.Controllers
                 ContactResponse response = _contactService.Contact(request);
 
                 if (response.IsValid())
+                {
                     return Json(true);
+                }
 
                 return BadRequest(response.GetErrors());
             }

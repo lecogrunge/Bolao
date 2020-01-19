@@ -3,9 +3,9 @@ using System;
 
 namespace Bolao.Domain.Arguments.MegaSenaLoterry
 {
-	public sealed class CreateMegaSenaRequest : BaseRequest
+    public sealed class CreateMegaSenaRequest : BaseRequest
     {
-		public DateTime LoterryDate { get; set; }
-		public string[] BetNumbers { get; set; }
-	}
+        public DateTime LoterryDate { get; set; }
+        public string[] BetNumbers { get; set; }
+    }
 }

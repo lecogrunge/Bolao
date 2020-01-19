@@ -1,10 +1,8 @@
 ﻿using Bolao.Api.Core.Compression;
-using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Interfaces.UnitOfWork;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
-using Bolao.Infra.Persistence.Repositories;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,41 +28,48 @@ namespace Bolao.Api
         public void ConfigureServices(IServiceCollection services)
         {
             #region Compression
+
             services.AddResponseCompression(options =>
             {
                 options.Providers.Add<BrotliCompressionProvider>();
                 options.EnableForHttps = true;
             });
-            #endregion
+
+            #endregion Compression
 
             //#region Sql Conection
             //services.AddDbContext<BolaoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
             //#endregion
 
             #region Mysql Connection
-            var connection = Configuration.GetConnectionString("SqlConnection");
+
+            string connection = Configuration.GetConnectionString("SqlConnection");
             services.AddDbContext<BolaoContext>(o => o.UseMySql(connection));
-            #endregion
+
+            #endregion Mysql Connection
 
             #region Injections
-            services.AddScoped<BolaoContext, BolaoContext>();
-			//services.AddScoped<IResponseBase, ResponseBase>();
 
-			// Services
-			services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<BolaoContext, BolaoContext>();
+            //services.AddScoped<IResponseBase, ResponseBase>();
+
+            // Services
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAccountService, AccountService>();
-			services.AddTransient<ILotteryService, LotteryService>();
-			services.AddTransient<ITicketService, TicketService>();
-			services.AddTransient<IEmailService, EmailService>();
-			services.AddTransient<IContactService, ContactService>();
-            #endregion
+            services.AddTransient<ILotteryService, LotteryService>();
+            services.AddTransient<ITicketService, TicketService>();
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IContactService, ContactService>();
+
+            #endregion Injections
 
             #region Identity
+
             //services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
             //    .AddEntityFrameworkStores<BolaoContext>()
             //   .AddDefaultTokenProviders();
 
-            //services.Configure<IdentityOptions>(options => 
+            //services.Configure<IdentityOptions>(options =>
             //{
             //    options.Password.RequireDigit = true;
             //    options.Password.RequiredLength = 8; // default: 6
@@ -74,7 +79,7 @@ namespace Bolao.Api
             //    options.Password.RequireUppercase = true;
             //});
 
-            //services.ConfigureApplicationCookie(options => 
+            //services.ConfigureApplicationCookie(options =>
             //{
             //    options.CookieHttpOnly = true;
             //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
@@ -83,21 +88,22 @@ namespace Bolao.Api
             //    options.AccessDeniedPath = "/Account/AccessDenied";
             //    options.SlidingExpiration = true; // quando passar da metade do tempo de expiração do cookie, renova!
             //});
-            #endregion
+
+            #endregion Identity
 
             services.AddCors();
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                     .AddJsonOptions(options =>
                     {
-                  //      options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                        //      options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
                     });
             services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 
             ConfigureSwaggerService(services);
         }
 
-        void ConfigureSwaggerService(IServiceCollection services)
+        private void ConfigureSwaggerService(IServiceCollection services)
         {
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -125,11 +131,15 @@ namespace Bolao.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+            }
             else
+            {
                 app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            }
 
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseResponseCompression();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
@@ -140,10 +150,11 @@ namespace Bolao.Api
             //#endregion
 
             #region Swagger
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
@@ -152,7 +163,8 @@ namespace Bolao.Api
                 c.DocumentTitle = "Growups API Documentation";
                 c.DocExpansion(DocExpansion.None);
             });
-            #endregion
+
+            #endregion Swagger
 
             app.UseMvc();
         }

@@ -5,6 +5,6 @@ namespace Bolao.Domain.Interfaces.Services
 {
     public interface ITicketService : IServiceBase
     {
-		MakeBetResponse MakeBet(MakeBetRequest request);
+        MakeBetResponse MakeBet(MakeBetRequest request);
     }
 }

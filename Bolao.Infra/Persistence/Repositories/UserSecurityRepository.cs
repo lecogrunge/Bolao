@@ -11,7 +11,9 @@ namespace Bolao.Infra.Persistence.Repositories
 {
     public sealed class UserSecurityRepository : RepositoryBase<UserSecurity, BolaoContext>, IUserSecurityRepository
     {
-        public UserSecurityRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
+        public UserSecurityRepository(BolaoContext bolaoContext) : base(bolaoContext)
+        {
+        }
 
         public UserSecurity GetByEmail(string email)
         {

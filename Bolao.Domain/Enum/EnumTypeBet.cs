@@ -1,7 +1,7 @@
 ﻿namespace Bolao.Domain.Enum
 {
-	public enum EnumTypeBet
-	{
-		Sena15Numbers = 1
-	}
+    public enum EnumTypeBet
+    {
+        Sena15Numbers = 1
+    }
 }

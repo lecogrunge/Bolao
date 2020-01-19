@@ -7,6 +7,7 @@ namespace Bolao.Domain.Domains
     public sealed class Lottery
     {
         #region Constructor
+
         public Lottery(decimal price, DateTime startDateBet, DateTime endDateBet, DateTime lotteryDateBet, int typeBetId)
         {
             LoterryId = Guid.NewGuid();
@@ -19,7 +20,8 @@ namespace Bolao.Domain.Domains
 
             ListNumbersResult = new List<LotteryNumberResult>();
         }
-        #endregion
+
+        #endregion Constructor
 
         public Guid LoterryId { get; private set; }
         public decimal Price { get; private set; }
@@ -36,7 +38,7 @@ namespace Bolao.Domain.Domains
 
         public void SetNumberInListLottery(LotteryNumberResult number)
         {
-            this.ListNumbersResult.Add(number);
+            ListNumbersResult.Add(number);
         }
     }
 }

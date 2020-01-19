@@ -2,7 +2,7 @@
 
 namespace Bolao.Domain.Arguments.Lottery
 {
-	public sealed class CreateLotteryResponse : ResponseBase
-	{
-	}
+    public sealed class CreateLotteryResponse : ResponseBase
+    {
+    }
 }

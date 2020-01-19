@@ -5,18 +5,23 @@ namespace Bolao.Domain.Domains
     public sealed class LotteryNumberResult
     {
         #region Constructor
-        protected LotteryNumberResult() { }
+
+        protected LotteryNumberResult()
+        {
+        }
 
         public LotteryNumberResult(string number, Guid lotteryId)
         {
-            this.Number = number;
-            this.LoterryId = lotteryId;
+            Number = number;
+            LoterryId = lotteryId;
         }
-        #endregion
+
+        #endregion Constructor
+
         public int LotteryNumberResultId { get; private set; }
         public string Number { get; private set; }
 
         public Guid LoterryId { get; private set; }
-        public Lottery Lottery { get; private set; }        
+        public Lottery Lottery { get; private set; }
     }
 }

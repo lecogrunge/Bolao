@@ -2,8 +2,7 @@
 
 namespace Bolao.Domain.Arguments.User
 {
-	public sealed class ConfirmAccountResponse : ResponseBase
-	{
-		
-	}
+    public sealed class ConfirmAccountResponse : ResponseBase
+    {
+    }
 }

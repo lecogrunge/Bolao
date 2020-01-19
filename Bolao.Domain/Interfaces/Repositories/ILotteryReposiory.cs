@@ -6,9 +6,10 @@ using System.Collections.Generic;
 
 namespace Bolao.Domain.Interfaces.Repositories
 {
-	public interface ILotteryReposiory : IRepositoryBase<Lottery>
-	{
-		IEnumerable<ListLottery> ListLotteries(bool active);
+    public interface ILotteryReposiory : IRepositoryBase<Lottery>
+    {
+        IEnumerable<ListLottery> ListLotteries(bool active);
+
         Lottery FindLottery(Guid lotteryId);
     }
 }

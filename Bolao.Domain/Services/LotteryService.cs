@@ -13,17 +13,17 @@ using System.Reflection;
 namespace Bolao.Domain.Services
 {
     public sealed class LotteryService : ILotteryService
-	{
-		private readonly ILotteryReposiory _lotteryRepository;
+    {
+        private readonly ILotteryReposiory _lotteryRepository;
 
-		public LotteryService(ILotteryReposiory lotteryRepository)
-		{
-			_lotteryRepository = lotteryRepository;
-		}
+        public LotteryService(ILotteryReposiory lotteryRepository)
+        {
+            _lotteryRepository = lotteryRepository;
+        }
 
-		public CreateLotteryResponse CreateLottery(CreateLotteryRequest request)
-		{
-			CreateLotteryResponse response = new CreateLotteryResponse();
+        public CreateLotteryResponse CreateLottery(CreateLotteryRequest request)
+        {
+            CreateLotteryResponse response = new CreateLotteryResponse();
 
             try
             {
@@ -47,9 +47,9 @@ namespace Bolao.Domain.Services
             }
         }
 
-		public NumberLotteryResponse InsertNumbersLotteryResult(NumberLotteryRequest request)
-		{
-			NumberLotteryResponse response = new NumberLotteryResponse();
+        public NumberLotteryResponse InsertNumbersLotteryResult(NumberLotteryRequest request)
+        {
+            NumberLotteryResponse response = new NumberLotteryResponse();
 
             try
             {
@@ -99,8 +99,8 @@ namespace Bolao.Domain.Services
         }
 
         public ListLotteryResponse ListLottery(bool active)
-		{
-			ListLotteryResponse response = new ListLotteryResponse();
+        {
+            ListLotteryResponse response = new ListLotteryResponse();
 
             try
             {
@@ -112,5 +112,5 @@ namespace Bolao.Domain.Services
                 throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
             }
         }
-	}
+    }
 }

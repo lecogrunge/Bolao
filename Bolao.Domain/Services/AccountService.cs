@@ -1,6 +1,5 @@
 ﻿using Bolao.CrossCutting.Common;
 using Bolao.CrossCutting.Messages;
-using Bolao.Domain.Arguments.Base;
 using Bolao.Domain.Arguments.Base.Error;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
@@ -100,7 +99,7 @@ namespace Bolao.Domain.Services
                     return response;
                 }
 
-                // Persistence 
+                // Persistence
                 user.CryptPassword(user.Password);
                 _userRepository.Create(user);
 

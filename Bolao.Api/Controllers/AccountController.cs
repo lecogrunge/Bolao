@@ -31,7 +31,9 @@ namespace Bolao.Api.Controllers
                 CreateAccountResponse response = _accountService.CreateAccount(signup);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }
@@ -50,7 +52,9 @@ namespace Bolao.Api.Controllers
                 LoginResponse response = _accountService.Login(auth);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }
@@ -69,7 +73,9 @@ namespace Bolao.Api.Controllers
                 ConfirmAccountResponse response = _accountService.ConfirmAccount(token);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }
@@ -88,8 +94,10 @@ namespace Bolao.Api.Controllers
                 ForgotPasswordResponse response = _accountService.ForgotPassword(email);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
-                
+                }
+
                 return BadRequest(response.GetErrors());
             }
             catch (Exception)
@@ -107,7 +115,9 @@ namespace Bolao.Api.Controllers
                 ChangePasswordResponse response = _accountService.ChangePassword(request);
 
                 if (response.IsValid())
+                {
                     return await ResponseAsync(response);
+                }
 
                 return BadRequest(response.GetErrors());
             }

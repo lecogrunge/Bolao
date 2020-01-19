@@ -2,22 +2,26 @@
 
 namespace Bolao.Domain.Domains
 {
-	public sealed class LotteryNumberBet
+    public sealed class LotteryNumberBet
     {
         #region Constructor
-        protected LotteryNumberBet() { }
+
+        protected LotteryNumberBet()
+        {
+        }
 
         public LotteryNumberBet(string number, Guid ticketId)
         {
-            this.Number = number;
-            this.TicketId = ticketId;
+            Number = number;
+            TicketId = ticketId;
         }
-        #endregion
+
+        #endregion Constructor
 
         public int LotteryNumberBetId { get; private set; }
-		public string Number { get; private set; }
+        public string Number { get; private set; }
 
         public Guid TicketId { get; private set; }
-		public Ticket Ticket { get; private set; }
+        public Ticket Ticket { get; private set; }
     }
 }

@@ -8,23 +8,25 @@ namespace Bolao.Domain.Arguments.Base
 {
     public abstract class ResponseBase : IResponseBase
     {
-		public ResponseBase()
-		{
-			Errors = new List<ErrorResponse>();
-		}
+        public ResponseBase()
+        {
+            Errors = new List<ErrorResponse>();
+        }
 
-		protected IList<ErrorResponse> Errors { get; private set; }
+        protected IList<ErrorResponse> Errors { get; private set; }
 
         public void AddErrorValidationResult(ValidationResult validation)
         {
             foreach (ValidationFailure item in validation.Errors)
+            {
                 Errors.Add(new ErrorResponse(item.PropertyName, item.ErrorMessage));
+            }
         }
 
-		public void AddError(ErrorResponse error)
-		{
-			Errors.Add(error);
-		}
+        public void AddError(ErrorResponse error)
+        {
+            Errors.Add(error);
+        }
 
         public bool IsValid()
         {
@@ -33,7 +35,7 @@ namespace Bolao.Domain.Arguments.Base
 
         public IList<ErrorResponse> GetErrors()
         {
-            return this.Errors;
+            return Errors;
         }
     }
 }

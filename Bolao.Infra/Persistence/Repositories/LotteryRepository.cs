@@ -13,7 +13,9 @@ namespace Bolao.Infra.Persistence.Repositories
 {
     public sealed class LotteryRepository : RepositoryBase<Lottery, BolaoContext>, ILotteryReposiory
     {
-        public LotteryRepository(BolaoContext bolaoContext) : base(bolaoContext) { }
+        public LotteryRepository(BolaoContext bolaoContext) : base(bolaoContext)
+        {
+        }
 
         /// <summary>
         /// Retrieve all active lotteries

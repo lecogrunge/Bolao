@@ -8,12 +8,12 @@ namespace Bolao.Domain.Arguments.Base
 
         public void SetCorrelationId(Guid? correlationId)
         {
-            this.CorrelationId = correlationId.HasValue ? correlationId.Value : Guid.NewGuid();
+            CorrelationId = correlationId.HasValue ? correlationId.Value : Guid.NewGuid();
         }
 
         public Guid GetCorrelationId()
         {
-            return this.CorrelationId;
+            return CorrelationId;
         }
     }
 }
