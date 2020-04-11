@@ -1,4 +1,7 @@
-﻿using Bolao.Domain.Interfaces.Repositories;
+﻿using Bolao.Api.Core.Compression;
+using Bolao.Domain.HanldlerError;
+using Bolao.Domain.Interfaces.HandleErrror;
+using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Interfaces.UnitOfWork;
 using Bolao.Domain.Services;
@@ -28,6 +31,7 @@ namespace Bolao.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             #region Mysql Connection
 
             string connection = configuration.GetConnectionString("SqlConnection");
@@ -38,15 +42,17 @@ namespace Bolao.Api
             #region Injections
 
             services.AddScoped<BolaoContext, BolaoContext>();
-            //services.AddScoped<IResponseBase, ResponseBase>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IHandlerError, HandlerError>();
 
             // Services
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ILotteryService, LotteryService>();
             services.AddTransient<ITicketService, TicketService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IContactService, ContactService>();
+
+            // Repository
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserSecurityRepository, UserSecurityRepository>();
 
@@ -81,14 +87,14 @@ namespace Bolao.Api
             #endregion Identity
 
             services.AddCors();
-            services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                    .AddJsonOptions(options =>
-                    {
-                        //      options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
-                    });
-            services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+            //services.AddApplicationInsightsTelemetry(this.configuration);
 
+            services.AddMvc(
+                config =>{config.Filters.Add(typeof(HttpResponseExceptionFilter));})
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                    .AddJsonOptions(options => { /*      options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver(); */});
+
+            services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
             ConfigureSwaggerService(services);
         }
 

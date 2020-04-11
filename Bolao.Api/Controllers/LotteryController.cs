@@ -1,9 +1,7 @@
 ﻿using Bolao.Api.Controllers.Base;
-using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
@@ -22,61 +20,40 @@ namespace Bolao.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> ListLotteries(bool active)
         {
-            try
-            {
-                ListLotteryResponse response = lotteryService.ListLottery(active);
+            ListLotteryResponse response = lotteryService.ListLottery(active);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateLottery(CreateLotteryRequest request)
         {
-            try
-            {
-                CreateLotteryResponse response = lotteryService.CreateLottery(request);
+            CreateLotteryResponse response = lotteryService.CreateLottery(request);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
 
         [HttpPost("InsertNumbersLotteryResult")]
         public async Task<IActionResult> InsertNumbersLotteryResult(NumberLotteryRequest request)
         {
-            try
-            {
-                NumberLotteryResponse response = lotteryService.InsertNumbersLotteryResult(request);
+            NumberLotteryResponse response = lotteryService.InsertNumbersLotteryResult(request);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
     }
 }

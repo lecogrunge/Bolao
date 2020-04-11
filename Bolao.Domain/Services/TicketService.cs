@@ -1,7 +1,5 @@
 ﻿using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Interfaces.Services;
-using System;
-using System.Reflection;
 
 namespace Bolao.Domain.Services
 {
@@ -11,18 +9,11 @@ namespace Bolao.Domain.Services
         {
             MakeBetResponse response = new MakeBetResponse();
 
-            try
+            foreach (MakeBetRequest.BetNumber item in request.BetNumbers)
             {
-                foreach (MakeBetRequest.BetNumber item in request.BetNumbers)
-                {
-                }
+            }
 
-                return response;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return response;
         }
     }
 }

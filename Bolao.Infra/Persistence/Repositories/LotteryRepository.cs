@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Bolao.Infra.Persistence.Repositories
 {
@@ -24,29 +23,15 @@ namespace Bolao.Infra.Persistence.Repositories
         /// <returns></returns>
 		public IEnumerable<ListLottery> ListLotteries(bool active)
         {
-            try
-            {
-                return _context.Lotteries.AsNoTracking()
-                                          .Where(s => s.StartDateBet <= DateTime.Now && s.EndDateBet >= DateTime.Now)
-                                          .Select(s => new ListLottery { LotteryId = s.LoterryId, Price = s.Price })
-                                          .ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return _context.Lotteries.AsNoTracking()
+                                      .Where(s => s.StartDateBet <= DateTime.Now && s.EndDateBet >= DateTime.Now)
+                                      .Select(s => new ListLottery { LotteryId = s.LoterryId, Price = s.Price })
+                                      .ToList();
         }
 
         public Lottery FindLottery(Guid lotteryId)
         {
-            try
-            {
-                return _context.Lotteries.Include(s => s.TypeBet).FirstOrDefault(s => s.LoterryId == lotteryId);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return _context.Lotteries.Include(s => s.TypeBet).FirstOrDefault(s => s.LoterryId == lotteryId);
         }
     }
 }

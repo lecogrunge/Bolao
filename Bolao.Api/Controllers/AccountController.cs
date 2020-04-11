@@ -1,5 +1,4 @@
 ﻿using Bolao.Api.Controllers.Base;
-using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -30,21 +29,14 @@ namespace Bolao.Api.Controllers
         [Route("signup")]
         public async Task<IActionResult> Signup(CreateAccountRequest signup)
         {
-            try
-            {
-                CreateAccountResponse response = accountService.CreateAccount(signup);
-                
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
+            CreateAccountResponse response = accountService.CreateAccount(signup);
 
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
 
         /// <summary>
@@ -56,21 +48,15 @@ namespace Bolao.Api.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(LoginRequest auth)
         {
-            try
-            {
-                LoginResponse response = accountService.Login(auth);
+            LoginResponse response = accountService.Login(auth);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                int b = Convert.ToInt32("jifd");
+                return Ok(response);
             }
+            int a = Convert.ToInt32("jifd");
+            return BadRequest(response.GetErrors());
         }
 
         /// <summary>
@@ -82,21 +68,14 @@ namespace Bolao.Api.Controllers
         [Route("confirm-account/token/{token}")]
         public async Task<IActionResult> ConfirmAccount(Guid token)
         {
-            try
-            {
-                ConfirmAccountResponse response = accountService.ConfirmAccount(token);
+            ConfirmAccountResponse response = accountService.ConfirmAccount(token);
 
-                if (response.IsValid())
-                {
-                    return NoContent();
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return NoContent();
             }
+
+            return BadRequest(response.GetErrors());
         }
 
         /// <summary>
@@ -108,21 +87,14 @@ namespace Bolao.Api.Controllers
         [Route("forgot-password")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
-            try
-            {
-                ForgotPasswordResponse response = accountService.ForgotPassword(email);
+            ForgotPasswordResponse response = accountService.ForgotPassword(email);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
 
         /// <summary>
@@ -134,21 +106,14 @@ namespace Bolao.Api.Controllers
         [Route("change-password")]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
         {
-            try
-            {
-                ChangePasswordResponse response = accountService.ChangePassword(request);
+            ChangePasswordResponse response = accountService.ChangePassword(request);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
     }
 }

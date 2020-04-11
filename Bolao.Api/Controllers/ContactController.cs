@@ -1,10 +1,8 @@
 ﻿using Bolao.Api.Controllers.Base;
-using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Contact;
 using Bolao.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace Bolao.Api.Controllers
 {
@@ -31,21 +29,14 @@ namespace Bolao.Api.Controllers
         [AllowAnonymous]
         public IActionResult Contact(ContactRequest request)
         {
-            try
-            {
-                ContactResponse response = contactService.Contact(request);
+            ContactResponse response = contactService.Contact(request);
 
-                if (response.IsValid())
-                {
-                    return Ok(response);
-                }
-
-                return BadRequest(response.GetErrors());
-            }
-            catch (Exception)
+            if (response.IsValid())
             {
-                return BadRequest(Msg.ErrorGeneric400);
+                return Ok(response);
             }
+
+            return BadRequest(response.GetErrors());
         }
     }
 }

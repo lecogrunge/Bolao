@@ -5,7 +5,6 @@ using Bolao.Infra.Persistence.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using System.Reflection;
 
 namespace Bolao.Infra.Persistence.Repositories
 {
@@ -17,62 +16,27 @@ namespace Bolao.Infra.Persistence.Repositories
 
         public User AuthUser(string email, string password)
         {
-            try
-            {
-                return base._context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email.ToLower()) && s.Password.Equals(password));
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return base._context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email.ToLower()) && s.Password.Equals(password));
         }
 
         public User GetUserByTokenConfirmation(Guid token)
         {
-            try
-            {
-                return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenCreateConfirmed == token);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenCreateConfirmed == token);
         }
 
         public User GetUserByTokenForgotPassword(Guid token)
         {
-            try
-            {
-                return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenForgotPassword == token);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return base._context.Users.Include(s => s.UserSecurity).FirstOrDefault(s => s.UserSecurity.TokenForgotPassword == token);
         }
 
         public bool IsEmailExists(string email)
         {
-            try
-            {
-                return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email.ToLower()));
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email.ToLower()));
         }
 
         public bool VerifyUserIsActiveByEmail(string email)
         {
-            try
-            {
-                return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email.ToLower()) && s.Active.Equals(true));
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email.ToLower()) && s.Active.Equals(true));
         }
     }
 }

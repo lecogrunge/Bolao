@@ -1,7 +1,6 @@
 ﻿using Bolao.CrossCutting.Mail;
 using Bolao.Domain.Interfaces.Services;
 using System;
-using System.Reflection;
 
 namespace Bolao.Domain.Services
 {
@@ -10,14 +9,8 @@ namespace Bolao.Domain.Services
         public void SendEmailContact(string name, string email, string subject, string message)
         {
             EmailSmtp smtp = new EmailSmtp();
-            try
-            {
-                smtp.Send("wellington_fernands@yahoo.com.br", string.Format("[Contato] - {0}", subject), message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+
+            smtp.Send("wellington_fernands@yahoo.com.br", string.Format("[Contato] - {0}", subject), message);
         }
 
         public void SendEmailForgotPassword(string to, Guid token)
@@ -37,14 +30,7 @@ namespace Bolao.Domain.Services
 
             EmailSmtp smtp = new EmailSmtp();
 
-            try
-            {
-                smtp.Send(to, "Confirmação de Cadastro", emailContent);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
-            }
+            smtp.Send(to, "Confirmação de Cadastro", emailContent);
         }
     }
 }
