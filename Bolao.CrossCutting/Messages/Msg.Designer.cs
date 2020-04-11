@@ -61,6 +61,15 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sua conta ainda não foi ativada..
+        /// </summary>
+        public static string AccountInactive {
+            get {
+                return ResourceManager.GetString("AccountInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Este e-mail já existe em nossa base de dados..
         /// </summary>
         public static string EmailExists {

@@ -2,7 +2,6 @@
 using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Lottery;
 using Bolao.Domain.Interfaces.Services;
-using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

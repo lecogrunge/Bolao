@@ -50,7 +50,12 @@ namespace Bolao.Domain.Services
                 }
 
                 // Verify if user is active
-                this.unitOfWork.UserRepository.VerifyUserIsActiveByEmail(request.Email);
+                bool userActive = this.unitOfWork.UserRepository.VerifyUserIsActiveByEmail(request.Email);
+                if (userActive == false)
+                {
+                    response.AddError(new ErrorResponse(string.Empty, Msg.AccountInactive));
+                    return response;
+                }
 
                 response.IdUser = user.UserId;
                 response.FirstName = user.FisrtName;

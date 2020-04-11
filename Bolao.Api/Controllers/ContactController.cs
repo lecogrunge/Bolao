@@ -2,7 +2,6 @@
 using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.Contact;
 using Bolao.Domain.Interfaces.Services;
-using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;

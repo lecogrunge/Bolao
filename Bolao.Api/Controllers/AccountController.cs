@@ -2,7 +2,6 @@
 using Bolao.CrossCutting.Messages;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Interfaces.Services;
-using Bolao.Domain.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,11 +14,11 @@ namespace Bolao.Api.Controllers
     [AllowAnonymous]
     public sealed class AccountController : BaseController
     {
-        private readonly IAccountService _accountService;
+        private readonly IAccountService accountService;
 
         public AccountController(IAccountService accountService)
         {
-            _accountService = accountService;
+            this.accountService = accountService;
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                CreateAccountResponse response = _accountService.CreateAccount(signup);
+                CreateAccountResponse response = accountService.CreateAccount(signup);
                 
                 if (response.IsValid())
                 {
@@ -48,13 +47,18 @@ namespace Bolao.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="auth"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login(LoginRequest auth)
         {
             try
             {
-                LoginResponse response = _accountService.Login(auth);
+                LoginResponse response = accountService.Login(auth);
 
                 if (response.IsValid())
                 {
@@ -69,17 +73,22 @@ namespace Bolao.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// ConfirmAccount
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("confirm-account")]
+        [Route("confirm-account/token/{token}")]
         public async Task<IActionResult> ConfirmAccount(Guid token)
         {
             try
             {
-                ConfirmAccountResponse response = _accountService.ConfirmAccount(token);
+                ConfirmAccountResponse response = accountService.ConfirmAccount(token);
 
                 if (response.IsValid())
                 {
-                    return Ok(response);
+                    return NoContent();
                 }
 
                 return BadRequest(response.GetErrors());
@@ -90,13 +99,18 @@ namespace Bolao.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// ForgotPassword
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("forgot-password")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
             try
             {
-                ForgotPasswordResponse response = _accountService.ForgotPassword(email);
+                ForgotPasswordResponse response = accountService.ForgotPassword(email);
 
                 if (response.IsValid())
                 {
@@ -122,7 +136,7 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                ChangePasswordResponse response = _accountService.ChangePassword(request);
+                ChangePasswordResponse response = accountService.ChangePassword(request);
 
                 if (response.IsValid())
                 {
