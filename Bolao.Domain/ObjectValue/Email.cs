@@ -8,7 +8,7 @@
 
         public Email(string address)
         {
-            EmailAddress = address;
+            EmailAddress = address.ToLower().Trim();
         }
 
         public string EmailAddress { get; private set; }

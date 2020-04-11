@@ -10,18 +10,23 @@ using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
 {
-    [Route("api/account")]
+    [Route("account")]
     [ApiController]
     [AllowAnonymous]
     public sealed class AccountController : BaseController
     {
         private readonly IAccountService _accountService;
 
-        public AccountController(IUnitOfWork unitOfWork, IAccountService accountService) : base(unitOfWork)
+        public AccountController(IAccountService accountService)
         {
             _accountService = accountService;
         }
 
+        /// <summary>
+        /// Signup
+        /// </summary>
+        /// <param name="signup"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("signup")]
         public async Task<IActionResult> Signup(CreateAccountRequest signup)
@@ -29,10 +34,10 @@ namespace Bolao.Api.Controllers
             try
             {
                 CreateAccountResponse response = _accountService.CreateAccount(signup);
-
+                
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());
@@ -45,7 +50,7 @@ namespace Bolao.Api.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromForm]LoginRequest auth)
+        public async Task<IActionResult> Login(LoginRequest auth)
         {
             try
             {
@@ -53,7 +58,7 @@ namespace Bolao.Api.Controllers
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());
@@ -74,7 +79,7 @@ namespace Bolao.Api.Controllers
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());
@@ -95,7 +100,7 @@ namespace Bolao.Api.Controllers
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());
@@ -106,6 +111,11 @@ namespace Bolao.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// ChangePassword
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("change-password")]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
@@ -116,7 +126,7 @@ namespace Bolao.Api.Controllers
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());

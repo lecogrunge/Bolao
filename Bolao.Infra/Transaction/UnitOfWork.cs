@@ -8,46 +8,46 @@ namespace Bolao.Infra.Transaction
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly BolaoContext _context;
-        private IUserRepository _userRepository;
-        private ILotteryReposiory _lotteryRepository;
-        private readonly IUserSecurityRepository _userSecurityRepository;
-        private IDbContextTransaction _transaction;
+        private readonly BolaoContext context;
+        private IUserRepository userRepository;
+        private ILotteryReposiory lotteryRepository;
+        private IUserSecurityRepository userSecurityRepository;
+        private IDbContextTransaction transaction;
 
         public UnitOfWork(BolaoContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
         public void OpenTransaction()
         {
-            _transaction = _context.Database.BeginTransaction();
+            this.transaction = this.context.Database.BeginTransaction();
         }
 
         public void CommitTransaction()
         {
-            _transaction.Commit();
+            this.transaction.Commit();
         }
 
         public void RollBackTransaction()
         {
-            _transaction.Rollback();
+            this.transaction.Rollback();
         }
 
-        public void SaveIB()
+        public void Save()
         {
-            _context.SaveChanges();
+            this.context.SaveChanges();
         }
 
         public void Dispose()
         {
-            _context.Dispose();
+            this.context.Dispose();
         }
 
-        public IUserRepository UserRepository => _userRepository = _userRepository ?? new UserRepository(_context);
+        public IUserRepository UserRepository => this.userRepository = this.userRepository ?? new UserRepository(this.context);
 
-        public ILotteryReposiory LotteryReposiory => _lotteryRepository = _lotteryRepository ?? new LotteryRepository(_context);
+        public ILotteryReposiory LotteryReposiory => this.lotteryRepository = this.lotteryRepository ?? new LotteryRepository(this.context);
 
-        public IUserSecurityRepository UserSecurityRepository => _userSecurityRepository ?? new UserSecurityRepository(_context);
+        public IUserSecurityRepository UserSecurityRepository => this.userSecurityRepository  = this.userSecurityRepository ?? new UserSecurityRepository(this.context);
     }
 }

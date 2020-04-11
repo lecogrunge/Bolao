@@ -12,6 +12,8 @@ namespace Bolao.Domain.Interfaces.Repositories
 
         User GetUserByTokenForgotPassword(Guid token);
 
-        bool IsEmailExist(string email);
+        bool IsEmailExists(string email);
+
+        bool VerifyUserIsActiveByEmail(string email);
     }
 }

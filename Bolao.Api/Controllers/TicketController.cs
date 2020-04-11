@@ -13,11 +13,11 @@ namespace Bolao.Api.Controllers
     [ApiController]
     public class TicketController : BaseController
     {
-        private readonly ITicketService _ticketService;
+        private readonly ITicketService ticketService;
 
-        public TicketController(IUnitOfWork unitOfWork, ITicketService ticketService) : base(unitOfWork)
+        public TicketController(ITicketService ticketService)
         {
-            _ticketService = ticketService;
+            this.ticketService = ticketService;
         }
 
         [HttpPost]
@@ -26,11 +26,11 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                MakeBetResponse response = _ticketService.MakeBet(request);
+                MakeBetResponse response = ticketService.MakeBet(request);
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());

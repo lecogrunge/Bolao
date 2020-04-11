@@ -14,13 +14,18 @@ namespace Bolao.Api.Controllers
     [AllowAnonymous]
     public class ContactController : BaseController
     {
-        private readonly IContactService _contactService;
+        private readonly IContactService contactService;
 
-        public ContactController(IUnitOfWork unitOfWork, IContactService contactService) : base(unitOfWork)
+        public ContactController(IContactService contactService)
         {
-            _contactService = contactService;
+            this.contactService = contactService;
         }
 
+        /// <summary>
+        /// Contact
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("contact")]
         [IgnoreAntiforgeryTokenAttribute]
@@ -29,11 +34,11 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                ContactResponse response = _contactService.Contact(request);
+                ContactResponse response = contactService.Contact(request);
 
                 if (response.IsValid())
                 {
-                    return Json(true);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());

@@ -8,7 +8,6 @@ using System.Linq;
 namespace Bolao.Infra.Persistence.EF
 {
     public class BolaoContext : DbContext
-    //public class BolaoContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         public BolaoContext(DbContextOptions<BolaoContext> options) : base(options)
         {

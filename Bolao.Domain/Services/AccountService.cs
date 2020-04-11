@@ -4,8 +4,8 @@ using Bolao.Domain.Arguments.Base.Error;
 using Bolao.Domain.Arguments.User;
 using Bolao.Domain.Domains;
 using Bolao.Domain.Domains.Validator;
-using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
+using Bolao.Domain.Interfaces.UnitOfWork;
 using Bolao.Domain.ObjectValue;
 using Bolao.Domain.ObjectValue.Validation;
 using FluentValidation.Results;
@@ -16,15 +16,13 @@ namespace Bolao.Domain.Services
 {
     public sealed class AccountService : IAccountService
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IUserSecurityRepository _userSecurityRepository;
-        private readonly IEmailService _emailService;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly IEmailService emailService;
 
-        public AccountService(IUserRepository userRepository, IUserSecurityRepository userSecurityRepository, IEmailService emailService)
+        public AccountService(IUnitOfWork unitOfWork, IEmailService emailService)
         {
-            _userRepository = userRepository;
-            _userSecurityRepository = userSecurityRepository;
-            _emailService = emailService;
+            this.unitOfWork = unitOfWork;
+            this.emailService = emailService;
         }
 
         public LoginResponse Login(LoginRequest request)
@@ -40,19 +38,19 @@ namespace Bolao.Domain.Services
                 if (!emailResult.IsValid)
                 {
                     response.AddErrorValidationResult(emailResult);
+                    return response;
                 }
 
-                // Verificar usuário existe
-                User user = _userRepository.AuthUser(email.EmailAddress, request.Password.CryptPassword());
+                // Verify if user exists
+                User user = this.unitOfWork.UserRepository.AuthUser(email.EmailAddress, request.Password.CryptPassword());
                 if (user == null)
                 {
                     response.AddError(new ErrorResponse(string.Empty, Msg.InvalidAuth));
-                }
-
-                if (!response.IsValid())
-                {
                     return response;
                 }
+
+                // Verify if user is active
+                this.unitOfWork.UserRepository.VerifyUserIsActiveByEmail(request.Email);
 
                 response.IdUser = user.UserId;
                 response.FirstName = user.FisrtName;
@@ -78,6 +76,13 @@ namespace Bolao.Domain.Services
                 if (!emailResult.IsValid)
                 {
                     response.AddErrorValidationResult(emailResult);
+                    return response;
+                }
+
+                if (this.unitOfWork.UserRepository.IsEmailExists(request.Email))
+                {
+                    response.AddError(new ErrorResponse("Email", Msg.EmailExists));
+                    return response;
                 }
 
                 // User validation
@@ -87,24 +92,20 @@ namespace Bolao.Domain.Services
                 if (!userResult.IsValid)
                 {
                     response.AddErrorValidationResult(userResult);
-                }
-
-                if (_userRepository.IsEmailExist(user.Email.EmailAddress))
-                {
-                    response.AddError(new ErrorResponse("Email", Msg.EmailExists));
-                }
-
-                if (!response.IsValid())
-                {
                     return response;
                 }
 
-                // Persistence
+                // Crypt
                 user.CryptPassword(user.Password);
-                _userRepository.Create(user);
+
+                // Persistence
+                this.unitOfWork.OpenTransaction();
+                this.unitOfWork.UserRepository.Create(user);
+                this.unitOfWork.CommitTransaction();
+                this.unitOfWork.Save();
 
                 // Send mail
-                _emailService.SendEmailNewUser(user.Email.EmailAddress, user.UserSecurity.TokenCreateConfirmed, user.FisrtName);
+                this.emailService.SendEmailNewUser(user.Email.EmailAddress, user.UserSecurity.TokenCreateConfirmed, user.FisrtName);
 
                 response.IdUser = user.UserId;
                 return response;
@@ -121,11 +122,11 @@ namespace Bolao.Domain.Services
 
             try
             {
-                User user = _userRepository.GetUserByTokenConfirmation(token);
+                User user = this.unitOfWork.UserRepository.GetUserByTokenConfirmation(token);
                 if (user != null)
                 {
                     user.ActiveUser();
-                    _userRepository.Update(user);
+                    this.unitOfWork.UserRepository.Update(user);
                 }
                 else
                 {
@@ -157,12 +158,12 @@ namespace Bolao.Domain.Services
                 }
 
                 // Persistence
-                UserSecurity security = _userSecurityRepository.GetByEmail(email.EmailAddress);
+                UserSecurity security = this.unitOfWork.UserSecurityRepository.GetByEmail(email.EmailAddress);
                 security.GenerateTokenForgotPassword();
-                _userSecurityRepository.Update(security);
+                this.unitOfWork.UserSecurityRepository.Update(security);
 
                 // Send mail
-                _emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword.Value);
+                emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword.Value);
 
                 return response;
             }
@@ -185,7 +186,7 @@ namespace Bolao.Domain.Services
                     return response;
                 }
 
-                User user = _userRepository.GetUserByTokenForgotPassword(request.Token);
+                User user = this.unitOfWork.UserRepository.GetUserByTokenForgotPassword(request.Token);
                 if (user == null)
                 {
                     response.AddError(new ErrorResponse(string.Empty, Msg.InvalidForgotPasswordToken));
@@ -193,7 +194,7 @@ namespace Bolao.Domain.Services
                 }
 
                 user.CryptPassword(request.NewPassword);
-                _userRepository.Update(user);
+                this.unitOfWork.UserRepository.Update(user);
 
                 return response;
             }

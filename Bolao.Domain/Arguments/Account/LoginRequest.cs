@@ -2,7 +2,13 @@
 {
     public sealed class LoginRequest
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public LoginRequest(string email, string password)
+        {
+            this.Email = email.ToLower().Trim();
+            this.Password = password;
+        }
+
+        public string Email { get; private set; }
+        public string Password { get; private set; }
     }
 }

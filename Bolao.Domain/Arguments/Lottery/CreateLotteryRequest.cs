@@ -6,10 +6,10 @@ namespace Bolao.Domain.Arguments.Lottery
 {
     public sealed class CreateLotteryRequest : BaseRequest
     {
-        public decimal Price { get; set; }
-        public DateTime EndDateBet { get; set; }
-        public DateTime StartDateBet { get; set; }
-        public DateTime LotteryDateBet { get; set; }
-        public EnumTypeBet TypeBetId { get; set; }
+        public decimal Price { get; private set; }
+        public DateTime EndDateBet { get; private set; }
+        public DateTime StartDateBet { get; private set; }
+        public DateTime LotteryDateBet { get; private set; }
+        public EnumTypeBet TypeBetId { get; private set; }
     }
 }

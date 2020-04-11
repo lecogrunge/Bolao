@@ -9,7 +9,7 @@ namespace Bolao.Domain.Interfaces.UnitOfWork
         IUserSecurityRepository UserSecurityRepository { get; }
         ILotteryReposiory LotteryReposiory { get; }
 
-        void SaveIB();
+        void Save();
 
         void OpenTransaction();
 

@@ -13,11 +13,11 @@ namespace Bolao.Api.Controllers
     [ApiController]
     public class LotteryController : BaseController
     {
-        private readonly ILotteryService _lotteryService;
+        private readonly ILotteryService lotteryService;
 
-        public LotteryController(IUnitOfWork unitOfWork, ILotteryService lotteryService) : base(unitOfWork)
+        public LotteryController(ILotteryService lotteryService)
         {
-            _lotteryService = lotteryService;
+            this.lotteryService = lotteryService;
         }
 
         [HttpGet]
@@ -25,11 +25,11 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                ListLotteryResponse response = _lotteryService.ListLottery(active);
+                ListLotteryResponse response = lotteryService.ListLottery(active);
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());
@@ -45,11 +45,11 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                CreateLotteryResponse response = _lotteryService.CreateLottery(request);
+                CreateLotteryResponse response = lotteryService.CreateLottery(request);
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());
@@ -65,11 +65,11 @@ namespace Bolao.Api.Controllers
         {
             try
             {
-                NumberLotteryResponse response = _lotteryService.InsertNumbersLotteryResult(request);
+                NumberLotteryResponse response = lotteryService.InsertNumbersLotteryResult(request);
 
                 if (response.IsValid())
                 {
-                    return await ResponseAsync(response);
+                    return Ok(response);
                 }
 
                 return BadRequest(response.GetErrors());

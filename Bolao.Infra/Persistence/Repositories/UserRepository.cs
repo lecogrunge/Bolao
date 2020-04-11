@@ -19,7 +19,7 @@ namespace Bolao.Infra.Persistence.Repositories
         {
             try
             {
-                return base._context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email) && s.Password.Equals(password));
+                return base._context.Users.FirstOrDefault(s => s.Email.EmailAddress.Equals(email.ToLower()) && s.Password.Equals(password));
             }
             catch (Exception ex)
             {
@@ -51,11 +51,23 @@ namespace Bolao.Infra.Persistence.Repositories
             }
         }
 
-        public bool IsEmailExist(string email)
+        public bool IsEmailExists(string email)
         {
             try
             {
-                return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email));
+                return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email.ToLower()));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodBase.GetCurrentMethod().ToString(), ex);
+            }
+        }
+
+        public bool VerifyUserIsActiveByEmail(string email)
+        {
+            try
+            {
+                return base._context.Users.Any(s => s.Email.EmailAddress.Equals(email.ToLower()) && s.Active.Equals(true));
             }
             catch (Exception ex)
             {

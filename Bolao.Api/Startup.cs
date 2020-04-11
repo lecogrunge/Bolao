@@ -1,8 +1,9 @@
-﻿using Bolao.Api.Core.Compression;
+﻿using Bolao.Domain.Interfaces.Repositories;
 using Bolao.Domain.Interfaces.Services;
 using Bolao.Domain.Interfaces.UnitOfWork;
 using Bolao.Domain.Services;
 using Bolao.Infra.Persistence.EF;
+using Bolao.Infra.Persistence.Repositories;
 using Bolao.Infra.Transaction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,35 +16,21 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Bolao.Api
 {
-    public class Startup
+    public sealed class Startup
     {
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            #region Compression
-
-            services.AddResponseCompression(options =>
-            {
-                options.Providers.Add<BrotliCompressionProvider>();
-                options.EnableForHttps = true;
-            });
-
-            #endregion Compression
-
-            //#region Sql Conection
-            //services.AddDbContext<BolaoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
-            //#endregion
-
             #region Mysql Connection
 
-            string connection = Configuration.GetConnectionString("SqlConnection");
+            string connection = configuration.GetConnectionString("SqlConnection");
             services.AddDbContext<BolaoContext>(o => o.UseMySql(connection));
 
             #endregion Mysql Connection
@@ -60,6 +47,8 @@ namespace Bolao.Api
             services.AddTransient<ITicketService, TicketService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserSecurityRepository, UserSecurityRepository>();
 
             #endregion Injections
 
@@ -140,14 +129,6 @@ namespace Bolao.Api
             }
 
             // app.UseHttpsRedirection();
-            app.UseResponseCompression();
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod());
-            //#region Identity
-            //app.UseAuthentication();
-            //#endregion
 
             #region Swagger
 
