@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bolao.Api.Controllers
 {
-    [Route("api/contact")]
+    [Route("/contact")]
     [ApiController]
     [AllowAnonymous]
     public class ContactController : BaseController
@@ -24,7 +24,6 @@ namespace Bolao.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("contact")]
         [IgnoreAntiforgeryTokenAttribute]
         [AllowAnonymous]
         public IActionResult Contact(ContactRequest request)

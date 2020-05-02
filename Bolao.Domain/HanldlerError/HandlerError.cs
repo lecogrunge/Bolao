@@ -12,12 +12,12 @@ namespace Bolao.Domain.HanldlerError
             this.stb = new StringBuilder();
         }
 
-        public void AddError(string mensagem)
+        public void AddErrorMessage(string message)
         {
-            this.stb.AppendLine(mensagem);
+            this.stb.AppendLine(message);
         }
 
-        public string GetError()
+        public string GetErrorMessage()
         {
             return this.stb.ToString();
         }

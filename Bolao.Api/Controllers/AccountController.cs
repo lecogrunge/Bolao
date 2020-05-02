@@ -52,10 +52,9 @@ namespace Bolao.Api.Controllers
 
             if (response.IsValid())
             {
-                int b = Convert.ToInt32("jifd");
                 return Ok(response);
             }
-            int a = Convert.ToInt32("jifd");
+            
             return BadRequest(response.GetErrors());
         }
 
@@ -65,7 +64,7 @@ namespace Bolao.Api.Controllers
         /// <param name="token"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("confirm-account/token/{token}")]
+        [Route("token/{token}/confirm")]
         public async Task<IActionResult> ConfirmAccount(Guid token)
         {
             ConfirmAccountResponse response = accountService.ConfirmAccount(token);
@@ -84,7 +83,7 @@ namespace Bolao.Api.Controllers
         /// <param name="email"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("forgot-password")]
+        [Route("{email}/email/forgot-password")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
             ForgotPasswordResponse response = accountService.ForgotPassword(email);
@@ -102,7 +101,7 @@ namespace Bolao.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("change-password")]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
         {

@@ -20,7 +20,7 @@
   <Class Name="Bolao.Domain.Domains.TypeBet">
     <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Domains\TypeBet.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,12 +38,12 @@
       <FileName>Domains\Buy.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="User" />
       <Property Name="Lottery" />
+      <Property Name="User" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Bolao.Domain.Domains.ContactType">
-    <Position X="10.25" Y="10.25" Width="1.5" />
+    <Position X="10.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domains\ContactType.cs</FileName>
@@ -55,7 +55,7 @@
   <Class Name="Bolao.Domain.Domains.Lottery">
     <Position X="0.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CAAIAAAAAQAAAIQAAKAAAAAAIAAABAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>CAAIAAAAAQAAAIQAAKAAAAAAIEAABAAAAAAAAAAEAAA=</HashCode>
       <FileName>Domains\Lottery.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -107,7 +107,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bolao.Domain.Domains.UserContactType">
-    <Position X="6.75" Y="10.5" Width="1.5" />
+    <Position X="6.75" Y="10.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAEAAAAAEAAAgAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Domains\UserContactType.cs</FileName>

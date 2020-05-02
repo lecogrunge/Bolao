@@ -1,4 +1,6 @@
-﻿delete from User
+﻿delete from usersecurity
+delete from usercontacttype
+delete from user
 delete from Lottery
 delete from bank
 delete from buy
@@ -9,9 +11,6 @@ delete from lotterynumberresult
 delete from ownerjackpot
 delete from ticket
 delete from typebet
-delete from user
-delete from userscontacttypes
-delete from usersecurity
 delete from winnerjackpot
 delete from __efmigrationshistory
 

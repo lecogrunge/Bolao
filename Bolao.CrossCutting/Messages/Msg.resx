@@ -120,6 +120,9 @@
   <data name="AccountInactive" xml:space="preserve">
     <value>Sua conta ainda não foi ativada.</value>
   </data>
+  <data name="EmailDoesnotExist" xml:space="preserve">
+    <value>E-mail informado não existe em nossa base de dados.</value>
+  </data>
   <data name="EmailExists" xml:space="preserve">
     <value>Este e-mail já existe em nossa base de dados.</value>
   </data>

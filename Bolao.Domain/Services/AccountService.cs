@@ -101,7 +101,7 @@ namespace Bolao.Domain.Services
             unitOfWork.Save();
 
             // Send mail
-            emailService.SendEmailNewUser(user.Email.EmailAddress, user.UserSecurity.TokenCreateConfirmed, user.FisrtName);
+            //emailService.SendEmailNewUser(user.Email.EmailAddress, user.UserSecurity.TokenCreateConfirmed, user.FisrtName);
 
             response.IdUser = user.UserId;
             return response;
@@ -141,13 +141,20 @@ namespace Bolao.Domain.Services
                 return response;
             }
 
+            // Verify is e-mail not exist
+            if (unitOfWork.UserRepository.IsEmailExists(emailUser) == false)
+            {
+                response.AddError(new ErrorResponse("Email", Msg.EmailDoesnotExist));
+                return response;
+            }
+
             // Persistence
             UserSecurity security = unitOfWork.UserSecurityRepository.GetByEmail(email.EmailAddress);
             security.GenerateTokenForgotPassword();
             unitOfWork.UserSecurityRepository.Update(security);
 
             // Send mail
-            emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword.Value);
+            //emailService.SendEmailForgotPassword(email.EmailAddress, security.TokenForgotPassword.Value);
 
             return response;
         }

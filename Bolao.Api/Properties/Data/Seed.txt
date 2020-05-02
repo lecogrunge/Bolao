@@ -4,7 +4,10 @@
 insert into User values ('e3ca0996-3fb7-4c84-9c21-19582fa7ef01', 'Wellington', 'Fernandes', 'wellington.m.fernandes@gmail.com', 'JSgMVult8JW1aIYRt9yme4QIZOw2uPYkmeAUDgV3Q30=', NOW(), 0);
 -- UserSecurity
 insert into usersecurity values ('266c1514-2147-45e3-9635-3891d46b6178', 'f9cc0483-4644-4ea3-842a-9bab42b91f6f', null, 'e3ca0996-3fb7-4c84-9c21-19582fa7ef01')
-
+-- ContactType
+insert into contacttype values (1, 'sms')
+insert into contacttype values (2, 'whatsapp')
+insert into contacttype values (3, 'email')
 
 -- TypeBet
 insert into TypeBet values (1, 'Sena15Numbers', 'descrição', 6, 15);

@@ -2,8 +2,8 @@
 {
     public sealed class ErrorResponse
     {
-        public string Property { get; set; }
-        public string Message { get; set; }
+        public string Property { get; private set; }
+        public string Message { get; private set; }
 
         public ErrorResponse(string property, string message)
         {

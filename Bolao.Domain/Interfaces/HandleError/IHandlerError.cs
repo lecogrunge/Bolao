@@ -2,8 +2,8 @@
 {
     public interface IHandlerError
     {
-        void AddError(string mensagem);
+        void AddErrorMessage(string mensagem);
 
-        string GetError();
+        string GetErrorMessage();
     }
 }

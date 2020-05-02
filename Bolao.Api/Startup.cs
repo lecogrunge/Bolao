@@ -46,15 +46,15 @@ namespace Bolao.Api
             services.AddScoped<IHandlerError, HandlerError>();
 
             // Services
-            services.AddTransient<IAccountService, AccountService>();
-            services.AddTransient<ILotteryService, LotteryService>();
-            services.AddTransient<ITicketService, TicketService>();
-            services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IContactService, ContactService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ILotteryService, LotteryService>();
+            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IContactService, ContactService>();
 
             // Repository
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IUserSecurityRepository, UserSecurityRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserSecurityRepository, UserSecurityRepository>();
 
             #endregion Injections
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
 {
-    [Route("api/lottery")]
+    [Route("lottery")]
     [ApiController]
     public class LotteryController : BaseController
     {

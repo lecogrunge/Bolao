@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bolao.Api.Controllers
 {
-    [Route("api/ticket")]
+    [Route("ticket")]
     [ApiController]
     public class TicketController : BaseController
     {

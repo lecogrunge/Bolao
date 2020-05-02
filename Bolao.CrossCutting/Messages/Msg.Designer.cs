@@ -70,6 +70,15 @@ namespace Bolao.CrossCutting.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail informado não existe em nossa base de dados..
+        /// </summary>
+        public static string EmailDoesnotExist {
+            get {
+                return ResourceManager.GetString("EmailDoesnotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Este e-mail já existe em nossa base de dados..
         /// </summary>
         public static string EmailExists {
